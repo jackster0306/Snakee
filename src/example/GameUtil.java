@@ -10,6 +10,12 @@ import javax.imageio.ImageIO;
 
 public class GameUtil
 {
+	/**
+	 * getImage method
+	 * This method is used to retrieve the requested image from the resources
+	 * If the image does not exist, an error message is printed
+	 * If the image exists, it is then returned to the caller
+	 */
 	public static Image getImage(String imagePath)
 	{
 		URL u = GameUtil.class.getClassLoader().getResource(imagePath);
@@ -19,13 +25,17 @@ public class GameUtil
 			i = ImageIO.read(u);
 		} catch (Exception e)
 		{
-			System.err.println("VILLA : FINN EKKI TILTEKNA MYNDIN !\n");
+			System.err.println("ERROR : SPECIFIC IMAGE NOT FOUND!\n");
 			e.printStackTrace();
 		}
 
 		return i;
 	}
 
+	/**
+	 * rotateImage method
+	 * This method is used to rotate an image
+	 */
 	public static Image rotateImage(final BufferedImage bufferedImage, final int degree)
 	{
 	int w = bufferedImage.getWidth();

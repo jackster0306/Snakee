@@ -9,9 +9,9 @@ import java.awt.event.KeyEvent;
 /**
  * 
  * @Project Snakee
- * @Description Spilaðu leikinn
+ * @Description Play the game
  * @Author Sigurður Sigurðardóttir
- * @version Ekki viss
+ * @version Not sure
  */ 
 
 public class Play extends MyFrame
@@ -19,15 +19,26 @@ public class Play extends MyFrame
 
 	private static final long serialVersionUID = -3641221053272056036L;
 	/**
-	 * Creates a variable mySnake of the type MySnake.
+	 * Creates a variable called mySnake of the type MySnake.
 	 * The 2 parameters are the x coordinate and y coordinate of where the snake should spawn.
 	 * **/
 	public MySnake mySnake = new MySnake(100, 100);// x , y
+
+	//Creates variable called food of type Food
 	public Food food = new Food();
 
+	//Creates variable called backgroud of type image
+	//Gets the image 'UI-background' that is in the source folder
 	public Image background = ImageUtil.images.get("UI-background");
+
+	//Creates variable called fail of type Image for when the user fails the game
+	//Gets the image 'game-scene-01' that is in the source folder
 	public Image fail = ImageUtil.images.get("game-scene-01");
 
+	/**
+	 * keyPressed Method
+	 * Is used to identify when the user presses a key
+	 */
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
@@ -35,6 +46,14 @@ public class Play extends MyFrame
 		mySnake.keyPressed(e);
 	}
 
+	/**
+	 * paint method
+	 * It is used to design the frame.
+	 * Adds the background image given to the frame
+	 * Draws the snake
+	 * Adds the food
+	 * When the user fails, will display the fail image given
+	 */
 	@Override
 	public void paint(Graphics g)
 	{
@@ -60,6 +79,12 @@ public class Play extends MyFrame
 		drawScore(g);
 	}
 
+	/**
+	 * drawScore method
+	 * Is used to display the current score of the game
+	 * It sets the font, font size, font colour
+	 * Displays the text 'SCORE : ' then the current score at the coordinates 20, 40.
+	 */
 	public void drawScore(Graphics g)
 	{
 		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
@@ -67,6 +92,11 @@ public class Play extends MyFrame
 		g.drawString("SCORE : " + mySnake.score, 20, 40);
 	}
 
+	/**
+	 * main method
+	 * Starts up the frame
+	 * Plays the music
+	 */
 	public static void main(String[] args)
 	{
 		new Play().loadFrame();
