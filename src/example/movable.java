@@ -3,9 +3,9 @@ package example;
 /**
  * 
  * @Project Snakee
- * @Description Fyrsta viðmótið
+ * @Description The first interface
  * @Author Sigurður Sigurðardóttir
- * @version Ekki viss
+ * @version Not sure
  */ 
 
 public interface movable

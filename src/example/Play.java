@@ -18,7 +18,10 @@ public class Play extends MyFrame
 {
 
 	private static final long serialVersionUID = -3641221053272056036L;
-
+	/**
+	 * Creates a variable mySnake of the type MySnake.
+	 * The 2 parameters are the x coordinate and y coordinate of where the snake should spawn.
+	 * **/
 	public MySnake mySnake = new MySnake(100, 100);// x , y
 	public Food food = new Food();
 
@@ -38,7 +41,7 @@ public class Play extends MyFrame
 		super.paint(g);
 		g.drawImage(background, 0, 0, null);
 
-		// Ákveða stöðu leiksins.
+		// Determine the state of the game.
 		if (mySnake.l)
 		{
 			mySnake.draw(g);

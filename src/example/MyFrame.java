@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 /**
  * 
  * @Project Snakee
- * @Description Hladdu leikinn og endurnýjaðu hann stöðugt
+ * @Description Load the game and refresh it constantly
  * @Author Sigurður Sigurðardóttir
- * @version Ekki viss
+ * @version Not sure
  */ 
 
 
@@ -35,7 +35,7 @@ public class MyFrame extends JPanel implements KeyListener
 	public void loadFrame()
 	{
 		/*
-		 * Komið í veg fyrir að myndin blikki.
+		 * Prevent the image from flashing.
 		 */
 		this.setDoubleBuffered(true);
 		jFrame.add(this);
@@ -100,7 +100,7 @@ public class MyFrame extends JPanel implements KeyListener
 
 	public static class MySnake extends SnakeObject implements movable
 	{
-		// Leikjabreytan.
+		// The game changer.
 		private int speed_XY;
 		private int length;
 		private int num; // ?
@@ -145,7 +145,7 @@ public class MyFrame extends JPanel implements KeyListener
 
 		public void keyPressed(KeyEvent e)
 		{
-			// athugaðu lykilinn
+			// Check the key
 			switch (e.getKeyCode())
 			{
 			case KeyEvent.VK_UP:
@@ -204,7 +204,7 @@ public class MyFrame extends JPanel implements KeyListener
 
 		public void move()
 		{
-			// láta kvikindið hreyfa sig
+			// Let the swarm move
 			if (up)
 			{
 				y -= speed_XY;
