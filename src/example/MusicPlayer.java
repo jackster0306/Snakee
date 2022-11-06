@@ -9,22 +9,31 @@ import javazoom.jl.player.Player;
 
 public class MusicPlayer extends Thread
 {
+	/**
+	 * Creates local variables filename and player
+	 */
 	private String filename;
 	public Player player;
 
-	//MusicPlayer changes the local variable filename to the given filename when the method is called
+
+	/**
+	 * MusicPlayer method
+	 * Changes the local variable filename to the given filename when the method is called
+	 * @param filename - the name of the file to be played
+	 */
 	public MusicPlayer(String filename)
 	{
 		this.filename = filename;
 	}
 
+
 	/**
 	 * play Method
-	 * This plays the given music file
-	 * The try catch is used to see if the file exists or not
+	 * This plays the music file currently in the local variable filename
 	 */
 	public void play()
 	{
+
 		new Thread()
 		{
 			@Override
@@ -45,14 +54,19 @@ public class MusicPlayer extends Thread
 		}.start();
 	}
 
+
 	/**
 	 * getMusicPlay method
-	 * This method changes the music to the given file
-	 * It calls the MusicPlayer method to change the local variable filename to the new file
-	 * Finally, it calls the play method to play the given file
+	 * This method plays the music in the given file
+	 * @param filename
 	 */
 	public static void getMusicPlay(String filename)
 	{
+		/**
+		 * getMusicPlay method
+		 * This method plays the music in the given file
+		 * @param filename
+		 */
 		MusicPlayer musicPlayer = new MusicPlayer(filename);
 		musicPlayer.play();
 	}

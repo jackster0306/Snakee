@@ -6,10 +6,19 @@ import java.util.Map;
 
 public class ImageUtil
 {
+	/**
+	 * Creates variable images that is a Map of String and Image
+	 */
 	public static Map<String, Image> images = new HashMap<>();
+
+
 
 	static
 	{
+		/**
+		 * Adds image links to the variable images
+		 * Each image link has a string connected to it to which it can be called
+		 */
 		// snake
 		images.put("snake-head-right", GameUtil.getImage("example/snake-head-right.png"));
 		images.put("snake-body", GameUtil.getImage("example/snake-body.png"));
