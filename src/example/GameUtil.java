@@ -77,6 +77,7 @@ public class GameUtil
 		 * Creates a new image of width w, height h and transparency t, which is stored in the variable i
 		 * The image created with the given rendering is stored in variable graphics2d
 		 */
+		//161 Character in below line
 		(graphics2d = (i = new BufferedImage(w, h, t)).createGraphics()).setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
 

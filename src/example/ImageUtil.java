@@ -11,6 +11,14 @@ public class ImageUtil
 	 */
 	public static Map<String, Image> m_ImageUtil_images = new HashMap<>();
 
+	public Map<String, Image> GetImageUtilImages(){
+		return m_ImageUtil_images;
+	}
+
+	public void SetImageUtilImages(Map<String, Image> map){
+		m_ImageUtil_images = map;
+	}
+
 
 
 	static
@@ -40,7 +48,7 @@ public class ImageUtil
 		m_ImageUtil_images.put("14", GameUtil.GetImage("example/food-pineapple.png"));
 		m_ImageUtil_images.put("15", GameUtil.GetImage("example/food-strawberry.png"));
 		m_ImageUtil_images.put("16", GameUtil.GetImage("example/food-watermelon.png"));
-		m_ImageUtil_images.put("UI-m_Play_background", GameUtil.GetImage("example/UI-background.png"));
+		m_ImageUtil_images.put("UI-background", GameUtil.GetImage("example/UI-background.png"));
 		m_ImageUtil_images.put("game-scene-01", GameUtil.GetImage("example/game-scene-01.jpg"));
 	}
 }

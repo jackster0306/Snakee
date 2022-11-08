@@ -31,16 +31,25 @@ public class MyFrame extends JPanel implements KeyListener
 	 * Constantly refreshed
 	 */
 
+
 	private static final long m_MyFrame_serialVersionUID = -3149926831770554380L;
 
-	public JFrame m_MyFrame_jFrame = new JFrame();
+
 	/**
-	 * Creates varaible m_MyFrame_jFrame of type JFrame
+	 * Can't add a setter for m_MyFrame_serialVersionUID because it is final
+	 */
+	public final long GetMyFrameSerialVersionUID(){
+		return m_MyFrame_serialVersionUID;
+	}
+
+	public JFrame jFrame = new JFrame();
+	/**
+	 * Creates varaible jFrame of type JFrame
 	 */
 
 	public MyFrame()
 	{
-		m_MyFrame_jFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MyFrame.class.getResource("snake-logo.png")));
+		jFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MyFrame.class.getResource("snake-logo.png")));
 
 	}
 
@@ -55,19 +64,19 @@ public class MyFrame extends JPanel implements KeyListener
 		 * Prevent the image from flashing.
 		 */
 		this.setDoubleBuffered(true);
-		m_MyFrame_jFrame.add(this);
-		m_MyFrame_jFrame.addKeyListener(this);
+		jFrame.add(this);
+		jFrame.addKeyListener(this);
 		/**
-		 * Adds keyListener for m_MyFrame_jFrame
+		 * Adds keyListener for jFrame
 		 */
 
-		m_MyFrame_jFrame.setTitle("Snakee Yipee");
-		m_MyFrame_jFrame.setSize(870, 560);
-		m_MyFrame_jFrame.setLocationRelativeTo(null);
-		m_MyFrame_jFrame.addWindowListener(new WindowAdapter()// loka
+		jFrame.setTitle("Snakee Yipee");
+		jFrame.setSize(870, 560);
+		jFrame.setLocationRelativeTo(null);
+		jFrame.addWindowListener(new WindowAdapter()// loka
 				/**
 				 * Sets title, size and location of the frame
-				 * Adds a windowListener to m_MyFrame_jFrame
+				 * Adds a windowListener to jFrame
 				 */
 		{
 			@Override
@@ -83,9 +92,9 @@ public class MyFrame extends JPanel implements KeyListener
 				System.exit(0);
 			}
 		});
-		m_MyFrame_jFrame.setVisible(true);
+		jFrame.setVisible(true);
 		/**
-		 * Sets the m_MyFrame_jFrame to being visible, so the user can see it
+		 * Sets the jFrame to being visible, so the user can see it
 		 */
 
 		new MyThread().start();
@@ -97,7 +106,7 @@ public class MyFrame extends JPanel implements KeyListener
 		{
 			/**
 			 * run Method
-			 * Used to update the m_MyFrame_jFrame
+			 * Used to update the jFrame
 			 */
 			super.run();
 			while (true)
@@ -112,7 +121,7 @@ public class MyFrame extends JPanel implements KeyListener
 				}
 			}
 			/**
-			 * Constantly updates the m_MyFrame_jFrame for the user, every 30 milliseconds
+			 * Constantly updates the jFrame for the user, every 30 milliseconds
 			 * If there is an error, the try catch will catch it and print the error message
 			 */
 		}
@@ -146,6 +155,25 @@ public class MyFrame extends JPanel implements KeyListener
 		 * Extends SnakeObject
 		 * Implements movable
 		 */
+		public BufferedImage GetSnakeHeadImage(){
+			return IMG_SNAKE_HEAD;
+		}
+
+		public List<Point> GetBodyPoints(){
+			return m_MySnake_bodyPoints;
+		}
+
+		public void SetBodyPoints(List<Point> bodypoints){
+			m_MySnake_bodyPoints = bodypoints;
+		}
+
+		public BufferedImage GetNewSnakeHeadImage(){
+			return m_MySnake_newImgSnakeHead;
+		}
+
+		public void SetNewSnakeHeadImage(BufferedImage image){
+			m_MySnake_newImgSnakeHead = image;
+		}
 		// The game changer.
 		private int speed_XY;
 		private int length;
@@ -162,15 +190,16 @@ public class MyFrame extends JPanel implements KeyListener
 		 * Creates the head of the snake, setting the picture of the snake head to the variable
 		 */
 
-		public static List<Point> m_MyFrame_bodyPoints = new LinkedList<>();
+		public static List<Point> m_MySnake_bodyPoints = new LinkedList<>();
 		/**
-		 * Creates a List of Points which will be used when the snake grows after eating m_Play_food
+		 * Creates a List of Points which will be used when the snake grows after eating food
 		 */
 
-		private static BufferedImage m_MyFrame_newImgSnakeHead;
+		private static BufferedImage m_MySnake_newImgSnakeHead;
 		/**
-		 * Creates variable m_MyFrame_newImgSnakeHead
+		 * Creates variable m_MySnake_newImgSnakeHead
 		 */
+
 
 		boolean up, down, left, right = true;
 		/**
@@ -201,7 +230,7 @@ public class MyFrame extends JPanel implements KeyListener
 			 * Attention : ?
 			 */
 			this.num = w / speed_XY;
-			m_MyFrame_newImgSnakeHead = IMG_SNAKE_HEAD;
+			m_MySnake_newImgSnakeHead = IMG_SNAKE_HEAD;
 
 		}
 
@@ -230,7 +259,7 @@ public class MyFrame extends JPanel implements KeyListener
 		 * Used for when a key is pressed
 		 * @param e
 		 */
-		public void KeyPressed(KeyEvent e)
+		public void KeyPressed(KeyEvent e) //83 lines long, but there are multiple lines of comments
 		{
 			// Check the key
 			switch (e.getKeyCode())
@@ -243,7 +272,7 @@ public class MyFrame extends JPanel implements KeyListener
 					left = false;
 					right = false;
 
-					m_MyFrame_newImgSnakeHead = (BufferedImage) GameUtil.RotateImage(IMG_SNAKE_HEAD, -90);
+					m_MySnake_newImgSnakeHead = (BufferedImage) GameUtil.RotateImage(IMG_SNAKE_HEAD, -90);
 				}
 				break;
 				/**
@@ -262,7 +291,7 @@ public class MyFrame extends JPanel implements KeyListener
 					left = false;
 					right = false;
 
-					m_MyFrame_newImgSnakeHead = (BufferedImage) GameUtil.RotateImage(IMG_SNAKE_HEAD, 90);
+					m_MySnake_newImgSnakeHead = (BufferedImage) GameUtil.RotateImage(IMG_SNAKE_HEAD, 90);
 				}
 				break;
 				/**
@@ -281,7 +310,7 @@ public class MyFrame extends JPanel implements KeyListener
 					left = true;
 					right = false;
 
-					m_MyFrame_newImgSnakeHead = (BufferedImage) GameUtil.RotateImage(IMG_SNAKE_HEAD, -180);
+					m_MySnake_newImgSnakeHead = (BufferedImage) GameUtil.RotateImage(IMG_SNAKE_HEAD, -180);
 
 				}
 				break;
@@ -301,7 +330,7 @@ public class MyFrame extends JPanel implements KeyListener
 					left = false;
 					right = true;
 
-					m_MyFrame_newImgSnakeHead = IMG_SNAKE_HEAD;
+					m_MySnake_newImgSnakeHead = IMG_SNAKE_HEAD;
 				}
 
 			default:
@@ -361,18 +390,18 @@ public class MyFrame extends JPanel implements KeyListener
 			/**
 			 * Adds a new point to the List of body points
 			 */
-			m_MyFrame_bodyPoints.add(new Point(x, y));
+			m_MySnake_bodyPoints.add(new Point(x, y));
 
 			/**
 			 * Checks to see if the bodypoints list is bigger than the snake, if so removes a point from the list
 			 * Draws the head of the snake at co-ordinates x y
 			 * Calls the DrawBody method to Draw the body
 			 */
-			if (m_MyFrame_bodyPoints.size() == (this.length + 1) * num)
+			if (m_MySnake_bodyPoints.size() == (this.length + 1) * num)
 			{
-				m_MyFrame_bodyPoints.remove(0);
+				m_MySnake_bodyPoints.remove(0);
 			}
-			g.drawImage(m_MyFrame_newImgSnakeHead, x, y, null);
+			g.drawImage(m_MySnake_newImgSnakeHead, x, y, null);
 			DrawBody(g);
 
 
@@ -385,9 +414,9 @@ public class MyFrame extends JPanel implements KeyListener
 		 */
 		public void EatBody()
 		{
-			for (Point point : m_MyFrame_bodyPoints)
+			for (Point point : m_MySnake_bodyPoints)
 			{
-				for (Point point2 : m_MyFrame_bodyPoints)
+				for (Point point2 : m_MySnake_bodyPoints)
 				{
 					if (point.equals(point2) && point != point2)
 					{
@@ -407,14 +436,14 @@ public class MyFrame extends JPanel implements KeyListener
 			/**
 			 * Creates variable length and assigns the length of the body to it
 			 */
-			int length = m_MyFrame_bodyPoints.size() - 1 - num;
+			int length = m_MySnake_bodyPoints.size() - 1 - num;
 
 			/**
 			 * Loops through all body points and draws them
 			 */
 			for (int i = length; i >= num; i -= num)
 			{
-				Point point = m_MyFrame_bodyPoints.get(i);
+				Point point = m_MySnake_bodyPoints.get(i);
 				g.drawImage(this.i, point.x, point.y, null);
 			}
 		}

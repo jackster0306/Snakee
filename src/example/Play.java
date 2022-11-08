@@ -20,27 +20,34 @@ public class Play extends MyFrame
 	private static final long m_Play_serialVersionUID = -3641221053272056036L;
 
 	/**
-	 * Creates a variable called m_Play_mySnake of the type MySnake.
+	 * Can't add a setter for m_Play_serialVersionUID because it is final
+	 */
+	public final long GetPlaySerialVersionUID(){
+		return m_Play_serialVersionUID;
+	}
+
+	/**
+	 * Creates a variable called mySnake of the type MySnake.
 	 * The 2 parameters are the x coordinate and y coordinate of where the snake should spawn.
 	 * **/
-	public MySnake m_Play_mySnake = new MySnake(100, 100);// x , y
+	public MySnake mySnake = new MySnake(100, 100);// x , y
 
 	/**
-	 * Creates variable called m_Play_food of type Food
+	 * Creates variable called food of type Food
 	 */
-	public Food m_Play_food = new Food();
+	public Food food = new Food();
 
 	/**
-	 * Creates variable called backgroud of type image
-	 * Gets the image 'UI-m_Play_background' that is in the source folder
+	 * Creates variable called background of type image
+	 * Gets the image 'UI-background' that is in the source folder
 	 */
-	public Image m_Play_background = ImageUtil.m_ImageUtil_images.get("UI-m_Play_background");
+	public Image background = ImageUtil.m_ImageUtil_images.get("UI-background");
 
 	/**
-	 * Creates variable called m_Play_fail of type Image for when the user fails the game
+	 * Creates variable called fail of type Image for when the user fails the game
 	 * Gets the image 'game-scene-01' that is in the source folder
 	 */
-	public Image m_Play_fail = ImageUtil.m_ImageUtil_images.get("game-scene-01");
+	public Image fail = ImageUtil.m_ImageUtil_images.get("game-scene-01");
 
 	/**
 	 * KeyPressed Method
@@ -51,7 +58,7 @@ public class Play extends MyFrame
 	public void keyPressed(KeyEvent e)
 	{
 		super.keyPressed(e);
-		m_Play_mySnake.KeyPressed(e);
+		mySnake.KeyPressed(e);
 	}
 
 	/**
@@ -63,37 +70,37 @@ public class Play extends MyFrame
 	public void paint(Graphics g)
 	{
 		/**
-		 * Adds the m_Play_background image given to the frame and draws it
+		 * Adds the background image given to the frame and draws it
 		 */
 		super.paint(g);
-		g.drawImage(m_Play_background, 0, 0, null);
+		g.drawImage(background, 0, 0, null);
 
 
 		// Determine the state of the game.
 		/**
-		 * if (m_Play_mySnake.l) determines state of the game. If l is true, game is happening. If l is false, game is not happening
+		 * if (mySnake.l) determines state of the game. If l is true, game is happening. If l is false, game is not happening
 		 * Draws the snake
-		 * Checks state of the m_Play_food. l is true if m_Play_food is active, false if not
-		 * Draws the m_Play_food
-		 * Calls the m_Play_food Eaten to see if the m_Play_food has been Eaten
-		 * If l is false, a new m_Play_food is created
-		 * If m_Play_mySnake.l is false, the image for m_Play_fail is drawn (game is over)
+		 * Checks state of the food. l is true if food is active, false if not
+		 * Draws the food
+		 * Calls the food Eaten to see if the food has been Eaten
+		 * If l is false, a new food is created
+		 * If mySnake.l is false, the image for fail is drawn (game is over)
 		 * Calls the DrawScore method
 		 */
-		if (m_Play_mySnake.l)
+		if (mySnake.l)
 		{
-			m_Play_mySnake.Draw(g);
-			if (m_Play_food.l)
+			mySnake.Draw(g);
+			if (food.l)
 			{
-				m_Play_food.Draw(g);
-				m_Play_food.Eaten(m_Play_mySnake);
+				food.Draw(g);
+				food.Eaten(mySnake);
 			} else
 			{
-				m_Play_food = new Food();
+				food = new Food();
 			}
 		} else
 		{
-			g.drawImage(m_Play_fail, 0, 0, null);
+			g.drawImage(fail, 0, 0, null);
 		}
 		DrawScore(g);
 	}
@@ -111,7 +118,7 @@ public class Play extends MyFrame
 		 */
 		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 		g.setColor(Color.MAGENTA);
-		g.drawString("SCORE : " + m_Play_mySnake.score, 20, 40);
+		g.drawString("SCORE : " + mySnake.score, 20, 40);
 	}
 
 	/**
@@ -120,7 +127,7 @@ public class Play extends MyFrame
 	 * Starts up the frame
 	 * Plays the music
 	 */
-	public static void Main(String[] args)
+	public static void main(String[] args)
 	{
 		new Play().LoadFrame();
 		MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
@@ -140,8 +147,8 @@ public class Play extends MyFrame
 
 		frame.setVisible(true);
 
-		// Play the m_Play_background music.
-		MusicPlayer.GetMusicPlay("resource\\music\\m_Play_background.mp3");
+		// Play the background music.
+		MusicPlayer.GetMusicPlay("resource\\music\\background.mp3");
 	} 
 */
 }

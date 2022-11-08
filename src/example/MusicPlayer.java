@@ -8,26 +8,26 @@ import javazoom.jl.player.Player;
 public class MusicPlayer extends Thread
 {
 	/**
-	 * Creates local variables m_MusicPlayer_filename and m_MusicPlayer_player
+	 * Creates local variables filename and player
 	 */
-	private String m_MusicPlayer_filename;
-	public Player m_MusicPlayer_player;
+	private String filename;
+	public Player player;
 
 
 	/**
 	 * MusicPlayer method
-	 * Changes the local variable m_MusicPlayer_filename to the given m_MusicPlayer_filename when the method is called
+	 * Changes the local variable filename to the given filename when the method is called
 	 * @param filename - the name of the file to be played
 	 */
 	public MusicPlayer(String filename)
 	{
-		this.m_MusicPlayer_filename = filename;
+		this.filename = filename;
 	}
 
 
 	/**
 	 * Play Method
-	 * This plays the music file currently in the local variable m_MusicPlayer_filename
+	 * This plays the music file currently in the local variable filename
 	 */
 	public void Play()
 	{
@@ -40,9 +40,10 @@ public class MusicPlayer extends Thread
 				super.run();
 				try
 				{
-					//BufferedInputStream buffer = new BufferedInputStream(new FileInputStream(m_MusicPlayer_filename));
-					m_MusicPlayer_player = new Player(new BufferedInputStream(new FileInputStream(m_MusicPlayer_filename)));
-					m_MusicPlayer_player.play();
+					//BufferedInputStream buffer = new BufferedInputStream(new FileInputStream(filename));
+					//104 characters
+					player = new Player(new BufferedInputStream(new FileInputStream(filename)));
+					player.play();
 
 				} catch (Exception e)
 				{
@@ -63,7 +64,7 @@ public class MusicPlayer extends Thread
 		/**
 		 * GetMusicPlay method
 		 * This method plays the music in the given file
-		 * @param m_MusicPlayer_filename
+		 * @param filename
 		 */
 		MusicPlayer m_MusicPlayer_musicPlayer = new MusicPlayer(filename);
 		m_MusicPlayer_musicPlayer.Play();
