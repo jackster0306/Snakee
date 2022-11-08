@@ -33,14 +33,14 @@ public class MyFrame extends JPanel implements KeyListener
 
 	private static final long serialVersionUID = -3149926831770554380L;
 
-	public JFrame jFrame = new JFrame();
+	public JFrame m_MyFrame_jFrame = new JFrame();
 	/**
-	 * Creates varaible jFrame of type JFrame
+	 * Creates varaible m_MyFrame_jFrame of type JFrame
 	 */
 
 	public MyFrame()
 	{
-		jFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MyFrame.class.getResource("snake-logo.png")));
+		m_MyFrame_jFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MyFrame.class.getResource("snake-logo.png")));
 
 	}
 
@@ -48,26 +48,26 @@ public class MyFrame extends JPanel implements KeyListener
 	{
 		/**
 		 * loadFrame method
-		 * Sets up the frame ready to be used
+		 * Sets m_MyFrame_up the frame ready to be used
 		 */
 
 		/*
 		 * Prevent the image from flashing.
 		 */
 		this.setDoubleBuffered(true);
-		jFrame.add(this);
-		jFrame.addKeyListener(this);
+		m_MyFrame_jFrame.add(this);
+		m_MyFrame_jFrame.addKeyListener(this);
 		/**
-		 * Adds keyListener for jFrame
+		 * Adds keyListener for m_MyFrame_jFrame
 		 */
 
-		jFrame.setTitle("Snakee Yipee");
-		jFrame.setSize(870, 560);
-		jFrame.setLocationRelativeTo(null);
-		jFrame.addWindowListener(new WindowAdapter()// loka
+		m_MyFrame_jFrame.setTitle("Snakee Yipee");
+		m_MyFrame_jFrame.setSize(870, 560);
+		m_MyFrame_jFrame.setLocationRelativeTo(null);
+		m_MyFrame_jFrame.addWindowListener(new WindowAdapter()// loka
 				/**
 				 * Sets title, size and location of the frame
-				 * Adds a windowListener to jFrame
+				 * Adds a windowListener to m_MyFrame_jFrame
  				 */
 		{
 			@Override
@@ -83,9 +83,9 @@ public class MyFrame extends JPanel implements KeyListener
 				System.exit(0);
 			}
 		});
-		jFrame.setVisible(true);
+		m_MyFrame_jFrame.setVisible(true);
 		/**
-		 * Sets the jFrame to being visible, so the user can see it
+		 * Sets the m_MyFrame_jFrame to being visible, so the user can see it
 		 */
 
 		new MyThread().start();
@@ -97,7 +97,7 @@ public class MyFrame extends JPanel implements KeyListener
 		{
 			/**
 			 * run Method
-			 * Used to update the jFrame
+			 * Used to update the m_MyFrame_jFrame
 			 */
 			super.run();
 			while (true)
@@ -112,7 +112,7 @@ public class MyFrame extends JPanel implements KeyListener
 				}
 			}
 			/**
-			 * Constantly updates the jFrame for the user, every 30 milliseconds
+			 * Constantly updates the m_MyFrame_jFrame for the user, every 30 milliseconds
 			 * If there is an error, the try catch will catch it and print the error message
 			 */
 		}
@@ -147,82 +147,82 @@ public class MyFrame extends JPanel implements KeyListener
 		 * Implements movable
 		 */
 		// The game changer.
-		private int speed_XY;
-		private int length;
-		private int num; // ?
-		public int score = 0;
+		private int m_MyFrame_speed_XY;
+		private int m_MyFrame_length;
+		private int m_MyFrame_num; // ?
+		public int m_MyFrame_score = 0;
 		/**
 		 * Creates the initial variables for the speed and length of the snake
-		 * Creates a variable num
-		 * Creates variable score, used for the score, and sets it to 0
+		 * Creates a variable m_MyFrame_num
+		 * Creates variable m_MyFrame_score, used for the m_MyFrame_score, and sets it to 0
 		 */
 
-		private static final BufferedImage IMG_SNAKE_HEAD = (BufferedImage) ImageUtil.images.get("snake-head-right");
+		private static final BufferedImage IMG_SNAKE_HEAD = (BufferedImage) ImageUtil.m_ImageUtil_images.get("snake-head-m_MyFrame_right");
 		/**
 		 * Creates the head of the snake, setting the picture of the snake head to the variable
 		 */
 
-		public static List<Point> bodyPoints = new LinkedList<>();
+		public static List<Point> m_MyFrame_bodyPoints = new LinkedList<>();
 		/**
-		 * Creates a List of Points which will be used when the snake grows after eating food
+		 * Creates a List of Points which will be used when the snake grows after eating m_Play_food
 		 */
 
-		private static BufferedImage newImgSnakeHead;
+		private static BufferedImage m_MyFrame_newImgSnakeHead;
 		/**
-		 * Creates variable newImgSnakeHead
+		 * Creates variable m_MyFrame_newImgSnakeHead
 		 */
 
-		boolean up, down, left, right = true;
+		boolean m_MyFrame_up, m_MyFrame_down, m_MyFrame_left, m_MyFrame_right = true;
 		/**
-		 * Creates boolean variables for up, down, left and right. Sets them all to true
+		 * Creates boolean variables for m_MyFrame_up, m_MyFrame_down, m_MyFrame_left and m_MyFrame_right. Sets them all to true
 		 */
 
 		public MySnake(int x, int y)
 		{
-			this.l = true;
-			this.x = x;
-			this.y = y;
-			this.i = ImageUtil.images.get("snake-body");
-			this.w = i.getWidth(null);
-			this.h = i.getHeight(null);
+			this.m_MyFrame_l = true;
+			this.m_MyFrame_x = x;
+			this.m_MyFrame_y = y;
+			this.m_MyFrame_i = ImageUtil.m_ImageUtil_images.get("snake-body");
+			this.m_MyFrame_w = m_MyFrame_i.getWidth(null);
+			this.m_MyFrame_h = m_MyFrame_i.getHeight(null);
 			/**
 			 * Sets the co-ordinates of the snake
 			 * Adds image for the body of the snake
-			 * Gets the width and height of the image and changes the variables w and h, used for width and height, to these values
+			 * Gets the width and height of the image and changes the variables m_MyFrame_w and m_MyFrame_h, used for width and height, to these values
 			 */
 
-			this.speed_XY = 5;
-			this.length = 1;
+			this.m_MyFrame_speed_XY = 5;
+			this.m_MyFrame_length = 1;
 			/**
-			 * Sets the speed and length of the snake
+			 * Sets the speed and m_MyFrame_length of the snake
 			 */
 
 			/*
 			 * Attention : ?
 			 */
-			this.num = w / speed_XY;
-			newImgSnakeHead = IMG_SNAKE_HEAD;
+			this.m_MyFrame_num = m_MyFrame_w / m_MyFrame_speed_XY;
+			m_MyFrame_newImgSnakeHead = IMG_SNAKE_HEAD;
 
 		}
 
 		/**
 		 * getLength method
-		 * Returns the length of the snake
-		 * @return length
+		 * Returns the m_MyFrame_length of the snake
+		 * @return m_MyFrame_length
 		 */
 		public int getLength()
 		{
-			return length;
+			return m_MyFrame_length;
 		}
 
 		/**
 		 * changeLength method
-		 * Changes the length of the snake
-		 * @param length - length to change local variable length of the snake to
+		 * Changes the m_MyFrame_length of the snake
+		 * @param length - m_MyFrame_length to change local variable m_MyFrame_length of the snake to
 		 */
 		public void changeLength(int length)
 		{
-			this.length = length;
+			this.m_MyFrame_length = length;
 		}
 
 		/**
@@ -236,82 +236,82 @@ public class MyFrame extends JPanel implements KeyListener
 			switch (e.getKeyCode())
 			{
 			case KeyEvent.VK_UP:
-				if (!down)
+				if (!m_MyFrame_down)
 				{
-					up = true;
-					down = false;
-					left = false;
-					right = false;
+					m_MyFrame_up = true;
+					m_MyFrame_down = false;
+					m_MyFrame_left = false;
+					m_MyFrame_right = false;
 
-					newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, -90);
+					m_MyFrame_newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, -90);
 				}
 				break;
 				/**
 				 * Case for if the UP key is pressed
-				 * Changes the values of down, left and right to false
-				 * Changes value of up to true
-				 * Does this because the snake will now be moving up and these values keep track of which way the snake is moving
-				 * Rotates the snake head image to face up
+				 * Changes the values of m_MyFrame_down, m_MyFrame_left and m_MyFrame_right to false
+				 * Changes value of m_MyFrame_up to true
+				 * Does this because the snake will now be m_Snake_moving m_MyFrame_up and these values keep track of which way the snake is m_Snake_moving
+				 * Rotates the snake head image to face m_MyFrame_up
 				 */
 
 			case KeyEvent.VK_DOWN:
-				if (!up)
+				if (!m_MyFrame_up)
 				{
-					up = false;
-					down = true;
-					left = false;
-					right = false;
+					m_MyFrame_up = false;
+					m_MyFrame_down = true;
+					m_MyFrame_left = false;
+					m_MyFrame_right = false;
 
-					newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, 90);
+					m_MyFrame_newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, 90);
 				}
 				break;
 				/**
 				 * Case for if the DOWN key is pressed
-				 * Changes the values of up, left and right to false
-				 * Changes value of down to true
-				 * Does this because the snake will now be moving up and these values keep track of which way the snake is moving
-				 * Rotates the snake head image to face down
+				 * Changes the values of m_MyFrame_up, m_MyFrame_left and m_MyFrame_right to false
+				 * Changes value of m_MyFrame_down to true
+				 * Does this because the snake will now be m_Snake_moving m_MyFrame_up and these values keep track of which way the snake is m_Snake_moving
+				 * Rotates the snake head image to face m_MyFrame_down
 				 */
 
 			case KeyEvent.VK_LEFT:
-				if (!right)
+				if (!m_MyFrame_right)
 				{
-					up = false;
-					down = false;
-					left = true;
-					right = false;
+					m_MyFrame_up = false;
+					m_MyFrame_down = false;
+					m_MyFrame_left = true;
+					m_MyFrame_right = false;
 
-					newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, -180);
+					m_MyFrame_newImgSnakeHead = (BufferedImage) GameUtil.rotateImage(IMG_SNAKE_HEAD, -180);
 
 				}
 				break;
 				/**
 				 * Case for if the LEFT key is pressed
-				 * Changes the values of up, down and right to false
-				 * Changes value of left to true
-				 * Does this because the snake will now be moving up and these values keep track of which way the snake is moving
-				 * Rotates the snake head image to face left
+				 * Changes the values of m_MyFrame_up, m_MyFrame_down and m_MyFrame_right to false
+				 * Changes value of m_MyFrame_left to true
+				 * Does this because the snake will now be m_Snake_moving m_MyFrame_up and these values keep track of which way the snake is m_Snake_moving
+				 * Rotates the snake head image to face m_MyFrame_left
 				 */
 
 			case KeyEvent.VK_RIGHT:
-				if (!left)
+				if (!m_MyFrame_left)
 				{
-					up = false;
-					down = false;
-					left = false;
-					right = true;
+					m_MyFrame_up = false;
+					m_MyFrame_down = false;
+					m_MyFrame_left = false;
+					m_MyFrame_right = true;
 
-					newImgSnakeHead = IMG_SNAKE_HEAD;
+					m_MyFrame_newImgSnakeHead = IMG_SNAKE_HEAD;
 				}
 
 			default:
 				break;
 				/**
 				 * Case for if the RIGHT key is pressed
-				 * Changes the values of up, down and left to false
-				 * Changes value of right to true
-				 * Does this because the snake will now be moving up and these values keep track of which way the snake is moving
-				 * Rotates the snake head image to face right
+				 * Changes the values of m_MyFrame_up, m_MyFrame_down and m_MyFrame_left to false
+				 * Changes value of m_MyFrame_right to true
+				 * Does this because the snake will now be m_Snake_moving m_MyFrame_up and these values keep track of which way the snake is m_Snake_moving
+				 * Rotates the snake head image to face m_MyFrame_right
 				 */
 			}
 		}
@@ -320,25 +320,25 @@ public class MyFrame extends JPanel implements KeyListener
 		public void move()
 		{
 			// Let the swarm move
-			if (up)
+			if (m_MyFrame_up)
 			{
-				y -= speed_XY;
-			} else if (down)
+				m_MyFrame_y -= m_MyFrame_speed_XY;
+			} else if (m_MyFrame_down)
 			{
-				y += speed_XY;
-			} else if (left)
+				m_MyFrame_y += m_MyFrame_speed_XY;
+			} else if (m_MyFrame_left)
 			{
-				x -= speed_XY;
-			} else if (right)
+				m_MyFrame_x -= m_MyFrame_speed_XY;
+			} else if (m_MyFrame_right)
 			{
-				x += speed_XY;
+				m_MyFrame_x += m_MyFrame_speed_XY;
 			}
 			/**
-			 * Uses the boolean variables up, down, left and right to see which way the snake is moving
-			 * If moving up, lowers the y co-ordinate by the speed of the snake
-			 * If moving down, raises the y co-ordinate by the speed of the snake
-			 * If moving left, lowers the x co-ordinate by the speed of the snake
-			 * If moving right, raises the x co-ordinate by the speed of the snake
+			 * Uses the boolean variables m_MyFrame_up, m_MyFrame_down, m_MyFrame_left and m_MyFrame_right to see which way the snake is m_Snake_moving
+			 * If m_Snake_moving m_MyFrame_up, lowers the m_MyFrame_y co-ordinate by the speed of the snake
+			 * If m_Snake_moving m_MyFrame_down, raises the m_MyFrame_y co-ordinate by the speed of the snake
+			 * If m_Snake_moving m_MyFrame_left, lowers the m_MyFrame_x co-ordinate by the speed of the snake
+			 * If m_Snake_moving m_MyFrame_right, raises the m_MyFrame_x co-ordinate by the speed of the snake
 			 */
 
 		}
@@ -361,18 +361,18 @@ public class MyFrame extends JPanel implements KeyListener
 			/**
 			 * Adds a new point to the List of body points
 			 */
-			bodyPoints.add(new Point(x, y));
+			m_MyFrame_bodyPoints.add(new Point(m_MyFrame_x, m_MyFrame_y));
 
 			/**
 			 * Checks to see if the bodypoints list is bigger than the snake, if so removes a point from the list
-			 * Draws the head of the snake at co-ordinates x y
+			 * Draws the head of the snake at co-ordinates m_MyFrame_x m_MyFrame_y
 			 * Calls the drawBody method to draw the body
 			 */
-			if (bodyPoints.size() == (this.length + 1) * num)
+			if (m_MyFrame_bodyPoints.size() == (this.m_MyFrame_length + 1) * m_MyFrame_num)
 			{
-				bodyPoints.remove(0);
+				m_MyFrame_bodyPoints.remove(0);
 			}
-			g.drawImage(newImgSnakeHead, x, y, null);
+			g.drawImage(m_MyFrame_newImgSnakeHead, m_MyFrame_x, m_MyFrame_y, null);
 			drawBody(g);
 
 
@@ -385,13 +385,13 @@ public class MyFrame extends JPanel implements KeyListener
 		 */
 		public void eatBody()
 		{
-			for (Point point : bodyPoints)
+			for (Point point : m_MyFrame_bodyPoints)
 			{
-				for (Point point2 : bodyPoints)
+				for (Point point2 : m_MyFrame_bodyPoints)
 				{
 					if (point.equals(point2) && point != point2)
 					{
-						this.l = false;
+						this.m_MyFrame_l = false;
 					}
 				}
 			}
@@ -405,17 +405,17 @@ public class MyFrame extends JPanel implements KeyListener
 		public void drawBody(Graphics g)
 		{
 			/**
-			 * Creates variable length and assigns the length of the body to it
+			 * Creates variable m_MyFrame_length and assigns the m_MyFrame_length of the body to it
 			 */
-			int length = bodyPoints.size() - 1 - num;
+			int length = m_MyFrame_bodyPoints.size() - 1 - m_MyFrame_num;
 
 			/**
 			 * Loops through all body points and draws them
 			 */
-			for (int i = length; i >= num; i -= num)
+			for (int i = length; i >= m_MyFrame_num; i -= m_MyFrame_num)
 			{
-				Point point = bodyPoints.get(i);
-				g.drawImage(this.i, point.x, point.y, null);
+				Point point = m_MyFrame_bodyPoints.get(i);
+				g.drawImage(this.m_MyFrame_i, point.x, point.y, null);
 			}
 		}
 
@@ -426,19 +426,19 @@ public class MyFrame extends JPanel implements KeyListener
 		private void outofBounds()
 		{
 			/**
-			 * Creates variables xOut and yOut
+			 * Creates variables m_MyFrame_xOut and m_MyFrame_yOut
 			 * Assigns the values that cause the snake to be out of bounds
 			 * Will be true if the requirements are met
 			 */
-			boolean xOut = (x <= 0 || x >= (870 - w));
-			boolean yOut = (y <= 40 || y >= (560 - h));
+			boolean m_MyFrame_xOut = (m_MyFrame_x <= 0 || m_MyFrame_x >= (870 - m_MyFrame_w));
+			boolean m_MyFrame_yOut = (m_MyFrame_y <= 40 || m_MyFrame_y >= (560 - m_MyFrame_h));
 			/**
-			 * Checks to see if xOut or yOut are true
+			 * Checks to see if m_MyFrame_xOut or m_MyFrame_yOut are true
 			 * If they are, snake is no longer visible, game ends
 			 */
-			if (xOut || yOut)
+			if (m_MyFrame_xOut || m_MyFrame_yOut)
 			{
-				l = false;
+				m_MyFrame_l = false;
 			}
 		}
 	}
@@ -451,19 +451,19 @@ public class MyFrame extends JPanel implements KeyListener
 	public abstract static class SnakeObject
 	{
 		/**
-		 * Creates variables x, y, i, w, h and l
-		 * x and y being the co-ordinates
-		 * w and h being the width and height
-		 * i being the image
-		 * l being whether the snake is alive or dead
+		 * Creates variables m_MyFrame_x, m_MyFrame_y, m_MyFrame_i, m_MyFrame_w, m_MyFrame_h and m_MyFrame_l
+		 * m_MyFrame_x and m_MyFrame_y being the co-ordinates
+		 * m_MyFrame_w and m_MyFrame_h being the width and height
+		 * m_MyFrame_i being the image
+		 * m_MyFrame_l being whether the snake is alive or dead
 		 */
-		int x;
-		int y;
-		Image i;
-		int w;
-		int h;
+		int m_MyFrame_x;
+		int m_MyFrame_y;
+		Image m_MyFrame_i;
+		int m_MyFrame_w;
+		int m_MyFrame_h;
 
-		public boolean l;
+		public boolean m_MyFrame_l;
 
 		/**
 		 * draw Method
@@ -473,12 +473,12 @@ public class MyFrame extends JPanel implements KeyListener
 
 		/**
 		 * getRectangle Method
-		 * Returns a new Rectangle at co-ordinates x y, of width w and height h
+		 * Returns a new Rectangle at co-ordinates m_MyFrame_x m_MyFrame_y, of width m_MyFrame_w and height m_MyFrame_h
 		 * @return new Rectangle
 		 */
 		public Rectangle getRectangle()
 		{
-			return new Rectangle(x, y, w, h);
+			return new Rectangle(m_MyFrame_x, m_MyFrame_y, m_MyFrame_w, m_MyFrame_h);
 		}
 	}
 }

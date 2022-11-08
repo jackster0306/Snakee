@@ -1,9 +1,12 @@
 package example;
 import java.awt.*;
 
+//Not Going To Do Maintenance on this Class while it is never used
+
 /**
  * Paddle Class is never used
  */
+
 public class Paddle {
 
     /**

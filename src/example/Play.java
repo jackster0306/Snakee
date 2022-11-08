@@ -20,27 +20,27 @@ public class Play extends MyFrame
 	private static final long serialVersionUID = -3641221053272056036L;
 
 	/**
-	 * Creates a variable called mySnake of the type MySnake.
-	 * The 2 parameters are the x coordinate and y coordinate of where the snake should spawn.
+	 * Creates a variable called m_Play_mySnake of the type MySnake.
+	 * The 2 parameters are the m_MyFrame_x coordinate and m_MyFrame_y coordinate of where the snake should spawn.
 	 * **/
-	public MySnake mySnake = new MySnake(100, 100);// x , y
+	public MySnake m_Play_mySnake = new MySnake(100, 100);// m_MyFrame_x , m_MyFrame_y
 
 	/**
-	 * Creates variable called food of type Food
+	 * Creates variable called m_Play_food of type Food
 	 */
-	public Food food = new Food();
+	public Food m_Play_food = new Food();
 
 	/**
 	 * Creates variable called backgroud of type image
-	 * Gets the image 'UI-background' that is in the source folder
+	 * Gets the image 'UI-m_Play_background' that is in the source folder
 	 */
-	public Image background = ImageUtil.images.get("UI-background");
+	public Image m_Play_background = ImageUtil.m_ImageUtil_images.get("UI-m_Play_background");
 
 	/**
-	 * Creates variable called fail of type Image for when the user fails the game
+	 * Creates variable called m_Play_fail of type Image for when the user fails the game
 	 * Gets the image 'game-scene-01' that is in the source folder
 	 */
-	public Image fail = ImageUtil.images.get("game-scene-01");
+	public Image m_Play_fail = ImageUtil.m_ImageUtil_images.get("game-scene-01");
 
 	/**
 	 * keyPressed Method
@@ -51,7 +51,7 @@ public class Play extends MyFrame
 	public void keyPressed(KeyEvent e)
 	{
 		super.keyPressed(e);
-		mySnake.keyPressed(e);
+		m_Play_mySnake.keyPressed(e);
 	}
 
 	/**
@@ -63,37 +63,37 @@ public class Play extends MyFrame
 	public void paint(Graphics g)
 	{
 		/**
-		 * Adds the background image given to the frame and draws it
+		 * Adds the m_Play_background image given to the frame and draws it
 		 */
 		super.paint(g);
-		g.drawImage(background, 0, 0, null);
+		g.drawImage(m_Play_background, 0, 0, null);
 
 
 		// Determine the state of the game.
 		/**
-		 * if (mySnake.l) determines state of the game. If l is true, game is happening. If l is false, game is not happening
+		 * if (m_Play_mySnake.m_MyFrame_l) determines state of the game. If m_MyFrame_l is true, game is happening. If m_MyFrame_l is false, game is not happening
 		 * Draws the snake
-		 * Checks state of the food. l is true if food is active, false if not
-		 * Draws the food
-		 * Calls the food eaten to see if the food has been eaten
-		 * If l is false, a new food is created
-		 * If mySnake.l is false, the image for fail is drawn (game is over)
+		 * Checks state of the m_Play_food. m_MyFrame_l is true if m_Play_food is active, false if not
+		 * Draws the m_Play_food
+		 * Calls the m_Play_food eaten to see if the m_Play_food has been eaten
+		 * If m_MyFrame_l is false, a new m_Play_food is created
+		 * If m_Play_mySnake.m_MyFrame_l is false, the image for m_Play_fail is drawn (game is over)
 		 * Calls the drawScore method
 		 */
-		if (mySnake.l)
+		if (m_Play_mySnake.m_MyFrame_l)
 		{
-			mySnake.draw(g);
-			if (food.l)
+			m_Play_mySnake.draw(g);
+			if (m_Play_food.m_MyFrame_l)
 			{
-				food.draw(g);
-				food.eaten(mySnake);
+				m_Play_food.draw(g);
+				m_Play_food.eaten(m_Play_mySnake);
 			} else
 			{
-				food = new Food();
+				m_Play_food = new Food();
 			}
 		} else
 		{
-			g.drawImage(fail, 0, 0, null);
+			g.drawImage(m_Play_fail, 0, 0, null);
 		}
 		drawScore(g);
 	}
@@ -101,23 +101,23 @@ public class Play extends MyFrame
 	/**
 	 * drawScore method
 	 * @param g
-	 * Is used to display the current score of the game
+	 * Is used to display the current m_MyFrame_score of the game
 	 */
 	public void drawScore(Graphics g)
 	{
 		/**
 		 * It sets the font, font size, font colour
-		 * Displays the text 'SCORE : ' then the current score at the coordinates 20, 40 of the frame
+		 * Displays the text 'SCORE : ' then the current m_MyFrame_score at the coordinates 20, 40 of the frame
 		 */
 		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 		g.setColor(Color.MAGENTA);
-		g.drawString("SCORE : " + mySnake.score, 20, 40);
+		g.drawString("SCORE : " + m_Play_mySnake.m_MyFrame_score, 20, 40);
 	}
 
 	/**
 	 * main method
 	 * @param args
-	 * Starts up the frame
+	 * Starts m_MyFrame_up the frame
 	 * Plays the music
 	 */
 	public static void main(String[] args)
@@ -140,8 +140,8 @@ public class Play extends MyFrame
 
 		frame.setVisible(true);
 
-		// Play the background music.
-		MusicPlayer.getMusicPlay("resource\\music\\background.mp3");
+		// Play the m_Play_background music.
+		MusicPlayer.getMusicPlay("resource\\music\\m_Play_background.mp3");
 	} 
 */
 }
