@@ -26,10 +26,10 @@ public class MusicPlayer extends Thread
 
 
 	/**
-	 * play Method
+	 * Play Method
 	 * This plays the music file currently in the local variable m_MusicPlayer_filename
 	 */
-	public void play()
+	public void Play()
 	{
 
 		new Thread()
@@ -54,18 +54,18 @@ public class MusicPlayer extends Thread
 
 
 	/**
-	 * getMusicPlay method
+	 * GetMusicPlay method
 	 * This method plays the music in the given file
 	 * @param filename
 	 */
-	public static void getMusicPlay(String filename)
+	public static void GetMusicPlay(String filename)
 	{
 		/**
-		 * getMusicPlay method
+		 * GetMusicPlay method
 		 * This method plays the music in the given file
 		 * @param m_MusicPlayer_filename
 		 */
 		MusicPlayer m_MusicPlayer_musicPlayer = new MusicPlayer(filename);
-		m_MusicPlayer_musicPlayer.play();
+		m_MusicPlayer_musicPlayer.Play();
 	}
 }

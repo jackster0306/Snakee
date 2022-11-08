@@ -17,13 +17,13 @@ import java.awt.event.KeyEvent;
 public class Play extends MyFrame
 {
 
-	private static final long serialVersionUID = -3641221053272056036L;
+	private static final long m_Play_serialVersionUID = -3641221053272056036L;
 
 	/**
 	 * Creates a variable called m_Play_mySnake of the type MySnake.
-	 * The 2 parameters are the m_MyFrame_x coordinate and m_MyFrame_y coordinate of where the snake should spawn.
+	 * The 2 parameters are the x coordinate and y coordinate of where the snake should spawn.
 	 * **/
-	public MySnake m_Play_mySnake = new MySnake(100, 100);// m_MyFrame_x , m_MyFrame_y
+	public MySnake m_Play_mySnake = new MySnake(100, 100);// x , y
 
 	/**
 	 * Creates variable called m_Play_food of type Food
@@ -43,7 +43,7 @@ public class Play extends MyFrame
 	public Image m_Play_fail = ImageUtil.m_ImageUtil_images.get("game-scene-01");
 
 	/**
-	 * keyPressed Method
+	 * KeyPressed Method
 	 * Is used to identify when the user presses a key
 	 * @param e - the key event that happened
 	 */
@@ -51,7 +51,7 @@ public class Play extends MyFrame
 	public void keyPressed(KeyEvent e)
 	{
 		super.keyPressed(e);
-		m_Play_mySnake.keyPressed(e);
+		m_Play_mySnake.KeyPressed(e);
 	}
 
 	/**
@@ -71,22 +71,22 @@ public class Play extends MyFrame
 
 		// Determine the state of the game.
 		/**
-		 * if (m_Play_mySnake.m_MyFrame_l) determines state of the game. If m_MyFrame_l is true, game is happening. If m_MyFrame_l is false, game is not happening
+		 * if (m_Play_mySnake.l) determines state of the game. If l is true, game is happening. If l is false, game is not happening
 		 * Draws the snake
-		 * Checks state of the m_Play_food. m_MyFrame_l is true if m_Play_food is active, false if not
+		 * Checks state of the m_Play_food. l is true if m_Play_food is active, false if not
 		 * Draws the m_Play_food
-		 * Calls the m_Play_food eaten to see if the m_Play_food has been eaten
-		 * If m_MyFrame_l is false, a new m_Play_food is created
-		 * If m_Play_mySnake.m_MyFrame_l is false, the image for m_Play_fail is drawn (game is over)
-		 * Calls the drawScore method
+		 * Calls the m_Play_food Eaten to see if the m_Play_food has been Eaten
+		 * If l is false, a new m_Play_food is created
+		 * If m_Play_mySnake.l is false, the image for m_Play_fail is drawn (game is over)
+		 * Calls the DrawScore method
 		 */
-		if (m_Play_mySnake.m_MyFrame_l)
+		if (m_Play_mySnake.l)
 		{
-			m_Play_mySnake.draw(g);
-			if (m_Play_food.m_MyFrame_l)
+			m_Play_mySnake.Draw(g);
+			if (m_Play_food.l)
 			{
-				m_Play_food.draw(g);
-				m_Play_food.eaten(m_Play_mySnake);
+				m_Play_food.Draw(g);
+				m_Play_food.Eaten(m_Play_mySnake);
 			} else
 			{
 				m_Play_food = new Food();
@@ -95,39 +95,39 @@ public class Play extends MyFrame
 		{
 			g.drawImage(m_Play_fail, 0, 0, null);
 		}
-		drawScore(g);
+		DrawScore(g);
 	}
 
 	/**
-	 * drawScore method
+	 * DrawScore method
 	 * @param g
-	 * Is used to display the current m_MyFrame_score of the game
+	 * Is used to display the current score of the game
 	 */
-	public void drawScore(Graphics g)
+	public void DrawScore(Graphics g)
 	{
 		/**
 		 * It sets the font, font size, font colour
-		 * Displays the text 'SCORE : ' then the current m_MyFrame_score at the coordinates 20, 40 of the frame
+		 * Displays the text 'SCORE : ' then the current score at the coordinates 20, 40 of the frame
 		 */
 		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 		g.setColor(Color.MAGENTA);
-		g.drawString("SCORE : " + m_Play_mySnake.m_MyFrame_score, 20, 40);
+		g.drawString("SCORE : " + m_Play_mySnake.score, 20, 40);
 	}
 
 	/**
-	 * main method
+	 * Main method
 	 * @param args
-	 * Starts m_MyFrame_up the frame
+	 * Starts up the frame
 	 * Plays the music
 	 */
-	public static void main(String[] args)
+	public static void Main(String[] args)
 	{
-		new Play().loadFrame();
-		MusicPlayer.getMusicPlay("src/example/frogger.mp3");
+		new Play().LoadFrame();
+		MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
 
 	}
 /*	
-	public static void main(String[] args)
+	public static void Main(String[] args)
 	{
 		JFrame frame = new JFrame();
 		// frame.setSize(400,600);
@@ -141,7 +141,7 @@ public class Play extends MyFrame
 		frame.setVisible(true);
 
 		// Play the m_Play_background music.
-		MusicPlayer.getMusicPlay("resource\\music\\m_Play_background.mp3");
+		MusicPlayer.GetMusicPlay("resource\\music\\m_Play_background.mp3");
 	} 
 */
 }

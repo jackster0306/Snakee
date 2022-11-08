@@ -19,7 +19,7 @@ public class Snake {
     /**
      * move Method
      * @param x
-     * Takes m_MyFrame_x and changes the variable m_Snake_moving to m_MyFrame_x, then returns m_Snake_moving to the caller
+     * Takes x and changes the variable m_Snake_moving to x, then returns m_Snake_moving to the caller
      * @return m_Snake_moving
      */
     public static int move(int x) {
