@@ -2,6 +2,7 @@ package example;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import javazoom.jl.player.Player;
 
@@ -12,6 +13,10 @@ public class MusicPlayer extends Thread
 	 */
 	private String filename;
 	public Player player;
+
+	public String GetFilename(){
+		return this.filename;
+	}
 
 
 	/**
