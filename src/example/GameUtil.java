@@ -52,10 +52,16 @@ public class GameUtil
 	 * @param degree - the degree to rotate the image by
 	 * This method is used to rotate an image
 	 * @return i - the rotated image
+	 * Error in the code. Degree can be below 0 and above 360. Although it's still valid and works, it would be best
+	 * if degree could only be between 0 and 360. It definitely shouldn't be negative. Needs to be fixed.
+	 * Error above fixed as of 09/11/2022.
 	 */
 	public static Image RotateImage(final BufferedImage bufferedImage, final int degree)
 	{
-
+		if (degree < 0 || degree > 360){
+			System.err.println("Degree must be between 0 and 360\n");
+			throw new IllegalArgumentException();
+		}
 		/**
 		 * Gets width of given image and stores it in variable w
 		 * Gets height of given image and stores it in variable h
@@ -92,6 +98,5 @@ public class GameUtil
 
 
 		return i;
-
 	}
 }

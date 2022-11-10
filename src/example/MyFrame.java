@@ -50,7 +50,6 @@ public class MyFrame extends JPanel implements KeyListener
 	public MyFrame()
 	{
 		jFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(MyFrame.class.getResource("snake-logo.png")));
-
 	}
 
 	public void LoadFrame()
@@ -175,6 +174,16 @@ public class MyFrame extends JPanel implements KeyListener
 			m_MySnake_newImgSnakeHead = image;
 		}
 		// The game changer.
+
+		public int GetSpeed(){
+			return this.speed_XY;
+		}
+
+		public int GetNum(){
+			return this.num;
+		}
+
+
 		private int speed_XY;
 		private int length;
 		private int num; // ?
@@ -202,6 +211,32 @@ public class MyFrame extends JPanel implements KeyListener
 
 
 		boolean up, down, left, right = true;
+
+		public boolean GetUp(){
+			return this.up;
+		}
+		public boolean GetDown(){
+			return this.down;
+		}
+		public boolean GetLeft(){
+			return this.left;
+		}
+		public boolean GetRight(){
+			return this.right;
+		}
+
+		public void SetUp(boolean bool){
+			this.up = bool;
+		}
+		public void SetDown(boolean bool){
+			this.down = bool;
+		}
+		public void SetLeft(boolean bool){
+			this.left = bool;
+		}
+		public void SetRight(boolean bool){
+			this.right = bool;
+		}
 		/**
 		 * Creates boolean variables for up, down, left and right. Sets them all to true
 		 */
@@ -381,10 +416,10 @@ public class MyFrame extends JPanel implements KeyListener
 		public void Draw(Graphics g)
 		{
 			/**
-			 * Checks to see if the snake is in bounds using OutofBounds method
+			 * Checks to see if the snake is in bounds using outofBounds method
 			 * Removes part(s) of the body if necessary, using EatBody method
 			 */
-			OutofBounds();
+			outofBounds();
 			EatBody();
 
 			/**
@@ -448,11 +483,16 @@ public class MyFrame extends JPanel implements KeyListener
 			}
 		}
 
+
+		// Specifically used just to test that the outofBounds method works as it cannot be called from another class with it bring private.
+		public void testOOB(){
+			outofBounds();
+		}
 		/**
-		 * OutofBounds Method
+		 * outofBounds Method
 		 * Checks to see if the snake is still in bounds
 		 */
-		private void OutofBounds()
+		private void outofBounds()
 		{
 			/**
 			 * Creates variables m_MyFrame_xOut and m_MyFrame_yOut
@@ -486,6 +526,21 @@ public class MyFrame extends JPanel implements KeyListener
 		 * i being the image
 		 * l being whether the snake is alive or dead
 		 */
+		public int GetX(){
+			return this.x;
+		}
+		public int GetY(){
+			return this.y;
+		}
+		public int GetW(){
+			return this.w;
+		}
+		public int GetH(){
+			return this.h;
+		}
+		public Image GetI(){
+			return this.i;
+		}
 		int x;
 		int y;
 		Image i;
