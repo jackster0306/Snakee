@@ -50,12 +50,12 @@ public class GameUtilTests {
         void InvalidArgumentsType(){
             int failed = 0;
             try {
-                i = game.RotateImage(bi, -90);
+                i = game.RotateImage(bi, -400);
             }catch(Exception e){
                 failed = 1;
             }
             if (failed == 0){
-                fail("Degree was invalid (-90 degrees) and there was no error thrown");
+                fail("Degree was invalid (-400 degrees) and there was no error thrown");
                 assertNull(i);
             }
 

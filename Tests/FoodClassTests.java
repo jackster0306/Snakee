@@ -45,10 +45,10 @@ public class FoodClassTests {
 
     @Nested
     class EatenMethod{
-        MyFrame.MySnake snake;
+        MySnake snake;
         @BeforeEach
         public void initeaten(){
-            snake = new MyFrame.MySnake(food.GetX(),food.GetY());
+            snake = new MySnake(food.GetX(),food.GetY());
             snake.score = 0;
             snake.ChangeLength(1);
             food.l = true;
