@@ -147,5 +147,5 @@ public class MyFrame extends JPanel implements KeyListener
 
 	}
 
-	
+
 }

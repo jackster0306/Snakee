@@ -16,6 +16,15 @@ import java.awt.event.KeyEvent;
 
 public class Play extends MyFrame
 {
+	private static Color scorecol = Color.MAGENTA;
+
+	public static void SetScoreColour(Color col){
+		scorecol = col;
+	}
+
+	public Color GetScoreColour(){
+		return scorecol;
+	}
 
 	private static final long m_Play_serialVersionUID = -3641221053272056036L;
 
@@ -117,7 +126,7 @@ public class Play extends MyFrame
 		 * Displays the text 'SCORE : ' then the current score at the coordinates 20, 40 of the frame
 		 */
 		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-		g.setColor(Color.MAGENTA);
+		g.setColor(GetScoreColour());
 		g.drawString("SCORE : " + mySnake.score, 20, 40);
 	}
 
@@ -127,8 +136,9 @@ public class Play extends MyFrame
 	 * Starts up the frame
 	 * Plays the music
 	 */
-	public static void main(String[] args)
+	public static void main(String[] args, Color col)
 	{
+		SetScoreColour(col);
 		new Play().LoadFrame();
 		MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
 
