@@ -102,9 +102,17 @@ public class JavaFx extends Application {
         magenta.setPrefSize(30,15);
         EventHandler<ActionEvent> magevent = e -> SetScoreColour(Color.MAGENTA);
         magenta.setOnAction(magevent);
+
+        Button green = new Button();
+        green.setId("green");
+        green.setPrefSize(30,15);
+        EventHandler<ActionEvent> greene = e -> SetScoreColour(Color.GREEN);
+        green.setOnAction(greene);
+
         scoretp.getChildren().add(red);
         scoretp.getChildren().add(yellow);
         scoretp.getChildren().add(magenta);
+        scoretp.getChildren().add(green);
         colvb.getChildren().add(scoretp);
         tp.getChildren().add(colvb);
 
@@ -197,6 +205,9 @@ public class JavaFx extends Application {
         }
         else if(scorecolour == Color.red){
             return "#ff0000";
+        }
+        else if(scorecolour == Color.green){
+            return "green";
         }
         else{
             return "#ff00ff";

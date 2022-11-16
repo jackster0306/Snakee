@@ -364,7 +364,7 @@ public class MySnake extends SnakeObject implements movable
          * Will be true if the requirements are met
          */
         boolean m_MyFrame_xOut = (x <= 0 || x >= (870 - w));
-        boolean m_MyFrame_yOut = (y <= 40 || y >= (560 - h));
+        boolean m_MyFrame_yOut = (y <= 0 || y >= (560 - h));
         /**
          * Checks to see if m_MyFrame_xOut or m_MyFrame_yOut are true
          * If they are, snake is no longer visible, game ends

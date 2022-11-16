@@ -16,6 +16,12 @@
     -fx-background-color: yellow;
 }
 
+#green{
+    -fx-border-size: 5;
+    -fx-border-color: #000000;
+    -fx-background-color: green;
+}
+
 #magenta{
     -fx-border-size: 5;
     -fx-border-color: #000000;
