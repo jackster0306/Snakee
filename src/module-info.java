@@ -3,5 +3,6 @@ module CW.Snake {
     requires jlayer;
     requires javafx.graphics;
     requires javafx.controls;
+    requires javafx.fxml;
     opens example;
 }

@@ -50,7 +50,7 @@ public class Play extends MyFrame
 	 * Creates variable called background of type image
 	 * Gets the image 'UI-background' that is in the source folder
 	 */
-	public Image background = ImageUtil.m_ImageUtil_images.get("UI-background");
+	public Image background = ImageUtil.m_ImageUtil_images.get(JavaFx.GetBackground());
 
 	/**
 	 * Creates variable called fail of type Image for when the user fails the game
@@ -136,9 +136,9 @@ public class Play extends MyFrame
 	 * Starts up the frame
 	 * Plays the music
 	 */
-	public static void main(String[] args, Color col)
+	public static void main(String[] args)
 	{
-		SetScoreColour(col);
+		SetScoreColour(JavaFx.GetScoreColour());
 		new Play().LoadFrame();
 		MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
 

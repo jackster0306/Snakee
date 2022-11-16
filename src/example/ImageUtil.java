@@ -48,7 +48,8 @@ public class ImageUtil
 		m_ImageUtil_images.put("14", GameUtil.GetImage("example/food-pineapple.png"));
 		m_ImageUtil_images.put("15", GameUtil.GetImage("example/food-strawberry.png"));
 		m_ImageUtil_images.put("16", GameUtil.GetImage("example/food-watermelon.png"));
-		m_ImageUtil_images.put("UI-background", GameUtil.GetImage("example/UI-background.png"));
+		m_ImageUtil_images.put("UI-Sky-background", GameUtil.GetImage("example/UI-background.png"));
+		m_ImageUtil_images.put("UI-CartoonSky-background", GameUtil.GetImage("example/UI-background2.png"));
 		m_ImageUtil_images.put("game-scene-01", GameUtil.GetImage("example/game-scene-01.jpg"));
 	}
 }

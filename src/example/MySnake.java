@@ -115,7 +115,7 @@ public class MySnake extends SnakeObject implements movable
          * Gets the width and height of the image and changes the variables w and h, used for width and height, to these values
          */
 
-        this.speed_XY = 5;
+        this.speed_XY = JavaFx.GetSpeed();
         this.length = 1;
         /**
          * Sets the speed and length of the snake
