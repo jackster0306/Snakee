@@ -17,9 +17,11 @@ public class StartScreenController {
     Image skyimg = new Image("example/UI-background.png");
     Image cartimg = new Image("example/UI-background2.png");
 
-    Color scorecol = Color.MAGENTA;
+    String scorecol = "magenta";
 
     int speed = 5;
+
+
 
     @FXML
     private ImageView bgimg;
@@ -48,18 +50,22 @@ public class StartScreenController {
 
     public void SetRed(){
         scorelabel.setStyle("-fx-text-fill: red;");
-        scorecol = Color.red;
+        scorecol = "red";
     }
     public void SetGreen(){
         scorelabel.setStyle("-fx-text-fill: green;");
-        scorecol = Color.green;
+        scorecol = "green";
     }
     public void SetMagenta(){
         scorelabel.setStyle("-fx-text-fill: magenta;");
-        scorecol = Color.magenta;
+        scorecol = "magenta";
     }
     public void SetYellow(){
         scorelabel.setStyle("-fx-text-fill: yellow;");
-        scorecol = Color.yellow;
+        scorecol = "yellow";
+    }
+
+    public void PlayGame(){
+        PlayScreenController.SetScoreColour(scorecol);
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane fx:id="PlayPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.PlayScreenController">
+   <children>
+      <Label fx:id="sclab" layoutX="14.0" layoutY="16.0" stylesheets="@../example/style.css" text="Score: " />
+      <Label fx:id="sclabnum" layoutX="116.0" layoutY="16.0" stylesheets="@../example/style.css" text="0" />
+   </children>
+</Pane>

@@ -49,4 +49,15 @@
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
+#sclab{
+    -fx-font-size: 30px;
+    -fx-font-family: "SansSerif";
+    -fx-font-weight: bold;
+}
+
+#sclabnum{
+    -fx-font-size: 30px;
+    -fx-font-family: "SansSerif";
+    -fx-font-weight: bold;
+}
 
