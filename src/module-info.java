@@ -5,4 +5,5 @@ module CW.Snake {
     requires javafx.controls;
     requires javafx.fxml;
     opens example;
+    opens Application;
 }

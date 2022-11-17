@@ -1,5 +1,11 @@
-#msvbox{
+#SSroot{
     -fx-background-image: url("1629702755362_84a39ede3284dfcaa71703c98647a8f5.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
+
+#PlayPane{
+    -fx-background-image: url("UI-background.png");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
 }
@@ -28,11 +34,11 @@
     -fx-background-color: magenta;
 }
 
-.Vbox{
+#Vbox{
     -fx-spacing: 5;
 }
 
-.HBox{
+#Hbox{
     -fx-padding: 5;
     -fx-spacing: 10;
 }
@@ -42,3 +48,5 @@
     -fx-font-weight: bold;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
+
+
