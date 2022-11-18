@@ -33,13 +33,8 @@ public class StartScreenController {
         return scorecol;
     }
 
-    private Stage stage = new Stage();
-
     int speed = 5;
 
-
-    @FXML
-    private Pane PlayPane;
     @FXML
     private ImageView bgimg;
 

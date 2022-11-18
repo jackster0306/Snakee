@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="SSroot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.StartScreenController">
+<Pane fx:id="SSPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.StartScreenController">
    <children>
-      <Button fx:id="red" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetRed" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css" />
-      <Button fx:id="magenta" layoutX="57.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetMagenta" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css" />
-      <Button fx:id="yellow" layoutX="95.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetYellow" prefHeight="27.0" prefWidth="30.0" stylesheets="@../example/style.css" />
-      <Button fx:id="green" layoutX="134.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetGreen" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css" />
+      <Button fx:id="red" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetRed" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
+      <Button fx:id="magenta" layoutX="57.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetMagenta" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
+      <Button fx:id="yellow" layoutX="95.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetYellow" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
+      <Button fx:id="green" layoutX="134.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetGreen" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
       <Label fx:id="scorelabel" layoutX="18.0" layoutY="18.0" text="Change Score Colour: " />
       <Label layoutX="407.0" layoutY="24.0" text="Current Background:" />
       <ImageView fx:id="bgimg" fitHeight="183.0" fitWidth="275.0" layoutX="405.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">

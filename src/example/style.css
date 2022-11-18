@@ -1,52 +1,43 @@
-#SSroot{
-    -fx-background-image: url("1629702755362_84a39ede3284dfcaa71703c98647a8f5.jpg");
+.Pane{
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
+}
+
+#SSPane{
+    -fx-background-image: url("1629702755362_84a39ede3284dfcaa71703c98647a8f5.jpg");
+}
+
+#EndPane{
+    -fx-background-image: url("end.png");
 }
 
 #PlayPaneSky{
     -fx-background-image: url("UI-background.png");
-    -fx-background-repeat: stretch;
-    -fx-background-size: cover;
 }
 
 #PlayPaneCart{
     -fx-background-image: url("UI-background2.png");
-    -fx-background-repeat: stretch;
-    -fx-background-size: cover;
+}
+
+.ColBtns{
+    -fx-border-size: 5;
+    -fx-border-color: #000000;
 }
 
 #red{
-    -fx-border-size: 5;
-    -fx-border-color: #000000;
     -fx-background-color: red;
 }
 
 #yellow{
-    -fx-border-size: 5;
-    -fx-border-color: #000000;
     -fx-background-color: yellow;
 }
 
 #green{
-    -fx-border-size: 5;
-    -fx-border-color: #000000;
     -fx-background-color: green;
 }
 
 #magenta{
-    -fx-border-size: 5;
-    -fx-border-color: #000000;
     -fx-background-color: magenta;
-}
-
-#Vbox{
-    -fx-spacing: 5;
-}
-
-#Hbox{
-    -fx-padding: 5;
-    -fx-spacing: 10;
 }
 
 .label {
@@ -56,22 +47,24 @@
 }
 
 #scorelabel{
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
     -fx-text-fill: "magenta";
 }
 
-
-#sclab{
+.ScLbl{
     -fx-font-size: 30px;
     -fx-font-family: "SansSerif";
     -fx-font-weight: bold;
 }
 
-#sclabnum{
-    -fx-font-size: 30px;
-    -fx-font-family: "SansSerif";
+.EndLbl{
+    -fx-font-size: 40px;
     -fx-font-weight: bold;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-text-fill: "white";
 }
+
+.EndBtn{
+    -fx-text-size: 80px;
+}
+
 
