@@ -3,18 +3,28 @@ package Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import example.*;
+import javafx.scene.layout.Pane;
 
 public class PlayScreenController {
+    private static int score = 0;
 
 @FXML
-private static Label sclab;
+private Label sclab;
 
 @FXML
-private static Label sclabnum;
+private Label sclabnum;
 
-public static void SetScoreColour(String col){
-    sclabnum.setStyle("-fx-text-fill: "+col+";");
-    sclab.setStyle("-fx-text-fill: "+col+";");
+@FXML
+private Pane PlayPaneSky;
+
+public void initialize(){
+    sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
+    sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
+    if(StartScreenController.GetBackground() == "cart"){
+        PlayPaneSky.setId("PlayPaneCart");
+    }
+    //When snake is setup, I will also set the speed as entered in the start screen.
 }
+
 
 }

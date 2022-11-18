@@ -4,8 +4,14 @@
     -fx-background-size: cover;
 }
 
-#PlayPane{
+#PlayPaneSky{
     -fx-background-image: url("UI-background.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
+
+#PlayPaneCart{
+    -fx-background-image: url("UI-background2.png");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
 }
@@ -49,4 +55,23 @@
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
+#scorelabel{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-text-fill: "magenta";
+}
+
+
+#sclab{
+    -fx-font-size: 30px;
+    -fx-font-family: "SansSerif";
+    -fx-font-weight: bold;
+}
+
+#sclabnum{
+    -fx-font-size: 30px;
+    -fx-font-family: "SansSerif";
+    -fx-font-weight: bold;
+}
 
