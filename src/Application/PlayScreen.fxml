@@ -8,6 +8,6 @@
    <children>
       <Label fx:id="sclab" layoutX="14.0" layoutY="16.0" styleClass="ScLbl" stylesheets="@../example/style.css" text="Score: " />
       <Label fx:id="sclabnum" layoutX="116.0" layoutY="16.0" styleClass="ScLbl" stylesheets="@../example/style.css" text="0" />
-      <Button fx:id="ToEnd" layoutX="330.0" layoutY="255.0" mnemonicParsing="false" onAction="#ToEndScreen" prefHeight="76.0" prefWidth="118.0" text="To End" />
+      <Button fx:id="ToEnd" layoutX="330.0" layoutY="255.0" mnemonicParsing="false" onAction="#ToEndScreen" prefHeight="76.0" prefWidth="118.0" text="To End" visible="false" />
    </children>
 </Pane>
