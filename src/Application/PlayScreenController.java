@@ -10,12 +10,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Random;
 
@@ -35,6 +33,7 @@ private Label sclabnum;
 @FXML
 private Pane PlayPaneSky;
 
+
 int speed;
 
 int direction = 3;
@@ -46,6 +45,11 @@ public Timeline timeline;
 public Random rand = new Random();
 
 Map<String, Circle> snakebody = new HashMap<>();
+
+Map<Integer, Double> xpositions = new HashMap<>();
+    Map<Integer, Double> ypositions = new HashMap<>();
+
+int gameticks = 0;
 
 
 public void initialize(){
@@ -62,6 +66,9 @@ public void initialize(){
     timeline = new Timeline(
             new KeyFrame(Duration.seconds(0.03), e -> {
                 move();
+                for(int i =0; i < snakebody.size(); i++){
+                    moveSnakeBody(snakebody.get(Integer.toString(i)), i+1);
+                }
                 try {
                     outofBounds();
                 } catch (IOException ex) {
@@ -70,13 +77,17 @@ public void initialize(){
                 if (snakehead.intersects(snakehead.sceneToLocal(foodview.localToScene(foodview.getBoundsInLocal())))) {
                     score+=521;
                     Eaten();
-                    Circle circ = new Circle();
+                    Circle circ = new Circle(13);
                     circ.getStyleClass().add("Snake");
                     PlayPaneSky.getChildren().add(circ);
                     snakebody.put(Integer.toString(snakebody.size()),circ);
                 }
                 sclabnum.setText(Integer.toString(score));
+                xpositions.put(gameticks, snakehead.getLayoutX());
+                ypositions.put(gameticks, snakehead.getLayoutY());
+                gameticks++;
             })
+
     );
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
@@ -84,6 +95,12 @@ public void initialize(){
     foodview.setVisible(true);
 }
 
+public void moveSnakeBody(Circle bodypart, int num){
+    double x = xpositions.get(gameticks-((speed)*num));
+    double y = ypositions.get(gameticks-((speed)*num));
+    bodypart.setLayoutX(x);
+    bodypart.setLayoutY(y);
+}
 public void ToEndScreen() throws IOException {
     alive = false;
     StartScreenJFX.setRoot("EndScreen");
@@ -109,43 +126,14 @@ void KeyPressed(KeyEvent e){
 }
 
 public void move(){
-    boolean isbody;
-    if(snakebody.size()==0)
-        isbody = false;
-    else isbody = true;
     if(direction == 0){
         snakehead.setLayoutY(snakehead.getLayoutY()-speed);
-        if(isbody){
-            for(int i =0; i < snakebody.size(); i++){
-                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX());
-                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY()+(snakehead.getRadiusY()*2*(i+1)));
-            }
-        }
-
     } else if (direction == 1) {
         snakehead.setLayoutY(snakehead.getLayoutY()+speed);
-        if(isbody){
-            for(int i =0; i < snakebody.size(); i++){
-                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX());
-                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY()-(snakehead.getRadiusY()*2*(i+1)));
-            }
-        }
     } else if (direction == 2) {
         snakehead.setLayoutX(snakehead.getLayoutX()-speed);
-        if(isbody){
-            for(int i =0; i < snakebody.size(); i++){
-                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY());
-                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX()+(snakehead.getRadiusX()*2*(i+1)));
-            }
-        }
     } else if (direction == 3) {
         snakehead.setLayoutX(snakehead.getLayoutX()+speed);
-        if(isbody){
-            for(int i =0; i < snakebody.size(); i++){
-                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY());
-                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX()-(snakehead.getRadiusX()*2*(i+1)));
-            }
-        }
     }
 
 }

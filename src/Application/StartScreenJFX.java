@@ -29,6 +29,7 @@ public class StartScreenJFX extends Application {
         stage.show();
     }
 
+
     static void setRoot(String fxml) throws IOException{
         scene.setRoot(loadFXML(fxml));
     }

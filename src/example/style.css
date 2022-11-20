@@ -68,7 +68,7 @@
 }
 
 .Snake{
-    -fx-background-color: green;
+    -fx-fill: green;
 }
 
 
