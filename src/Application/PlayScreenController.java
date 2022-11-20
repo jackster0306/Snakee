@@ -14,6 +14,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.Random;
 
 public class PlayScreenController {
@@ -42,6 +45,7 @@ public Timeline timeline;
 
 public Random rand = new Random();
 
+Map<String, Circle> snakebody = new HashMap<>();
 
 
 public void initialize(){
@@ -66,7 +70,12 @@ public void initialize(){
                 if (snakehead.intersects(snakehead.sceneToLocal(foodview.localToScene(foodview.getBoundsInLocal())))) {
                     score+=521;
                     Eaten();
+                    Circle circ = new Circle();
+                    circ.getStyleClass().add("Snake");
+                    PlayPaneSky.getChildren().add(circ);
+                    snakebody.put(Integer.toString(snakebody.size()),circ);
                 }
+                sclabnum.setText(Integer.toString(score));
             })
     );
     timeline.setCycleCount(Timeline.INDEFINITE);
@@ -100,14 +109,43 @@ void KeyPressed(KeyEvent e){
 }
 
 public void move(){
+    boolean isbody;
+    if(snakebody.size()==0)
+        isbody = false;
+    else isbody = true;
     if(direction == 0){
         snakehead.setLayoutY(snakehead.getLayoutY()-speed);
+        if(isbody){
+            for(int i =0; i < snakebody.size(); i++){
+                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX());
+                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY()+(snakehead.getRadiusY()*2*(i+1)));
+            }
+        }
+
     } else if (direction == 1) {
         snakehead.setLayoutY(snakehead.getLayoutY()+speed);
+        if(isbody){
+            for(int i =0; i < snakebody.size(); i++){
+                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX());
+                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY()-(snakehead.getRadiusY()*2*(i+1)));
+            }
+        }
     } else if (direction == 2) {
         snakehead.setLayoutX(snakehead.getLayoutX()-speed);
+        if(isbody){
+            for(int i =0; i < snakebody.size(); i++){
+                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY());
+                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX()+(snakehead.getRadiusX()*2*(i+1)));
+            }
+        }
     } else if (direction == 3) {
         snakehead.setLayoutX(snakehead.getLayoutX()+speed);
+        if(isbody){
+            for(int i =0; i < snakebody.size(); i++){
+                snakebody.get(Integer.toString(i)).setLayoutY(snakehead.getLayoutY());
+                snakebody.get(Integer.toString(i)).setLayoutX(snakehead.getLayoutX()-(snakehead.getRadiusX()*2*(i+1)));
+            }
+        }
     }
 
 }
