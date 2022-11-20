@@ -4,22 +4,16 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import example.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import java.util.List;
 
-import java.awt.*;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class PlayScreenController {
@@ -40,13 +34,13 @@ private Pane PlayPaneSky;
 
 int speed;
 
-long lastRefreshTime = 0;
-
 int direction = 3;
 
 boolean alive = true;
 
 public Timeline timeline;
+
+public Random rand = new Random();
 
 
 
@@ -69,15 +63,15 @@ public void initialize(){
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-
+                if (snakehead.intersects(snakehead.sceneToLocal(foodview.localToScene(foodview.getBoundsInLocal())))) {
+                    score+=521;
+                    Eaten();
+                }
             })
     );
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
-    Random rand = new Random();
-    foodview.setLayoutX(rand.nextInt(870));
-    foodview.setLayoutY(rand.nextInt(560));
-    foodview.setImage(FoodImg.images.get(String.valueOf(new Random().nextInt(17))));
+    Eaten();
     foodview.setVisible(true);
 }
 
@@ -115,6 +109,7 @@ public void move(){
     } else if (direction == 3) {
         snakehead.setLayoutX(snakehead.getLayoutX()+speed);
     }
+
 }
 
     private void outofBounds() throws IOException {
@@ -136,9 +131,9 @@ public void move(){
         }
     }
 
-
-
-
-
-
+    public void Eaten(){
+        foodview.setLayoutX(rand.nextInt(870-(int)foodview.getFitWidth()));
+        foodview.setLayoutY(rand.nextInt(560-(int)foodview.getFitHeight()));
+        foodview.setImage(FoodImg.images.get(String.valueOf(new Random().nextInt(17))));
+    }
 }
