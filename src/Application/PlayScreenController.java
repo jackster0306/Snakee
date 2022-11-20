@@ -51,8 +51,12 @@ Map<Integer, Double> xpositions = new HashMap<>();
 
 int gameticks = 0;
 
+    public static String GetScore() {
+        return Integer.toString(score);
+    }
 
-public void initialize(){
+
+    public void initialize(){
     sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
     sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
     if(StartScreenController.GetBackground() == "cart"){
