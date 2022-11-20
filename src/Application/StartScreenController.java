@@ -22,6 +22,8 @@ public class StartScreenController {
 
     static String scorecol = "magenta";
 
+    static String snakecol = "green";
+
     public static String GetScoreCol(){
         return scorecol;
     }
@@ -39,6 +41,27 @@ public class StartScreenController {
 
     @FXML
     private TextField speedtf;
+
+    @FXML
+    private Label snakelabel;
+
+
+    public void SetRedSnake(){
+        snakelabel.setStyle("-fx-text-fill: red;");
+        snakecol = "red";
+    }
+    public void SetGreenSnake(){
+        snakelabel.setStyle("-fx-text-fill: green;");
+        snakecol = "green";
+    }
+    public void SetMagentaSnake(){
+        snakelabel.setStyle("-fx-text-fill: magenta;");
+        snakecol = "magenta";
+    }
+    public void SetYellowSnake(){
+        snakelabel.setStyle("-fx-text-fill: yellow;");
+        snakecol = "yellow";
+    }
 
 
 

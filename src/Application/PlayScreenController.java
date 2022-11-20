@@ -62,6 +62,7 @@ int gameticks = 0;
     if(StartScreenController.GetBackground() == "cart"){
         PlayPaneSky.setId("PlayPaneCart");
     }
+    snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
 
     StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
         KeyPressed(key);
@@ -82,7 +83,7 @@ int gameticks = 0;
                     score+=521;
                     Eaten();
                     Circle circ = new Circle(13);
-                    circ.getStyleClass().add("Snake");
+                    circ.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
                     PlayPaneSky.getChildren().add(circ);
                     snakebody.put(Integer.toString(snakebody.size()),circ);
                 }

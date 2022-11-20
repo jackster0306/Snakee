@@ -24,19 +24,19 @@
     -fx-border-color: #000000;
 }
 
-#red{
+.red{
     -fx-background-color: red;
 }
 
-#yellow{
+.yellow{
     -fx-background-color: yellow;
 }
 
-#green{
+.green{
     -fx-background-color: green;
 }
 
-#magenta{
+.magenta{
     -fx-background-color: magenta;
 }
 
@@ -48,6 +48,10 @@
 
 #scorelabel{
     -fx-text-fill: "magenta";
+}
+
+#snakelabel{
+    -fx-text-fill: "green";
 }
 
 .ScLbl{
