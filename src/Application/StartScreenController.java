@@ -1,19 +1,12 @@
 package Application;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
-import java.util.Objects;
 
 public class StartScreenController {
 
@@ -33,7 +26,7 @@ public class StartScreenController {
         return scorecol;
     }
 
-    int speed = 5;
+    static int speed = 5;
 
     @FXML
     private ImageView bgimg;
@@ -64,6 +57,9 @@ public class StartScreenController {
         numspeed.setText(Integer.toString(speed));
     }
 
+    public static int GetSpeed(){
+        return speed;
+    }
     public void SetRed(){
         scorelabel.setStyle("-fx-text-fill: red;");
         scorecol = "red";

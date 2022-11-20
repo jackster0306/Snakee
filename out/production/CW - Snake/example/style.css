@@ -67,4 +67,8 @@
     -fx-text-size: 80px;
 }
 
+.Snake{
+    -fx-background-color: green;
+}
+
 
