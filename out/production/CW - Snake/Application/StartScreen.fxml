@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,10 +11,26 @@
 
 <Pane fx:id="SSPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.StartScreenController">
    <children>
-      <Button fx:id="red" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetRed" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
-      <Button fx:id="magenta" layoutX="57.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetMagenta" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
-      <Button fx:id="yellow" layoutX="95.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetYellow" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
-      <Button fx:id="green" layoutX="134.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetGreen" prefHeight="15.0" prefWidth="30.0" styleClass="ColBtns" stylesheets="@../example/style.css" />
+      <Button fx:id="red" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetRed" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="red" />
+         </styleClass></Button>
+      <Button fx:id="magenta" layoutX="57.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetMagenta" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="magenta" />
+         </styleClass></Button>
+      <Button fx:id="yellow" layoutX="95.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetYellow" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="yellow" />
+         </styleClass></Button>
+      <Button fx:id="green" layoutX="134.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetGreen" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="green" />
+         </styleClass></Button>
       <Label fx:id="scorelabel" layoutX="18.0" layoutY="18.0" text="Change Score Colour: " />
       <Label layoutX="407.0" layoutY="24.0" text="Current Background:" />
       <ImageView fx:id="bgimg" fitHeight="183.0" fitWidth="275.0" layoutX="405.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
@@ -47,5 +64,30 @@
          </font>
       </Button>
       <Label fx:id="numspeed" layoutX="169.0" layoutY="125.0" text="5" />
+      <Button fx:id="redsnake" layoutX="22.0" layoutY="267.0" mnemonicParsing="false" onAction="#SetRedSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="red" />
+         </styleClass>
+      </Button>
+      <Button fx:id="magentasnake" layoutX="61.0" layoutY="267.0" mnemonicParsing="false" onAction="#SetMagentaSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="magenta" />
+         </styleClass>
+      </Button>
+      <Button fx:id="yellowsnake" layoutX="99.0" layoutY="267.0" mnemonicParsing="false" onAction="#SetYellowSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="yellow" />
+         </styleClass>
+      </Button>
+      <Button fx:id="greensnake" layoutX="138.0" layoutY="267.0" mnemonicParsing="false" onAction="#SetGreenSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="green" />
+         </styleClass>
+      </Button>
+      <Label fx:id="snakelabel" layoutX="18.0" layoutY="218.0" stylesheets="@../example/style.css" text="Change Snake Colour: " />
    </children>
 </Pane>

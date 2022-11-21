@@ -51,6 +51,11 @@ Map<Integer, Double> xpositions = new HashMap<>();
 
 int gameticks = 0;
 
+public boolean newfood = false;
+
+@FXML
+private Circle test;
+
     public static String GetScore() {
         return Integer.toString(score);
     }
@@ -71,6 +76,13 @@ int gameticks = 0;
     timeline = new Timeline(
             new KeyFrame(Duration.seconds(0.03), e -> {
                 move();
+                if(newfood){
+                    Circle circ = new Circle(13);
+                    circ.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
+                    PlayPaneSky.getChildren().add(circ);
+                    snakebody.put(Integer.toString(snakebody.size()),circ);
+                    newfood = false;
+                }
                 for(int i =0; i < snakebody.size(); i++){
                     moveSnakeBody(snakebody.get(Integer.toString(i)), i+1);
                 }
@@ -79,17 +91,39 @@ int gameticks = 0;
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+
                 if (snakehead.intersects(snakehead.sceneToLocal(foodview.localToScene(foodview.getBoundsInLocal())))) {
                     score+=521;
                     Eaten();
-                    Circle circ = new Circle(13);
-                    circ.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
-                    PlayPaneSky.getChildren().add(circ);
-                    snakebody.put(Integer.toString(snakebody.size()),circ);
+                    newfood = true;
                 }
+
+                for(int i =1; i < snakebody.size(); i++){
+                    if(snakehead.intersects(snakehead.sceneToLocal(snakebody.get(Integer.toString(i)).localToScene(snakebody.get(Integer.toString(i)).getBoundsInLocal())))){
+                        try {
+                            ToEndScreen();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+
                 sclabnum.setText(Integer.toString(score));
-                xpositions.put(gameticks, snakehead.getLayoutX());
-                ypositions.put(gameticks, snakehead.getLayoutY());
+                if(direction == 0){
+                    xpositions.put(gameticks, snakehead.getLayoutX());
+                    ypositions.put(gameticks, snakehead.getLayoutY()+3);
+                } else if (direction == 1) {
+                    xpositions.put(gameticks, snakehead.getLayoutX());
+                    ypositions.put(gameticks, snakehead.getLayoutY()-4);
+                } else if (direction == 2) {
+                    xpositions.put(gameticks, snakehead.getLayoutX()-1);
+                    ypositions.put(gameticks, snakehead.getLayoutY());
+                } else if (direction == 3) {
+                    xpositions.put(gameticks, snakehead.getLayoutX()-4);
+                    ypositions.put(gameticks, snakehead.getLayoutY());
+                }
+                test.setLayoutX(snakehead.getLayoutX());
+                test.setLayoutY(snakehead.getLayoutY());
                 gameticks++;
             })
 
@@ -108,6 +142,7 @@ public void moveSnakeBody(Circle bodypart, int num){
 }
 public void ToEndScreen() throws IOException {
     alive = false;
+    timeline.stop();
     StartScreenJFX.setRoot("EndScreen");
 }
 @FXML
@@ -157,7 +192,6 @@ public void move(){
          */
         if (xOut || yOut)
         {
-            timeline.stop();
             ToEndScreen();
         }
     }
