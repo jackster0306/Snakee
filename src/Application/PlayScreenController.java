@@ -3,6 +3,7 @@ package Application;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -53,16 +54,24 @@ int gameticks = 0;
 
 public boolean newfood = false;
 
-@FXML
-private Circle test;
+double xbound, ybound;
 
-    public static String GetScore() {
+public static String GetScore() {
         return Integer.toString(score);
     }
 
-
     public void initialize(){
-    sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
+    if(StartScreenController.GetDiff() == 1){
+        xbound = 870;
+        ybound = 560;
+    } else if (StartScreenController.GetDiff() == 2) {
+        xbound = 550;
+        ybound = 400;
+    } else if (StartScreenController.GetDiff() == 3) {
+        xbound = 420;
+        ybound = 280;
+    }
+        sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
     sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
     if(StartScreenController.GetBackground() == "cart"){
         PlayPaneSky.setId("PlayPaneCart");
@@ -91,15 +100,18 @@ private Circle test;
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-
-                if (snakehead.intersects(snakehead.sceneToLocal(foodview.localToScene(foodview.getBoundsInLocal())))) {
+                Bounds foodbounds = foodview.localToScene(foodview.getBoundsInLocal());
+                Bounds snakebounds = snakehead.sceneToLocal(foodbounds);
+                if (snakehead.intersects(snakebounds)) {
                     score+=521;
                     Eaten();
                     newfood = true;
                 }
 
                 for(int i =1; i < snakebody.size(); i++){
-                    if(snakehead.intersects(snakehead.sceneToLocal(snakebody.get(Integer.toString(i)).localToScene(snakebody.get(Integer.toString(i)).getBoundsInLocal())))){
+                    Bounds sb = snakebody.get(Integer.toString(i)).getBoundsInLocal();
+                    Bounds sb2 = snakebody.get(Integer.toString(i)).localToScene(sb);
+                    if(snakehead.intersects(snakehead.sceneToLocal(sb2))){
                         try {
                             ToEndScreen();
                         } catch (IOException ex) {
@@ -122,8 +134,6 @@ private Circle test;
                     xpositions.put(gameticks, snakehead.getLayoutX()-4);
                     ypositions.put(gameticks, snakehead.getLayoutY());
                 }
-                test.setLayoutX(snakehead.getLayoutX());
-                test.setLayoutY(snakehead.getLayoutY());
                 gameticks++;
             })
 
@@ -179,17 +189,9 @@ public void move(){
 }
 
     private void outofBounds() throws IOException {
-        /**
-         * Creates variables m_MyFrame_xOut and m_MyFrame_yOut
-         * Assigns the values that cause the snake to be out of bounds
-         * Will be true if the requirements are met
-         */
-        boolean xOut = (snakehead.getLayoutX() <= 0 || snakehead.getLayoutX() >= 870);
-        boolean yOut = (snakehead.getLayoutY() <= 0 || snakehead.getLayoutY() >= 560);
-        /**
-         * Checks to see if m_MyFrame_xOut or m_MyFrame_yOut are true
-         * If they are, snake is no longer visible, game ends
-         */
+        boolean xOut = (snakehead.getLayoutX() <= 0 || snakehead.getLayoutX() >= xbound);
+        boolean yOut = (snakehead.getLayoutY() <= 0 || snakehead.getLayoutY() >= ybound);
+
         if (xOut || yOut)
         {
             ToEndScreen();
@@ -197,8 +199,8 @@ public void move(){
     }
 
     public void Eaten(){
-        foodview.setLayoutX(rand.nextInt(870-(int)foodview.getFitWidth()));
-        foodview.setLayoutY(rand.nextInt(560-(int)foodview.getFitHeight()));
+        foodview.setLayoutX(rand.nextInt(((int)xbound)-(int)foodview.getFitWidth()));
+        foodview.setLayoutY(rand.nextInt(((int)ybound)-(int)foodview.getFitHeight()));
         foodview.setImage(FoodImg.images.get(String.valueOf(new Random().nextInt(17))));
     }
 }

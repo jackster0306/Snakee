@@ -1,6 +1,7 @@
 package Application;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.TextField;
@@ -10,7 +11,11 @@ import java.io.IOException;
 
 public class StartScreenController {
 
+    private static boolean bombs = false;
 
+    public static boolean GetToBomb(){
+        return bombs;
+    }
     Image skyimg = new Image("example/UI-background.png");
     Image cartimg = new Image("example/UI-background2.png");
 
@@ -30,6 +35,12 @@ public class StartScreenController {
 
     static int speed = 5;
 
+    static int level = 1;
+
+    public static int GetDiff(){
+        return level;
+    }
+
     @FXML
     private ImageView bgimg;
 
@@ -44,6 +55,12 @@ public class StartScreenController {
 
     @FXML
     private Label snakelabel;
+
+    @FXML
+    private CheckBox checkbomb;
+
+    @FXML
+    private Label diff;
 
 
     public void SetRedSnake(){
@@ -63,7 +80,20 @@ public class StartScreenController {
         snakecol = "yellow";
     }
 
+    public void SetEasy(){
+        diff.setText("Easy");
+        level = 1;
+    }
 
+    public void SetMedium(){
+        diff.setText("Medium");
+        level = 2;
+    }
+
+    public void SetHard(){
+        diff.setText("Hard");
+        level = 3;
+    }
 
     public void SkyImage(){
         bgimg.setImage(skyimg);
@@ -102,6 +132,17 @@ public class StartScreenController {
 
     @FXML
     private void PlayGame() throws IOException {
-        StartScreenJFX.setRoot("PlayScreen");
+        if(checkbomb.isSelected()){
+            bombs = true;
+        } else{
+            bombs = false;
+        }
+        if(level == 1){
+            StartScreenJFX.setRoot("PlayScreen");
+        } else if (level == 2) {
+            StartScreenJFX.setRoot("PlayScreenMedium");
+        } else if (level == 3) {
+            StartScreenJFX.setRoot("PlayScreenHard");
+        }
     }
 }
