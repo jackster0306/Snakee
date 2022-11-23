@@ -26,9 +26,6 @@ public class PlayScreenController {
     private Label sclab;
 
     @FXML
-    ImageView foodview;
-
-    @FXML
     private Label sclabnum;
 
     @FXML
@@ -42,6 +39,8 @@ public class PlayScreenController {
 
     @FXML
     private ImageView bomb2;
+
+    Food food;
 
     int speed;
 
@@ -66,7 +65,8 @@ public class PlayScreenController {
 
     public boolean newfood = false;
 
-    double xbound, ybound;
+    static double xbound;
+    static double ybound;
 
     public boolean isbombs;
 
@@ -76,6 +76,14 @@ public class PlayScreenController {
 
     public static String GetScore() {
         return Integer.toString(score);
+    }
+
+    public static Double GetXBound(){
+        return xbound;
+    }
+
+    public static Double GetYBound(){
+        return ybound;
     }
 
 
@@ -126,11 +134,11 @@ public class PlayScreenController {
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
-                    Bounds foodbounds = foodview.localToScene(foodview.getBoundsInLocal());
+                    Bounds foodbounds = food.food.localToScene(food.food.getBoundsInLocal());
                     Bounds snakebounds = snakehead.sceneToLocal(foodbounds);
                     if (snakehead.intersects(snakebounds)) {
                         score+=521;
-                        Eaten();
+                        food.MoveFood();
                         newfood = true;
                     }
 
@@ -186,19 +194,18 @@ public class PlayScreenController {
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-        Eaten();
-        foodview.setVisible(true);
+        food = new Food(rand.nextInt((int)xbound),rand.nextInt((int)ybound), PlayPaneSky);
 
         if(isbombs){
             bombspawntl = new Timeline(
                     new KeyFrame(Duration.seconds(bombspawn), e -> {
                         if(!bomb.isVisible()){
-                            BombSpawn(bomb);
+                            Bomb.BombSpawn(bomb);
                             if(difficulty == 2){
-                                BombSpawn(bomb1);
+                                Bomb.BombSpawn(bomb1);
                             } else if(difficulty == 3){
-                                BombSpawn(bomb1);
-                                BombSpawn(bomb2);
+                                Bomb.BombSpawn(bomb1);
+                                Bomb.BombSpawn(bomb2);
                             }
                             bombdonetl.play();
                             bombspawntl.stop();
@@ -227,33 +234,7 @@ public class PlayScreenController {
         }
     }
 
-    public void BombSpawn(ImageView img){
-        if(!img.isVisible()){
-            int randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
-            int randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
-            img.setLayoutX(randx);
-            img.setLayoutY(randy);
-            img.setVisible(true);
 
-
-        /*
-        int randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
-        int randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
-        double x = snakehead.getLayoutX();
-        double y = snakehead.getLayoutY();
-        while((randx >= (x-10) || randx <= (x+10)) && (randy >= (y-10) || randy <= (y+10))){
-            randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
-            randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
-            x = snakehead.getLayoutX();
-            y = snakehead.getLayoutY();
-        }
-        img.setLayoutX(randx);
-        img.setLayoutY(randy);
-        img.setVisible(true);
-         */
-
-        }
-    }
 
     public void CheckBomb(ImageView thebomb) throws IOException {
         Bounds bombbound = thebomb.localToScene(thebomb.getBoundsInLocal());
@@ -323,9 +304,4 @@ public class PlayScreenController {
         }
     }
 
-    public void Eaten(){
-        foodview.setLayoutX(rand.nextInt(((int)xbound)-(int)foodview.getFitWidth()));
-        foodview.setLayoutY(rand.nextInt(((int)ybound)-(int)foodview.getFitHeight()));
-        foodview.setImage(ImageUtil.images.get(String.valueOf(new Random().nextInt(17))));
-    }
 }
