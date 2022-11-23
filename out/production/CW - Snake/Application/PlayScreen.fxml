@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Arc?>
-<?import javafx.scene.shape.Circle?>
 
 <Pane fx:id="PlayPaneSky" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.PlayScreenController">
    <children>
@@ -19,6 +18,20 @@
             <Image url="@../example/food-apple.png" />
          </image>
       </ImageView>
-      <Circle fx:id="test" fill="#ff2a1f" layoutX="193.0" layoutY="159.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fx:id="bomb" fitHeight="50.0" fitWidth="50.0" layoutX="280.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@skull_bomb_by_alishavolkman_daf7ku4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bomb1" fitHeight="50.0" fitWidth="50.0" layoutX="290.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@skull_bomb_by_alishavolkman_daf7ku4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bomb2" fitHeight="50.0" fitWidth="50.0" layoutX="300.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@skull_bomb_by_alishavolkman_daf7ku4.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

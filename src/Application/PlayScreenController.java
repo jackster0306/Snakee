@@ -79,7 +79,9 @@ public static String GetScore() {
     }
 
 
+
     public void initialize(){
+        score = 0;
         isbombs = StartScreenController.GetToBomb();
         difficulty = StartScreenController.GetDiff();
     if(difficulty == 1){
@@ -143,7 +145,7 @@ public static String GetScore() {
                         }
                     }
                 }
-                if(isbombs){
+                if(isbombs && bomb.isVisible()){
                     try {
                         CheckBomb(bomb);
                     } catch (IOException ex) {
@@ -227,9 +229,29 @@ public static String GetScore() {
 
 public void BombSpawn(ImageView img){
     if(!img.isVisible()){
+        int randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
+        int randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
+        img.setLayoutX(randx);
+        img.setLayoutY(randy);
         img.setVisible(true);
-        img.setLayoutX(rand.nextInt(((int)xbound)-(int)foodview.getFitWidth()));
-        img.setLayoutY(rand.nextInt(((int)ybound)-(int)foodview.getFitHeight()));
+
+
+        /*
+        int randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
+        int randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
+        double x = snakehead.getLayoutX();
+        double y = snakehead.getLayoutY();
+        while((randx >= (x-10) || randx <= (x+10)) && (randy >= (y-10) || randy <= (y+10))){
+            randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
+            randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
+            x = snakehead.getLayoutX();
+            y = snakehead.getLayoutY();
+        }
+        img.setLayoutX(randx);
+        img.setLayoutY(randy);
+        img.setVisible(true);
+         */
+
     }
 }
 
@@ -291,7 +313,6 @@ public void move(){
     }
 
 }
-
     private void outofBounds() throws IOException {
         boolean xOut = (snakehead.getLayoutX() <= 0 || snakehead.getLayoutX() >= xbound);
         boolean yOut = (snakehead.getLayoutY() <= 0 || snakehead.getLayoutY() >= ybound);
@@ -305,6 +326,6 @@ public void move(){
     public void Eaten(){
         foodview.setLayoutX(rand.nextInt(((int)xbound)-(int)foodview.getFitWidth()));
         foodview.setLayoutY(rand.nextInt(((int)ybound)-(int)foodview.getFitHeight()));
-        foodview.setImage(FoodImg.images.get(String.valueOf(new Random().nextInt(17))));
+        foodview.setImage(ImageUtil.images.get(String.valueOf(new Random().nextInt(17))));
     }
 }

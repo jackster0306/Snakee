@@ -1,12 +1,11 @@
 package Application;
 
-import example.GameUtil;
 import javafx.scene.image.Image;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FoodImg {
+public class ImageUtil {
     public static Map<String, Image> images = new HashMap<>();
 
     static{
