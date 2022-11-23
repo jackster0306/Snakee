@@ -8,7 +8,7 @@ public class EndScreenController {
     @FXML
     private Label endsclabel;
     public void initialize(){
-        endsclabel.setText(PlayScreenController.GetScore());
+        endsclabel.setText((PlayScreenController.GetScore()));
     }
     public void Restart() throws IOException {
         StartScreenJFX.setRoot("StartScreen");
