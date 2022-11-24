@@ -1,5 +1,7 @@
 package Application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -8,13 +10,10 @@ import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -167,6 +166,13 @@ public class StartScreenController {
 
 
     public void SetupLeaderboard() throws IOException {
+        ObservableList<Data> data = GetData();
+        NameCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheNames"));
+        ScoreCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheScores"));
+        leaderboard.setItems(data);
+    }
+
+    public ObservableList<Data> GetData() throws IOException {
         File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
         FileInputStream fs = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(fs);
@@ -174,18 +180,18 @@ public class StartScreenController {
         DataFormatter formatter = new DataFormatter();
         Iterator<Row> rowIterator = sheet.iterator();
         rowIterator.next();
+        ObservableList<Data> names = FXCollections.observableArrayList();
         while (rowIterator.hasNext()) {
             Row row = rowIterator.next();
-            System.out.println(formatter.formatCellValue(row.getCell(0)));
-            System.out.println(formatter.formatCellValue(row.getCell(1)));
-
-
+            names.add(new Data(formatter.formatCellValue(row.getCell(0)),formatter.formatCellValue(row.getCell(1))));
         }
+        return names;
     }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
