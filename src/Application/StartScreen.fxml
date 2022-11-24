@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -98,5 +100,11 @@
       <Button fx:id="hard" layoutX="141.0" layoutY="320.0" mnemonicParsing="false" onAction="#SetHard" text="Hard" />
       <Label layoutX="15.0" layoutY="382.0" text="Check to enable bombs:" />
       <CheckBox fx:id="checkbomb" layoutX="249.0" layoutY="389.0" mnemonicParsing="false" />
+      <TableView fx:id="leaderboard" editable="true" layoutX="323.0" layoutY="264.0" prefHeight="284.0" prefWidth="267.0">
+        <columns>
+          <TableColumn fx:id="NameCol" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="ScoreCol" prefWidth="75.0" text="Score" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

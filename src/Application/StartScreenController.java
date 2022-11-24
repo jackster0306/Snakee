@@ -1,13 +1,24 @@
 package Application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 
 public class StartScreenController {
 
@@ -62,6 +73,18 @@ public class StartScreenController {
     @FXML
     private Label diff;
 
+    @FXML
+    private TableView leaderboard;
+
+    @FXML
+    private TableColumn NameCol;
+
+    @FXML
+    private TableColumn ScoreCol;
+
+    public void initialize() throws IOException {
+        SetupLeaderboard();
+    }
 
     public void SetRedSnake(){
         snakelabel.setStyle("-fx-text-fill: red;");
@@ -132,11 +155,7 @@ public class StartScreenController {
 
     @FXML
     private void PlayGame() throws IOException {
-        if(checkbomb.isSelected()){
-            bombs = true;
-        } else{
-            bombs = false;
-        }
+        bombs = checkbomb.isSelected();
         if(level == 1){
             StartScreenJFX.setRoot("PlayScreen");
         } else if (level == 2) {
@@ -145,4 +164,28 @@ public class StartScreenController {
             StartScreenJFX.setRoot("PlayScreenHard");
         }
     }
+
+
+    public void SetupLeaderboard() throws IOException {
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
+        FileInputStream fs = new FileInputStream(file);
+        XSSFWorkbook wb = new XSSFWorkbook(fs);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        DataFormatter formatter = new DataFormatter();
+        Iterator<Row> rowIterator = sheet.iterator();
+        rowIterator.next();
+        while (rowIterator.hasNext()) {
+            Row row = rowIterator.next();
+            System.out.println(formatter.formatCellValue(row.getCell(0)));
+            System.out.println(formatter.formatCellValue(row.getCell(1)));
+
+
+        }
+    }
+
+
+
+
+
+
 }

@@ -28,5 +28,10 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="commons-collections4-4.1" level="project" />
+    <orderEntry type="library" name="apache.poi.ooxml" level="project" />
+    <orderEntry type="library" name="apache.poi" level="project" />
+    <orderEntry type="library" name="apache.poi.ooxml.schemas" level="project" />
+    <orderEntry type="library" name="apache.xmlbeans" level="project" />
   </component>
 </module>

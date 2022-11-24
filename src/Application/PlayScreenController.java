@@ -145,9 +145,9 @@ public class PlayScreenController {
                         }
                     sclabnum.setText(Integer.toString(score));
                     if(direction == 0){
-                        SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY()+3);
+                        SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY()+2);
                     } else if (direction == 1) {
-                        SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY()-4);
+                        SetPositions(snakehead.getLayoutX()-2,snakehead.getLayoutY()-3);
                     } else if (direction == 2) {
                         SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY());
                     } else if (direction == 3) {
