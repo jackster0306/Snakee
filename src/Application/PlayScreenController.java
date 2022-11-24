@@ -75,6 +75,7 @@ public class PlayScreenController {
 
 
     public void initialize(){
+        gameticks = 0;
         score = 0;
         isbombs = StartScreenController.GetToBomb();
         difficulty = StartScreenController.GetDiff();

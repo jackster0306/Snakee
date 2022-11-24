@@ -1,5 +1,8 @@
 package Application;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.value.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 
+import javafx.util.Duration;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -20,7 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class StartScreenController {
-
+    ObservableList<String> tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
     private static boolean bombs = false;
 
     public static boolean GetToBomb(){
@@ -43,13 +47,20 @@ public class StartScreenController {
         return scorecol;
     }
 
-    static int speed = 5;
+    static int speed;
 
-    static int level = 1;
+    static int level;
 
     public static int GetDiff(){
         return level;
     }
+
+    private static String playername;
+
+    public static String GetPlayerName(){
+        return playername;
+    }
+
 
     @FXML
     private ImageView bgimg;
@@ -81,8 +92,37 @@ public class StartScreenController {
     @FXML
     private TableColumn ScoreCol;
 
+    @FXML
+    private ChoiceBox selecttable;
+
+    @FXML
+    private TextField name;
+
+    @FXML
+    private Label namelbl;
+
+
+    private static int chosen;
+
+    public static int GetChosen(){
+        return chosen;
+    }
+
     public void initialize() throws IOException {
-        SetupLeaderboard();
+        chosen = 0;
+        snakecol = "green";
+        selecttable.setItems(tablechoices);
+        level = 1;
+        speed = 5;
+        speedtf.setText("Change Speed (Enter to confirm)");
+        scorecol = "magenta";
+        selecttable.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
+            try {
+                SetupLeaderboard(newval.intValue());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void SetRedSnake(){
@@ -110,11 +150,13 @@ public class StartScreenController {
     public void SetMedium(){
         diff.setText("Medium");
         level = 2;
+        chosen += 1;
     }
 
     public void SetHard(){
         diff.setText("Hard");
         level = 3;
+        chosen += 2;
     }
 
     public void SkyImage(){
@@ -152,9 +194,14 @@ public class StartScreenController {
         scorecol = "yellow";
     }
 
+
+
     @FXML
     private void PlayGame() throws IOException {
+
         bombs = checkbomb.isSelected();
+        if(bombs)
+            chosen += 3;
         if(level == 1){
             StartScreenJFX.setRoot("PlayScreen");
         } else if (level == 2) {
@@ -164,19 +211,28 @@ public class StartScreenController {
         }
     }
 
+    public static ObservableList<Data> data;
 
-    public void SetupLeaderboard() throws IOException {
-        ObservableList<Data> data = GetData();
+    public static void AddData(Data d){
+        data.add(d);
+    }
+    public void SetupLeaderboard(int num) throws IOException {
+        data = GetData(num);
         NameCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheNames"));
         ScoreCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheScores"));
         leaderboard.setItems(data);
     }
 
-    public ObservableList<Data> GetData() throws IOException {
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
+    static File file;
+
+    public static File getFile(){
+        return file;
+    }
+    public ObservableList<Data> GetData(int num) throws IOException {
+        file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
         FileInputStream fs = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(fs);
-        XSSFSheet sheet = wb.getSheetAt(0);
+        XSSFSheet sheet = wb.getSheetAt(num);
         DataFormatter formatter = new DataFormatter();
         Iterator<Row> rowIterator = sheet.iterator();
         rowIterator.next();
@@ -185,7 +241,14 @@ public class StartScreenController {
             Row row = rowIterator.next();
             names.add(new Data(formatter.formatCellValue(row.getCell(0)),formatter.formatCellValue(row.getCell(1))));
         }
+        wb.close();
+        fs.close();
         return names;
+    }
+
+    public void SetName(){
+        playername = name.getText();
+        namelbl.setText(playername);
     }
 }
 

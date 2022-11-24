@@ -32,6 +32,5 @@
     <orderEntry type="library" name="apache.poi.ooxml" level="project" />
     <orderEntry type="library" name="apache.poi" level="project" />
     <orderEntry type="library" name="apache.poi.ooxml.schemas" level="project" />
-    <orderEntry type="library" name="apache.xmlbeans" level="project" />
   </component>
 </module>
