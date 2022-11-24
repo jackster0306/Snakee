@@ -27,8 +27,10 @@ public class Bomb {
     public void BombSpawn(){
         if(!bomb.isVisible()){
             Random rand = new Random();
-            int randx = rand.nextInt(((int)PlayScreenController.xbound)-(int)bomb.getFitWidth());
-            int randy = rand.nextInt(((int)PlayScreenController.ybound)-(int)bomb.getFitHeight());
+            double x = PlayScreenController.GetXBound();
+            double y = PlayScreenController.GetYBound();
+            int randx = rand.nextInt(((int)x)-(int)bomb.getFitWidth());
+            int randy = rand.nextInt(((int)y)-(int)bomb.getFitHeight());
             bomb.setLayoutX(randx);
             bomb.setLayoutY(randy);
             bomb.setVisible(true);

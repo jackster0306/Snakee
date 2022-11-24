@@ -19,9 +19,6 @@ import java.util.Map;
 import java.util.Random;
 
 public class PlayScreenController {
-    private static int score = 0;
-
-
     @FXML
     private Label sclab;
 
@@ -31,21 +28,17 @@ public class PlayScreenController {
     @FXML
     private Pane PlayPaneSky;
 
+    @FXML
+    Arc snakehead;
 
-
+    private static int score = 0;
     Food food;
-
-    int speed;
 
     int direction = 3;
 
     boolean alive = true;
 
-    public Timeline timeline;
-
-    public Timeline bombspawntl;
-
-    public Timeline bombdonetl;
+    public Timeline timeline, bombspawntl, bombdonetl;
 
     public Random rand = new Random();
 
@@ -58,20 +51,14 @@ public class PlayScreenController {
 
     public boolean newfood = false;
 
-    static double xbound;
-    static double ybound;
+    static double xbound, ybound;
 
     public boolean isbombs;
 
-    Bomb bomb;
+    Bomb bomb, bomb1, bomb2;
 
-    Bomb bomb1;
+    int bombspawn, difficulty, speed;
 
-    Bomb bomb2;
-
-    int bombspawn;
-
-    int difficulty;
 
     public static String GetScore() {
         return Integer.toString(score);
@@ -114,19 +101,13 @@ public class PlayScreenController {
         }
         snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
 
-        StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            KeyPressed(key);
-        });
+        StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         speed = StartScreenController.GetSpeed();
         timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0.03), e -> {
                     move();
                     if(newfood){
-                        Circle circ = new Circle(13);
-                        circ.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
-                        PlayPaneSky.getChildren().add(circ);
-                        snakebody.put(Integer.toString(snakebody.size()),circ);
-                        newfood = false;
+                        AddSnakeBody();
                     }
                     for(int i =0; i < snakebody.size(); i++){
                         moveSnakeBody(snakebody.get(Integer.toString(i)), i+1);
@@ -225,7 +206,13 @@ public class PlayScreenController {
     }
 
 
-
+    public void AddSnakeBody(){
+        Circle circ = new Circle(13);
+        circ.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
+        PlayPaneSky.getChildren().add(circ);
+        snakebody.put(Integer.toString(snakebody.size()),circ);
+        newfood = false;
+    }
     public void moveSnakeBody(Circle bodypart, int num){
         double x = xpositions.get(gameticks-((speed)*num));
         double y = ypositions.get(gameticks-((speed)*num));
@@ -237,8 +224,7 @@ public class PlayScreenController {
         timeline.stop();
         StartScreenJFX.setRoot("EndScreen");
     }
-    @FXML
-    Arc snakehead;
+
     @FXML
     void KeyPressed(KeyEvent e){
         KeyCode code = e.getCode();
