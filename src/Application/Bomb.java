@@ -8,24 +8,30 @@ import java.util.Random;
 public class Bomb {
     double xbound, ybound;
 
+    ImageView bomb;
 
 
 
-    public Bomb(double x, double y, Pane contpane) {
-        xbound = x;
-        ybound = y;
+
+    public Bomb(int x, int y, Pane contpane) {
+        bomb = new ImageView();
+        bomb.setImage(ImageUtil.images.get(18));
+        bomb.setLayoutX(x-bomb.getFitWidth());
+        bomb.setLayoutY(y-bomb.getFitHeight());
+        bomb.setFitWidth(50);
+        bomb.setFitHeight(50);
+        bomb.setVisible(false);
+        contpane.getChildren().add(bomb);
         }
 
-    public static void BombSpawn(ImageView img){
-        if(!img.isVisible()){
+    public void BombSpawn(){
+        if(!bomb.isVisible()){
             Random rand = new Random();
-            int randx = rand.nextInt(((int)PlayScreenController.xbound)-(int)img.getFitWidth());
-            int randy = rand.nextInt(((int)PlayScreenController.ybound)-(int)img.getFitHeight());
-            img.setLayoutX(randx);
-            img.setLayoutY(randy);
-            img.setVisible(true);
-
-
+            int randx = rand.nextInt(((int)PlayScreenController.xbound)-(int)bomb.getFitWidth());
+            int randy = rand.nextInt(((int)PlayScreenController.ybound)-(int)bomb.getFitHeight());
+            bomb.setLayoutX(randx);
+            bomb.setLayoutY(randy);
+            bomb.setVisible(true);
         /*
         int randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
         int randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
@@ -41,7 +47,11 @@ public class Bomb {
         img.setLayoutY(randy);
         img.setVisible(true);
          */
-
+        }
+    }
+    public void BombEnd(){
+        if(bomb.isVisible()){
+            bomb.setVisible(false);
         }
     }
 }

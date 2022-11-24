@@ -22,15 +22,12 @@ public class Food {
         food.setImage(ImageUtil.images.get(rand.nextInt(17)));
         food.setFitWidth(26);
         food.setFitHeight(36);
-        food.setLayoutX(500);
-        food.setLayoutY(100);
+        food.setLayoutX(x);
+        food.setLayoutY(y);
         food.setPreserveRatio(true);
         food.setSmooth(true);
-
         this.boundx = (PlayScreenController.GetXBound()) - food.getFitWidth();
         this.boundy = (PlayScreenController.GetYBound()) - food.getFitHeight();
-        System.out.println(boundx);
-        System.out.println((boundy));
         pane.getChildren().add(food);
 
     }

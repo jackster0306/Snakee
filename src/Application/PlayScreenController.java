@@ -31,14 +31,7 @@ public class PlayScreenController {
     @FXML
     private Pane PlayPaneSky;
 
-    @FXML
-    private ImageView bomb;
 
-    @FXML
-    private ImageView bomb1;
-
-    @FXML
-    private ImageView bomb2;
 
     Food food;
 
@@ -69,6 +62,12 @@ public class PlayScreenController {
     static double ybound;
 
     public boolean isbombs;
+
+    Bomb bomb;
+
+    Bomb bomb1;
+
+    Bomb bomb2;
 
     int bombspawn;
 
@@ -105,6 +104,9 @@ public class PlayScreenController {
             xbound = 420;
             ybound = 280;
         }
+        bomb = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
+        bomb1 = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
+        bomb2 = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         if(StartScreenController.GetBackground() == "cart"){
@@ -153,40 +155,22 @@ public class PlayScreenController {
                             }
                         }
                     }
-                    if(isbombs && bomb.isVisible()){
                         try {
-                            CheckBomb(bomb);
+                            CheckBomb(bomb.bomb);
+                            CheckBomb(bomb1.bomb);
+                            CheckBomb(bomb2.bomb);
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
-                        if(direction == 2){
-                            try {
-                                CheckBomb(bomb1);
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                        } else if(direction == 3){
-                            try {
-                                CheckBomb(bomb1);
-                                CheckBomb(bomb2);
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                        }
-                    }
                     sclabnum.setText(Integer.toString(score));
                     if(direction == 0){
-                        xpositions.put(gameticks, snakehead.getLayoutX());
-                        ypositions.put(gameticks, snakehead.getLayoutY()+3);
+                        SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY()+3);
                     } else if (direction == 1) {
-                        xpositions.put(gameticks, snakehead.getLayoutX());
-                        ypositions.put(gameticks, snakehead.getLayoutY()-4);
+                        SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY()-4);
                     } else if (direction == 2) {
-                        xpositions.put(gameticks, snakehead.getLayoutX()-1);
-                        ypositions.put(gameticks, snakehead.getLayoutY());
+                        SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY());
                     } else if (direction == 3) {
-                        xpositions.put(gameticks, snakehead.getLayoutX()-4);
-                        ypositions.put(gameticks, snakehead.getLayoutY());
+                        SetPositions(snakehead.getLayoutX()-4,snakehead.getLayoutY());
                     }
                     gameticks++;
                 })
@@ -196,59 +180,50 @@ public class PlayScreenController {
         timeline.play();
         food = new Food(rand.nextInt((int)xbound),rand.nextInt((int)ybound), PlayPaneSky);
 
-        if(isbombs){
-            bombspawntl = new Timeline(
-                    new KeyFrame(Duration.seconds(bombspawn), e -> {
-                        if(!bomb.isVisible()){
-                            Bomb.BombSpawn(bomb);
-                            if(difficulty == 2){
-                                Bomb.BombSpawn(bomb1);
-                            } else if(difficulty == 3){
-                                Bomb.BombSpawn(bomb1);
-                                Bomb.BombSpawn(bomb2);
-                            }
-                            bombdonetl.play();
-                            bombspawntl.stop();
+        bombspawntl = new Timeline(
+                new KeyFrame(Duration.seconds(bombspawn), e -> {
+                    if(isbombs){
+                        bomb.BombSpawn();
+                        if(difficulty == 2)
+                            bomb1.BombSpawn();
+                        else if(difficulty == 3){
+                            bomb1.BombSpawn();
+                            bomb2.BombSpawn();
                         }
-                    })
+
+                    }
+                })
             );
             bombspawntl.setCycleCount(Timeline.INDEFINITE);
             bombspawntl.play();
 
             bombdonetl = new Timeline(
                     new KeyFrame(Duration.seconds(15), e -> {
-                        if(bomb.isVisible()){
-                            BombEnd(bomb);
-                            if(difficulty == 2){
-                                BombEnd(bomb1);
-                            } else if(difficulty == 3){
-                                BombEnd(bomb1);
-                                BombEnd(bomb2);
-                            }
-                            bombspawntl.play();
-                            bombdonetl.stop();
-                        }
+                        bomb.BombEnd();
+                        bomb1.BombEnd();
+                        bomb2.BombEnd();
+                        bombspawntl.play();
+                        bombdonetl.stop();
                     })
             );
             bombdonetl.setCycleCount(Timeline.INDEFINITE);
         }
+
+    public void SetPositions(double x, double y){
+        xpositions.put(gameticks, x);
+        ypositions.put(gameticks, y);
     }
-
-
 
     public void CheckBomb(ImageView thebomb) throws IOException {
-        Bounds bombbound = thebomb.localToScene(thebomb.getBoundsInLocal());
-        Bounds snakebound = snakehead.sceneToLocal(bombbound);
-        if(snakehead.intersects(snakebound)){
-            ToEndScreen();
+        if(thebomb.isVisible()){
+            Bounds bombbound = thebomb.localToScene(thebomb.getBoundsInLocal());
+            Bounds snakebound = snakehead.sceneToLocal(bombbound);
+            if(snakehead.intersects(snakebound)){
+                ToEndScreen();
+            }
         }
     }
 
-    public void BombEnd(ImageView img){
-        if(img.isVisible()){
-            img.setVisible(false);
-        }
-    }
 
 
     public void moveSnakeBody(Circle bodypart, int num){
@@ -303,5 +278,4 @@ public class PlayScreenController {
             ToEndScreen();
         }
     }
-
 }
