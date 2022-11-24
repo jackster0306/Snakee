@@ -198,17 +198,24 @@ public class StartScreenController {
 
     @FXML
     private void PlayGame() throws IOException {
-
-        bombs = checkbomb.isSelected();
-        if(bombs)
-            chosen += 3;
-        if(level == 1){
-            StartScreenJFX.setRoot("PlayScreen");
-        } else if (level == 2) {
-            StartScreenJFX.setRoot("PlayScreenMedium");
-        } else if (level == 3) {
-            StartScreenJFX.setRoot("PlayScreenHard");
+        if(playername == null){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("You must enter a name");
+            a.show();
         }
+        else{
+            bombs = checkbomb.isSelected();
+            if(bombs)
+                chosen += 3;
+            if(level == 1){
+                StartScreenJFX.setRoot("PlayScreen");
+            } else if (level == 2) {
+                StartScreenJFX.setRoot("PlayScreenMedium");
+            } else if (level == 3) {
+                StartScreenJFX.setRoot("PlayScreenHard");
+            }
+        }
+
     }
 
     public static ObservableList<Data> data;
