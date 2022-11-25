@@ -237,11 +237,7 @@ public class PlayScreenController {
     public boolean CheckBounds(Node n){
         Bounds bound = n.getBoundsInLocal();
         Bounds snakebound = n.localToScene(bound);
-        if(snakehead.intersects(snakehead.sceneToLocal(snakebound))){
-            return true;
-        }
-        else
-            return false;
+        return snakehead.intersects(snakehead.sceneToLocal(snakebound));
     }
 
     public void AddSnakeBody(){

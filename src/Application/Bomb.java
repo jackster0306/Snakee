@@ -6,7 +6,6 @@ import javafx.scene.layout.Pane;
 import java.util.Random;
 
 public class Bomb {
-    double xbound, ybound;
 
     ImageView bomb;
 
@@ -34,21 +33,6 @@ public class Bomb {
             bomb.setLayoutX(randx);
             bomb.setLayoutY(randy);
             bomb.setVisible(true);
-        /*
-        int randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
-        int randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
-        double x = snakehead.getLayoutX();
-        double y = snakehead.getLayoutY();
-        while((randx >= (x-10) || randx <= (x+10)) && (randy >= (y-10) || randy <= (y+10))){
-            randx = rand.nextInt(((int)xbound)-(int)foodview.getFitWidth());
-            randy = rand.nextInt(((int)ybound)-(int)foodview.getFitHeight());
-            x = snakehead.getLayoutX();
-            y = snakehead.getLayoutY();
-        }
-        img.setLayoutX(randx);
-        img.setLayoutY(randy);
-        img.setVisible(true);
-         */
         }
     }
     public void BombEnd(){
