@@ -266,16 +266,16 @@ public class PlayScreenController {
     @FXML
     void KeyPressed(KeyEvent e){
         KeyCode code = e.getCode();
-        if(code.equals(KeyCode.UP) && direction != 1){
+        if((code.equals(KeyCode.UP) || code.equals(KeyCode.W))&& direction != 1){
             direction = 0;
             snakehead.setRotate(-90);
-        } else if (code.equals(KeyCode.DOWN) && direction != 0) {
+        } else if ((code.equals(KeyCode.DOWN) || code.equals(KeyCode.S)) && direction != 0) {
             direction = 1;
             snakehead.setRotate(90);
-        } else if (code.equals(KeyCode.LEFT)&& direction != 3) {
+        } else if ((code.equals(KeyCode.LEFT) || code.equals(KeyCode.A))&& direction != 3) {
             direction = 2;
             snakehead.setRotate(-180);
-        } else if (code.equals(KeyCode.RIGHT)&& direction != 2) {
+        } else if ((code.equals(KeyCode.RIGHT) || code.equals(KeyCode.D))&& direction != 2) {
             direction = 3;
             snakehead.setRotate(0);
         }
