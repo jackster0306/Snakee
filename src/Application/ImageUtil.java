@@ -28,5 +28,6 @@ public class ImageUtil {
         images.put(16, new Image("example/food-strawberry.png"));
         images.put(17, new Image("example/food-watermelon.png"));
         images.put(18, new Image("Application/skull_bomb_by_alishavolkman_daf7ku4.png"));
+        images.put(19, new Image("Application/brick-clipart-briks-10.png"));
     }
 }

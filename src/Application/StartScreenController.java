@@ -1,8 +1,5 @@
 package Application;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.value.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +13,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
 
-import javafx.util.Duration;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -108,7 +104,7 @@ public class StartScreenController {
         return chosen;
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
         chosen = 0;
         snakecol = "green";
         selecttable.setItems(tablechoices);
@@ -215,38 +211,25 @@ public class StartScreenController {
                 StartScreenJFX.setRoot("PlayScreenHard");
             }
         }
-
-    }
-
-    public static ObservableList<Data> data;
-
-    public static void AddData(Data d){
-        data.add(d);
     }
     public void SetupLeaderboard(int num) throws IOException {
-        data = GetData(num);
+        ObservableList<Data> data = GetData(num);
         NameCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheNames"));
         ScoreCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheScores"));
         leaderboard.setItems(data);
     }
-
-    static File file;
-
-    public static File getFile(){
-        return file;
-    }
     public ObservableList<Data> GetData(int num) throws IOException {
-        file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
         FileInputStream fs = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(fs);
         XSSFSheet sheet = wb.getSheetAt(num);
-        DataFormatter formatter = new DataFormatter();
-        Iterator<Row> rowIterator = sheet.iterator();
-        rowIterator.next();
+        DataFormatter df = new DataFormatter();
+        Iterator<Row> iterator = sheet.iterator();
+        iterator.next();
         ObservableList<Data> names = FXCollections.observableArrayList();
-        while (rowIterator.hasNext()) {
-            Row row = rowIterator.next();
-            names.add(new Data(formatter.formatCellValue(row.getCell(0)),formatter.formatCellValue(row.getCell(1))));
+        while (iterator.hasNext()) {
+            Row row = iterator.next();
+            names.add(new Data(df.formatCellValue(row.getCell(0)),df.formatCellValue(row.getCell(1))));
         }
         wb.close();
         fs.close();

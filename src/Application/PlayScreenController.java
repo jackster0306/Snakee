@@ -14,9 +14,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class PlayScreenController {
     @FXML
@@ -59,6 +57,10 @@ public class PlayScreenController {
 
     int bombspawn, difficulty, speed;
 
+    Wall wall;
+
+    boolean wallhit = false;
+
 
     public static String GetScore() {
         return Integer.toString(score);
@@ -72,9 +74,14 @@ public class PlayScreenController {
         return ybound;
     }
 
+    int wallticks;
 
+    Timeline walltl;
+
+    int hit = 0;
 
     public void initialize(){
+        wallticks = 0;
         gameticks = 0;
         score = 0;
         isbombs = StartScreenController.GetToBomb();
@@ -95,6 +102,7 @@ public class PlayScreenController {
         bomb = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
         bomb1 = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
         bomb2 = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
+        wall = new Wall(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         if(StartScreenController.GetBackground() == "cart"){
@@ -124,6 +132,18 @@ public class PlayScreenController {
                         score+=521;
                         food.MoveFood();
                         newfood = true;
+                    }
+
+                    Bounds wallbound = wall.wall.localToScene(wall.wall.getBoundsInLocal());
+                    Bounds snakebound = snakehead.sceneToLocal(wallbound);
+                    if (snakehead.intersects(snakebound)) {
+                        wall.removeWall();
+                        try {
+                            RemoveSnakeBody();
+                            wallhit = true;
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                     }
 
                     for(int i =1; i < snakebody.size(); i++){
@@ -189,6 +209,19 @@ public class PlayScreenController {
                     })
             );
             bombdonetl.setCycleCount(Timeline.INDEFINITE);
+
+        walltl = new Timeline(
+                new KeyFrame(Duration.seconds(20), e -> {
+                    if(hit != 0){
+                        wall = new Wall(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
+                    } else
+                        wall.moveWall();
+                    hit = 0;
+                    wallticks++;
+                })
+        );
+        walltl.setCycleCount(Timeline.INDEFINITE);
+        walltl.play();
         }
 
     public void SetPositions(double x, double y){
@@ -206,6 +239,16 @@ public class PlayScreenController {
         }
     }
 
+    public void RemoveSnakeBody() throws IOException {
+        if(hit == 0){
+            if(snakebody.size() == 0)
+                ToEndScreen();
+            PlayPaneSky.getChildren().remove(snakebody.get(Integer.toString(snakebody.size()-1)));
+            snakebody.remove(Integer.toString(snakebody.size()-1));
+            score -= 521;
+        }
+        hit = 1;
+    }
 
     public void AddSnakeBody(){
         Circle circ = new Circle(13);
