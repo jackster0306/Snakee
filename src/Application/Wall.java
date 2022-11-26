@@ -29,8 +29,8 @@ public class Wall {
     }
 
     public void moveWall(){
-        wall.setLayoutX(rand.nextInt((int)xbound)-wall.getFitWidth());
-        wall.setLayoutY(rand.nextInt((int)ybound)-wall.getFitHeight());
+        wall.setLayoutX(rand.nextInt((int)xbound)-wall.getFitWidth()-(wall.getFitWidth()/2));
+        wall.setLayoutY(rand.nextInt((int)ybound)-wall.getFitHeight()-(wall.getFitHeight()/2));
         if(wall.isDisable())
             wall.setDisable(false);
     }
