@@ -1,5 +1,7 @@
 package example;
 
+import Application.MusicPlayer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -16,6 +18,15 @@ import java.awt.event.KeyEvent;
 
 public class Play extends MyFrame
 {
+	private static Color scorecol = Color.MAGENTA;
+
+	public static void SetScoreColour(Color col){
+		scorecol = col;
+	}
+
+	public Color GetScoreColour(){
+		return scorecol;
+	}
 
 	private static final long m_Play_serialVersionUID = -3641221053272056036L;
 
@@ -41,7 +52,7 @@ public class Play extends MyFrame
 	 * Creates variable called background of type image
 	 * Gets the image 'UI-background' that is in the source folder
 	 */
-	public Image background = ImageUtil.m_ImageUtil_images.get("UI-background");
+	public Image background = ImageUtil.m_ImageUtil_images.get(JavaFx.GetBackground());
 
 	/**
 	 * Creates variable called fail of type Image for when the user fails the game
@@ -117,7 +128,7 @@ public class Play extends MyFrame
 		 * Displays the text 'SCORE : ' then the current score at the coordinates 20, 40 of the frame
 		 */
 		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-		g.setColor(Color.MAGENTA);
+		g.setColor(GetScoreColour());
 		g.drawString("SCORE : " + mySnake.score, 20, 40);
 	}
 
@@ -129,8 +140,9 @@ public class Play extends MyFrame
 	 */
 	public static void main(String[] args)
 	{
+		SetScoreColour(JavaFx.GetScoreColour());
 		new Play().LoadFrame();
-		MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
+		//MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
 
 	}
 /*	

@@ -3,7 +3,7 @@ package example;
 import java.awt.Graphics;
 import java.util.Random;
 
-public class Food extends MyFrame.SnakeObject
+public class Food extends SnakeObject
 {
 
 	private static final long m_Food_serialVersionUID = -3641221053272056036L;
@@ -49,7 +49,7 @@ public class Food extends MyFrame.SnakeObject
 	 * @param mySnake
 	 * This method is called when food has been 'Eaten' by the snake
 	 */
-	public void Eaten(MyFrame.MySnake mySnake)	{
+	public void Eaten(MySnake mySnake)	{
 
 		if (mySnake.GetRectangle().intersects(this.GetRectangle()) && l && mySnake.l)		{
 			this.l = false;

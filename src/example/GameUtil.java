@@ -58,8 +58,8 @@ public class GameUtil
 	 */
 	public static Image RotateImage(final BufferedImage bufferedImage, final int degree)
 	{
-		if (degree < 0 || degree > 360){
-			System.err.println("Degree must be between 0 and 360\n");
+		if (degree < -360 || degree > 360){
+			System.err.println("Degree must be between -360 and 360\n");
 			throw new IllegalArgumentException();
 		}
 		/**
