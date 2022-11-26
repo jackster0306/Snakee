@@ -1,14 +1,12 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import Application.MusicPlayer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-
-import example.*;
-
 public class MusicPlayerTests {
-    example.MusicPlayer mp;
+    MusicPlayer mp;
     @BeforeEach
     public void init(){
         mp = new MusicPlayer("src/example/frogger.mp3");

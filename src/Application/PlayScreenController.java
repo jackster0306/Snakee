@@ -82,6 +82,7 @@ public class PlayScreenController {
     boolean intersects;
 
     public void initialize(){
+        MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
         wallticks = 0;
         gameticks = 0;
         score = 0;
@@ -107,6 +108,13 @@ public class PlayScreenController {
 
         StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         speed = StartScreenController.GetSpeed();
+        MainTimeline();
+        food = new Food(rand.nextInt((int)xbound),rand.nextInt((int)ybound), PlayPaneSky);
+        BombTimelines();
+        WallTimeline();
+        }
+
+    public void MainTimeline(){
         timeline = new Timeline(new KeyFrame(Duration.seconds(0.03), e -> {
             move();
             if(newfood){
@@ -135,16 +143,7 @@ public class PlayScreenController {
                     throw new RuntimeException(ex);
                 }
             }
-            for(int i =1; i < snakebody.size(); i++){
-                intersects = CheckBounds(snakebody.get(Integer.toString(i)));
-                if(intersects){
-                    try {
-                        ToEndScreen();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-            }
+            SearchSnakeBody();
             try {
                 CheckBomb(bomb.bomb);
                 CheckBomb(bomb1.bomb);
@@ -166,8 +165,9 @@ public class PlayScreenController {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-        food = new Food(rand.nextInt((int)xbound),rand.nextInt((int)ybound), PlayPaneSky);
+    }
 
+    public void BombTimelines(){
         bombspawntl = new Timeline(new KeyFrame(Duration.seconds(bombspawn), e -> {
             if(isbombs){
                 bomb.BombSpawn();
@@ -191,6 +191,21 @@ public class PlayScreenController {
         })
         );
         bombdonetl.setCycleCount(Timeline.INDEFINITE);
+    }
+
+    public void SearchSnakeBody(){
+        for(int i =1; i < snakebody.size(); i++){
+            intersects = CheckBounds(snakebody.get(Integer.toString(i)));
+            if(intersects){
+                try {
+                    ToEndScreen();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        }
+    }
+    public void WallTimeline(){
         walltl = new Timeline(new KeyFrame(Duration.seconds(8), e -> {
             if(hit){
                 wall = new Wall(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
@@ -201,8 +216,7 @@ public class PlayScreenController {
         }));
         walltl.setCycleCount(Timeline.INDEFINITE);
         walltl.play();
-        }
-
+    }
     public void SetPositions(double x, double y){
         xpositions.put(gameticks, x);
         ypositions.put(gameticks, y);
