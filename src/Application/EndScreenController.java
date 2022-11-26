@@ -16,7 +16,7 @@ public class EndScreenController {
         endsclabel.setText((PlayScreenController.GetScore()));
 
 
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\SnakeeLeaderboard.xlsx");
 
         FileInputStream inputStream = new FileInputStream(file);
 

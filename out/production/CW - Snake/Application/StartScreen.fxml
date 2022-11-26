@@ -13,24 +13,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="SSPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.StartScreenController">
+<Pane fx:id="SSPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../Resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.StartScreenController">
    <children>
-      <Button fx:id="red" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetRed" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="red" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetRed" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="red" />
          </styleClass></Button>
-      <Button fx:id="magenta" layoutX="57.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetMagenta" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="magenta" layoutX="57.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetMagenta" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="magenta" />
          </styleClass></Button>
-      <Button fx:id="yellow" layoutX="95.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetYellow" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="yellow" layoutX="95.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetYellow" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="yellow" />
          </styleClass></Button>
-      <Button fx:id="green" layoutX="134.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetGreen" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="green" layoutX="134.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetGreen" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="green" />
@@ -39,23 +39,23 @@
       <Label layoutX="407.0" layoutY="24.0" text="Current Background:                 Change:" />
       <ImageView fx:id="bgimg" fitHeight="183.0" fitWidth="275.0" layoutX="405.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../example/UI-background.png" />
+            <Image url="@../Resources/UI-background.png" />
          </image>
       </ImageView>
       <Button fx:id="skybtn" layoutX="690.0" layoutY="65.0" mnemonicParsing="false" onAction="#SkyImage">
          <graphic>
             <ImageView fitHeight="78.0" fitWidth="129.0" preserveRatio="true" smooth="false">
                <image>
-                  <Image url="@../example/UI-background.png" />
+                  <Image url="@../Resources/UI-background.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="690.0" layoutY="162.0" mnemonicParsing="false" onAction="#CartImage" prefHeight="86.0" prefWidth="129.0" stylesheets="@../example/style.css">
+      <Button layoutX="690.0" layoutY="162.0" mnemonicParsing="false" onAction="#CartImage" prefHeight="86.0" prefWidth="129.0" stylesheets="@../Resources/style.css">
          <graphic>
             <ImageView fitHeight="79.0" fitWidth="117.0" preserveRatio="true" smooth="false">
                <image>
-                  <Image url="@../example/UI-background2.png" />
+                  <Image url="@../Resources/UI-background2.png" />
                </image>
             </ImageView>
          </graphic>
@@ -68,34 +68,34 @@
          </font>
       </Button>
       <Label fx:id="numspeed" layoutX="165.0" layoutY="110.0" text="5" />
-      <Button fx:id="redsnake" layoutX="22.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetRedSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="redsnake" layoutX="22.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetRedSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="red" />
          </styleClass>
       </Button>
-      <Button fx:id="magentasnake" layoutX="61.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetMagentaSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="magentasnake" layoutX="61.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetMagentaSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="magenta" />
          </styleClass>
       </Button>
-      <Button fx:id="yellowsnake" layoutX="99.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetYellowSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="yellowsnake" layoutX="99.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetYellowSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="yellow" />
          </styleClass>
       </Button>
-      <Button fx:id="greensnake" layoutX="138.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetGreenSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+      <Button fx:id="greensnake" layoutX="138.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetGreenSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../Resources/style.css">
          <styleClass>
             <String fx:value="ColBtns" />
             <String fx:value="green" />
          </styleClass>
       </Button>
-      <Label fx:id="snakelabel" layoutX="16.0" layoutY="190.0" stylesheets="@../example/style.css" text="Change Snake Colour: " />
+      <Label fx:id="snakelabel" layoutX="16.0" layoutY="190.0" stylesheets="@../Resources/style.css" text="Change Snake Colour: " />
       <Label layoutX="17.0" layoutY="280.0" text="Select Difficulty:" />
-      <Label layoutX="17.0" layoutY="354.0" styleClass="SmallLabel" stylesheets="@../example/style.css" text="Current: " />
-      <Label fx:id="diff" layoutX="75.0" layoutY="354.0" styleClass="SmallLabel" stylesheets="@../example/style.css" text="Easy" />
+      <Label layoutX="17.0" layoutY="354.0" styleClass="SmallLabel" stylesheets="@../Resources/style.css" text="Current: " />
+      <Label fx:id="diff" layoutX="75.0" layoutY="354.0" styleClass="SmallLabel" stylesheets="@../Resources/style.css" text="Easy" />
       <Button fx:id="easy" layoutX="15.0" layoutY="320.0" mnemonicParsing="false" onAction="#SetEasy" text="Easy" />
       <Button fx:id="med" layoutX="67.0" layoutY="320.0" mnemonicParsing="false" onAction="#SetMedium" text="Medium" />
       <Button fx:id="hard" layoutX="141.0" layoutY="320.0" mnemonicParsing="false" onAction="#SetHard" text="Hard" />

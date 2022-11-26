@@ -1,37 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Arc?>
 
-<Pane fx:id="PlayPaneSky" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.PlayScreenController">
+<Pane fx:id="PlayPaneSky" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../Resources/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.PlayScreenController">
    <children>
-      <Label fx:id="sclab" layoutX="14.0" layoutY="16.0" styleClass="ScLbl" stylesheets="@../example/style.css" text="Score: " />
-      <Label fx:id="sclabnum" layoutX="116.0" layoutY="16.0" styleClass="ScLbl" stylesheets="@../example/style.css" text="0" />
-      <Button fx:id="ToEnd" layoutX="330.0" layoutY="255.0" mnemonicParsing="false" onAction="#ToEndScreen" prefHeight="76.0" prefWidth="118.0" text="To End" visible="false" />
+      <Label fx:id="sclab" layoutX="14.0" layoutY="16.0" styleClass="ScLbl" stylesheets="@../Resources/style.css" text="Score: " />
+      <Label fx:id="sclabnum" layoutX="116.0" layoutY="16.0" styleClass="ScLbl" stylesheets="@../Resources/style.css" text="0" />
       <Arc fx:id="snakehead" fill="DODGERBLUE" layoutX="57.0" layoutY="105.0" length="270.0" radiusX="15.0" radiusY="13.0" smooth="false" startAngle="45.0" stroke="BLACK" strokeType="INSIDE" styleClass="Snake" type="ROUND" />
-      <ImageView fx:id="foodview" fitHeight="36.0" fitWidth="26.0" layoutX="541.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../example/food-apple.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="bomb" fitHeight="50.0" fitWidth="50.0" layoutX="280.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@skull_bomb_by_alishavolkman_daf7ku4.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="bomb1" fitHeight="50.0" fitWidth="50.0" layoutX="290.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@skull_bomb_by_alishavolkman_daf7ku4.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="bomb2" fitHeight="50.0" fitWidth="50.0" layoutX="300.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@skull_bomb_by_alishavolkman_daf7ku4.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>

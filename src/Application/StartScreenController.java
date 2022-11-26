@@ -1,5 +1,6 @@
 package Application;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,8 +27,8 @@ public class StartScreenController {
     public static boolean GetToBomb(){
         return bombs;
     }
-    Image skyimg = new Image("example/UI-background.png");
-    Image cartimg = new Image("example/UI-background2.png");
+    Image skyimg = new Image("Resources/UI-background.png");
+    Image cartimg = new Image("Resources/UI-background2.png");
 
     static String background;
 
@@ -219,7 +220,7 @@ public class StartScreenController {
         leaderboard.setItems(data);
     }
     public ObservableList<Data> GetData(int num) throws IOException {
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Application\\SnakeeLeaderboard.xlsx");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\SnakeeLeaderboard.xlsx");
         FileInputStream fs = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(fs);
         XSSFSheet sheet = wb.getSheetAt(num);

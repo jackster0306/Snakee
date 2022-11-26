@@ -21,7 +21,7 @@ public class GameUtilTests {
         Image i;
         @Test
         void ValidFilename(){
-            i = game.GetImage("example/snake-head-right.png");
+            i = game.GetImage("Resources/snake-head-right.png");
             assertNotNull(i);
         }
 

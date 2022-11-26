@@ -54,6 +54,7 @@ public class PlayScreenController {
 
     public boolean isbombs;
 
+
     Bomb bomb, bomb1, bomb2;
 
     int bombspawn, difficulty, speed;
@@ -82,7 +83,7 @@ public class PlayScreenController {
     boolean intersects;
 
     public void initialize(){
-        new MusicPlayer("src/example/frogger.mp3");
+        new MusicPlayer("src/Resources/frogger.mp3");
         wallticks = 0;
         gameticks = 0;
         score = 0;

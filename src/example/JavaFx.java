@@ -1,7 +1,6 @@
 package example;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,13 +11,12 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.*;
 
 
 import java.awt.*;
 
 public class JavaFx extends Application {
-    private static Image currimg = new Image("example/UI-background.png");
+    private static Image currimg = new Image("Resources/UI-background.png");
     public void SetCurrImg(Image img){
         currimg = img;
     }
@@ -133,7 +131,7 @@ public class JavaFx extends Application {
         VBox buttons = new VBox();
         buttons.getStyleClass().add("Vbox");
         Button sky = new Button();
-        Image skyimg = new Image("example/UI-background.png");
+        Image skyimg = new Image("Resources/UI-background.png");
         ImageView skyview = new ImageView(skyimg);
         skyview.setFitHeight(80);
         skyview.setPreserveRatio(true);
@@ -144,7 +142,7 @@ public class JavaFx extends Application {
         };
         sky.setOnAction(skyevent);
         Button cartoonsky = new Button();
-        Image cskyimg = new Image("example/UI-background2.png");
+        Image cskyimg = new Image("Resources/UI-background2.png");
         ImageView cskyview = new ImageView(cskyimg);
         cskyview.setFitHeight(80);
         cskyview.setPreserveRatio(true);
