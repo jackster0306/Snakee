@@ -178,6 +178,8 @@ public class PlayScreenController {
                     bomb1.BombSpawn();
                     bomb2.BombSpawn();
                 }
+                bombdonetl.play();
+                bombspawntl.stop();
             }
         })
         );
