@@ -142,7 +142,7 @@ public class Play extends MyFrame
 	{
 		SetScoreColour(JavaFx.GetScoreColour());
 		new Play().LoadFrame();
-		MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
+		//MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
 
 	}
 /*	

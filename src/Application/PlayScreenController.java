@@ -82,7 +82,7 @@ public class PlayScreenController {
     boolean intersects;
 
     public void initialize(){
-        MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
+        new MusicPlayer("src/example/frogger.mp3");
         wallticks = 0;
         gameticks = 0;
         score = 0;

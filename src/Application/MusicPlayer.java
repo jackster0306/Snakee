@@ -1,23 +1,18 @@
 package Application;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 
+import javafx.scene.media.MediaPlayer;
 import javazoom.jl.player.Player;
+
+import javafx.scene.media.Media;
 
 public class MusicPlayer extends Thread
 {
-	/**
-	 * Creates local variables filename and player
-	 */
-	private String filename;
-	public Player player;
-
-	public String GetFilename(){
-		return this.filename;
-	}
-
-
+	Media media = null;
+	MediaPlayer player;
 	/**
 	 * MusicPlayer method
 	 * Changes the local variable filename to the given filename when the method is called
@@ -25,52 +20,20 @@ public class MusicPlayer extends Thread
 	 */
 	public MusicPlayer(String filename)
 	{
-		this.filename = filename;
-	}
-
-
-	/**
-	 * Play Method
-	 * This plays the music file currently in the local variable filename
-	 */
-	public void Play()
-	{
-
-		new Thread()
-		{
+		media = new Media(new File(filename).toURI().toString());
+		player = new MediaPlayer(media);
+		Runnable loop = new Runnable() {
 			@Override
-			public void run()
-			{
-				super.run();
-				try
-				{
-					//BufferedInputStream buffer = new BufferedInputStream(new FileInputStream(filename));
-					//104 characters
-					player = new Player(new BufferedInputStream(new FileInputStream(filename)));
-					player.play();
-
-				} catch (Exception e)
-				{
-					System.out.println(e);
-				}
+			public void run() {
+				player.dispose();
+				player = new MediaPlayer(media);
+				player.play();
+				player.setOnEndOfMedia(this);
 			}
-		}.start();
+		};
+		player.setOnEndOfMedia(loop);
+		player.play();
 	}
 
 
-	/**
-	 * GetMusicPlay method
-	 * This method plays the music in the given file
-	 * @param filename
-	 */
-	public static void GetMusicPlay(String filename)
-	{
-		/**
-		 * GetMusicPlay method
-		 * This method plays the music in the given file
-		 * @param filename
-		 */
-		MusicPlayer m_MusicPlayer_musicPlayer = new MusicPlayer(filename);
-		m_MusicPlayer_musicPlayer.Play();
-	}
 }
