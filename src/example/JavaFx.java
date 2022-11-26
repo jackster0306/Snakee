@@ -63,7 +63,7 @@ public class JavaFx extends Application {
         //Setup of Main Stage
         stage.setTitle("Snakee");
         Pane tp = new Pane();
-        tp.setId("msvbox");
+        tp.setId("SSPane");
         Button start = new Button("Start");
         start.setId("startbutton");
         EventHandler<ActionEvent> startevent = e -> {
@@ -115,7 +115,6 @@ public class JavaFx extends Application {
         scoretp.getChildren().add(green);
         colvb.getChildren().add(scoretp);
         tp.getChildren().add(colvb);
-
 
 
 

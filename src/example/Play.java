@@ -1,5 +1,7 @@
 package example;
 
+import Application.MusicPlayer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -140,7 +142,7 @@ public class Play extends MyFrame
 	{
 		SetScoreColour(JavaFx.GetScoreColour());
 		new Play().LoadFrame();
-		MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
+		//MusicPlayer.GetMusicPlay("src/example/frogger.mp3");
 
 	}
 /*	

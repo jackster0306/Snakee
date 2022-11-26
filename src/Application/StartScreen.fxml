@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="SSPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../example/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.StartScreenController">
+   <children>
+      <Button fx:id="red" layoutX="18.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetRed" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="red" />
+         </styleClass></Button>
+      <Button fx:id="magenta" layoutX="57.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetMagenta" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="magenta" />
+         </styleClass></Button>
+      <Button fx:id="yellow" layoutX="95.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetYellow" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="yellow" />
+         </styleClass></Button>
+      <Button fx:id="green" layoutX="134.0" layoutY="65.0" mnemonicParsing="false" onAction="#SetGreen" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="green" />
+         </styleClass></Button>
+      <Label fx:id="scorelabel" layoutX="18.0" layoutY="18.0" text="Change Score Colour: " />
+      <Label layoutX="407.0" layoutY="24.0" text="Current Background:                 Change:" />
+      <ImageView fx:id="bgimg" fitHeight="183.0" fitWidth="275.0" layoutX="405.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../example/UI-background.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="skybtn" layoutX="690.0" layoutY="65.0" mnemonicParsing="false" onAction="#SkyImage">
+         <graphic>
+            <ImageView fitHeight="78.0" fitWidth="129.0" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@../example/UI-background.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="690.0" layoutY="162.0" mnemonicParsing="false" onAction="#CartImage" prefHeight="86.0" prefWidth="129.0" stylesheets="@../example/style.css">
+         <graphic>
+            <ImageView fitHeight="79.0" fitWidth="117.0" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@../example/UI-background2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="17.0" layoutY="110.0" text="Change Speed:" />
+      <TextField fx:id="speedtf" layoutX="17.0" layoutY="144.0" onAction="#SetSpeed" prefHeight="25.0" prefWidth="186.0" text="Change Speed (Enter to confirm)" />
+      <Button fx:id="startbtn" layoutX="225.0" layoutY="438.0" mnemonicParsing="false" onAction="#PlayGame" prefHeight="104.0" prefWidth="211.0" text="START">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="numspeed" layoutX="165.0" layoutY="110.0" text="5" />
+      <Button fx:id="redsnake" layoutX="22.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetRedSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="red" />
+         </styleClass>
+      </Button>
+      <Button fx:id="magentasnake" layoutX="61.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetMagentaSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="magenta" />
+         </styleClass>
+      </Button>
+      <Button fx:id="yellowsnake" layoutX="99.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetYellowSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="yellow" />
+         </styleClass>
+      </Button>
+      <Button fx:id="greensnake" layoutX="138.0" layoutY="235.0" mnemonicParsing="false" onAction="#SetGreenSnake" prefHeight="15.0" prefWidth="30.0" stylesheets="@../example/style.css">
+         <styleClass>
+            <String fx:value="ColBtns" />
+            <String fx:value="green" />
+         </styleClass>
+      </Button>
+      <Label fx:id="snakelabel" layoutX="16.0" layoutY="190.0" stylesheets="@../example/style.css" text="Change Snake Colour: " />
+      <Label layoutX="17.0" layoutY="280.0" text="Select Difficulty:" />
+      <Label layoutX="17.0" layoutY="354.0" styleClass="SmallLabel" stylesheets="@../example/style.css" text="Current: " />
+      <Label fx:id="diff" layoutX="75.0" layoutY="354.0" styleClass="SmallLabel" stylesheets="@../example/style.css" text="Easy" />
+      <Button fx:id="easy" layoutX="15.0" layoutY="320.0" mnemonicParsing="false" onAction="#SetEasy" text="Easy" />
+      <Button fx:id="med" layoutX="67.0" layoutY="320.0" mnemonicParsing="false" onAction="#SetMedium" text="Medium" />
+      <Button fx:id="hard" layoutX="141.0" layoutY="320.0" mnemonicParsing="false" onAction="#SetHard" text="Hard" />
+      <Label layoutX="15.0" layoutY="382.0" text="Check to enable bombs:" />
+      <CheckBox fx:id="checkbomb" layoutX="249.0" layoutY="389.0" mnemonicParsing="false" />
+      <TableView fx:id="leaderboard" editable="true" layoutX="483.0" layoutY="264.0" prefHeight="284.0" prefWidth="148.0">
+        <columns>
+          <TableColumn fx:id="NameCol" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="ScoreCol" prefWidth="75.0" text="Score" />
+        </columns>
+      </TableView>
+      <ChoiceBox fx:id="selecttable" layoutX="297.0" layoutY="303.0" prefWidth="150.0" />
+      <Label layoutX="282.0" layoutY="266.0" text="Select Leaderboard:" />
+      <Label layoutX="13.0" layoutY="435.0" prefHeight="30.0" prefWidth="148.0" text="Enter Name:" />
+      <TextField fx:id="name" layoutX="6.0" layoutY="465.0" onAction="#SetName" prefHeight="25.0" prefWidth="172.0" promptText="Name (Enter to confirm)" />
+      <Label layoutX="11.0" layoutY="503.0" styleClass="SmallLabel" text="Your name is:" />
+      <Label fx:id="namelbl" layoutX="104.0" layoutY="503.0" styleClass="SmallLabel" text="Name" />
+   </children>
+</Pane>
