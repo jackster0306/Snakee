@@ -113,5 +113,10 @@
       <TextField fx:id="name" layoutX="6.0" layoutY="465.0" onAction="#SetName" prefHeight="25.0" prefWidth="172.0" promptText="Name (Enter to confirm)" />
       <Label layoutX="11.0" layoutY="503.0" styleClass="SmallLabel" text="Your name is:" />
       <Label fx:id="namelbl" layoutX="104.0" layoutY="503.0" styleClass="SmallLabel" text="Name" />
+      <Button fx:id="rules" layoutX="266.0" layoutY="190.0" mnemonicParsing="false" onAction="#ShowRules" prefHeight="51.0" prefWidth="101.0" stylesheets="@../Resources/style.css" text="Rules">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

@@ -241,6 +241,10 @@ public class StartScreenController {
         playername = name.getText();
         namelbl.setText(playername);
     }
+
+    public void ShowRules() throws IOException {
+        StartScreenJFX.setRoot("RulesScreen");
+    }
 }
 
 
