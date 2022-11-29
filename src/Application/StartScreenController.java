@@ -20,15 +20,21 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
+
 public class StartScreenController {
-    ObservableList<String> tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
+    ObservableList<String> colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
+
+    ObservableList<String> difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
+
+    ObservableList<String> backgrounds = FXCollections.observableArrayList("Sky", "Cartoon Sky");
+
+    ObservableList<Integer> levels = FXCollections.observableArrayList(1, 2, 3);
     private static boolean bombs = false;
 
     public static boolean GetToBomb(){
         return bombs;
     }
-    Image skyimg = new Image("Resources/UI-background.png");
-    Image cartimg = new Image("Resources/UI-background2.png");
+
 
     static String background;
 
@@ -44,12 +50,14 @@ public class StartScreenController {
         return scorecol;
     }
 
-    static int speed;
+    static int speed = 5;
 
-    static int level;
+    static int diff = 1;
+
+    static int level = 1;
 
     public static int GetDiff(){
-        return level;
+        return diff;
     }
 
     private static String playername;
@@ -58,45 +66,35 @@ public class StartScreenController {
         return playername;
     }
 
+    @FXML
+    private ChoiceBox scorechoice;
 
     @FXML
-    private ImageView bgimg;
+    private ChoiceBox snakechoice;
 
     @FXML
-    private Label scorelabel;
+    private ChoiceBox diffchoice;
 
     @FXML
-    private Label numspeed;
+    private ChoiceBox bgchoice;
 
     @FXML
     private TextField speedtf;
 
-    @FXML
-    private Label snakelabel;
 
     @FXML
     private CheckBox checkbomb;
 
-    @FXML
-    private Label diff;
-
-    @FXML
-    private TableView leaderboard;
-
-    @FXML
-    private TableColumn NameCol;
-
-    @FXML
-    private TableColumn ScoreCol;
-
-    @FXML
-    private ChoiceBox selecttable;
 
     @FXML
     private TextField name;
 
     @FXML
-    private Label namelbl;
+    private ImageView bg;
+
+    @FXML
+    private ChoiceBox lvlchoice;
+
 
 
     private static int chosen;
@@ -107,91 +105,62 @@ public class StartScreenController {
 
     public void initialize() {
         chosen = 0;
-        snakecol = "green";
-        selecttable.setItems(tablechoices);
-        level = 1;
-        speed = 5;
-        speedtf.setText("Change Speed (Enter to confirm)");
-        scorecol = "magenta";
-        selecttable.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
-            try {
-                SetupLeaderboard(newval.intValue());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        scorechoice.setItems(colours);
+        snakechoice.setItems(colours);
+        diffchoice.setItems(difficulties);
+        lvlchoice.setItems(levels);
+        bgchoice.setItems(backgrounds);
+        scorechoice.setValue(scorecol);
+        snakechoice.setValue(snakecol);
+        lvlchoice.setValue(level);
+        diffchoice.setValue(diff);
+        diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
+             diff = newval.intValue() + 1;
+        });
+        scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
+            String col = CheckCol(newval.intValue());
+            scorecol = col;
+        });
+        snakechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
+            String col = CheckCol(newval.intValue());
+            snakecol = col;
+        });
+        bgchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
+            int i = newval.intValue();
+            if(i == 0){
+                background = "sky";
+                bg.setImage(new Image("Resources/UI-background.png"));
+            } else{
+                background = "cart";
+                bg.setImage(new Image("Resources/UI-background2.png"));
             }
+        });
+        lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
+            level = newval.intValue() + 1;
         });
     }
 
-    public void SetRedSnake(){
-        snakelabel.setStyle("-fx-text-fill: red;");
-        snakecol = "red";
-    }
-    public void SetGreenSnake(){
-        snakelabel.setStyle("-fx-text-fill: green;");
-        snakecol = "green";
-    }
-    public void SetMagentaSnake(){
-        snakelabel.setStyle("-fx-text-fill: magenta;");
-        snakecol = "magenta";
-    }
-    public void SetYellowSnake(){
-        snakelabel.setStyle("-fx-text-fill: yellow;");
-        snakecol = "yellow";
-    }
-
-    public void SetEasy(){
-        diff.setText("Easy");
-        level = 1;
-    }
-
-    public void SetMedium(){
-        diff.setText("Medium");
-        level = 2;
-        chosen += 1;
-    }
-
-    public void SetHard(){
-        diff.setText("Hard");
-        level = 3;
-        chosen += 2;
-    }
-
-    public void SkyImage(){
-        bgimg.setImage(skyimg);
-        background = "sky";
-    }
-
-    public void CartImage(){
-        bgimg.setImage(cartimg);
-        background = "cart";
+    public String CheckCol(int col){
+        if(col == 0){
+            return "red";
+        } else if(col == 1){
+            return "yellow";
+        } else if(col == 2){
+            return "magenta";
+        } else if(col == 3){
+            return "green";
+        } else{
+            return "orange";
+        }
     }
 
     public void SetSpeed(){
         speed = Integer.parseInt(speedtf.getText());
-        numspeed.setText(Integer.toString(speed));
     }
 
     public static int GetSpeed(){
         return speed;
     }
-    public void SetRed(){
-        scorelabel.setStyle("-fx-text-fill: red;");
-        scorecol = "red";
-    }
-    public void SetGreen(){
-        scorelabel.setStyle("-fx-text-fill: green;");
-        scorecol = "green";
-    }
-    public void SetMagenta(){
-        scorelabel.setStyle("-fx-text-fill: magenta;");
-        scorecol = "magenta";
-    }
-    public void SetYellow(){
-        scorelabel.setStyle("-fx-text-fill: yellow;");
-        scorecol = "yellow";
-    }
-
-
 
     @FXML
     private void PlayGame() throws IOException {
@@ -201,55 +170,30 @@ public class StartScreenController {
             a.show();
         }
         else{
+            speed = level*5;
             bombs = checkbomb.isSelected();
             if(bombs)
                 chosen += 3;
-            if(level == 1){
+            if(diff == 1){
                 StartScreenJFX.setRoot("PlayScreen");
-            } else if (level == 2) {
+            } else if (diff == 2) {
                 StartScreenJFX.setRoot("PlayScreenMedium");
-            } else if (level == 3) {
+            } else if (diff == 3) {
                 StartScreenJFX.setRoot("PlayScreenHard");
             }
         }
     }
-    public void SetupLeaderboard(int num) throws IOException {
-        ObservableList<Data> data = GetData(num);
-        NameCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheNames"));
-        ScoreCol.setCellValueFactory(new PropertyValueFactory<Data, String>("TheScores"));
-        leaderboard.setItems(data);
-    }
-    public ObservableList<Data> GetData(int num) throws IOException {
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\SnakeeLeaderboard.xlsx");
-        FileInputStream fs = new FileInputStream(file);
-        XSSFWorkbook wb = new XSSFWorkbook(fs);
-        XSSFSheet sheet = wb.getSheetAt(num);
-        DataFormatter df = new DataFormatter();
-        Iterator<Row> iterator = sheet.iterator();
-        iterator.next();
-        ObservableList<Data> names = FXCollections.observableArrayList();
-        while (iterator.hasNext()) {
-            Row row = iterator.next();
-            names.add(new Data(df.formatCellValue(row.getCell(0)),df.formatCellValue(row.getCell(1))));
-        }
-        wb.close();
-        fs.close();
-        return names;
-    }
+
 
     public void SetName(){
         playername = name.getText();
-        namelbl.setText(playername);
     }
 
     public void ShowRules() throws IOException {
         StartScreenJFX.setRoot("RulesScreen");
     }
+
+    public void ShowLeaderboard() throws IOException {
+        StartScreenJFX.setRoot("LeaderboardScreen");
+    }
 }
-
-
-
-
-
-
-

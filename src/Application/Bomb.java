@@ -9,9 +9,6 @@ public class Bomb {
 
     ImageView bomb;
 
-
-
-
     public Bomb(int x, int y, Pane contpane) {
         bomb = new ImageView();
         bomb.setImage(ImageUtil.images.get(18));

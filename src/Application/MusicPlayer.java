@@ -34,6 +34,4 @@ public class MusicPlayer extends Thread
 		player.setOnEndOfMedia(loop);
 		player.play();
 	}
-
-
 }

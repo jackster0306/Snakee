@@ -11,8 +11,6 @@ import java.io.IOException;
 public class StartScreenJFX extends Application {
     static Scene scene;
 
-
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -37,9 +35,12 @@ public class StartScreenJFX extends Application {
         } else if (fxml == "PlayScreen") {
             tstage.setHeight(560+37);
             tstage.setWidth(870+14);
-        } else{
+        } else if (fxml == "StartScreen"){
             tstage.setHeight(560+37);
             tstage.setWidth(870+14);
+        } else{
+            tstage.setHeight(406+37);
+            tstage.setWidth(400+14);
         }
     }
 

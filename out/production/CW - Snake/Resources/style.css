@@ -3,6 +3,10 @@
     -fx-background-size: cover;
 }
 
+#LeadPane{
+    -fx-background-image: url("wp3906260.jpg");
+}
+
 #RulePane{
     -fx-background-image: url("wp3906260.jpg");
 }

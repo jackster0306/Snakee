@@ -83,6 +83,8 @@ public class PlayScreenController {
     boolean intersects;
 
     public void initialize(){
+        System.out.println(StartScreenController.snakecol);
+        snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
         new MusicPlayer("src/Resources/frogger.mp3");
         wallticks = 0;
         gameticks = 0;
@@ -105,7 +107,7 @@ public class PlayScreenController {
         if(StartScreenController.GetBackground() == "cart"){
             PlayPaneSky.setId("PlayPaneCart");
         }
-        snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
+
 
         StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         speed = StartScreenController.GetSpeed();
