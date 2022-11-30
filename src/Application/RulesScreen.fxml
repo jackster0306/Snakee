@@ -28,6 +28,6 @@
             <Image url="@../Resources/skull_bomb_by_alishavolkman_daf7ku4.png" />
          </image>
       </ImageView>
-      <Button fx:id="BackBtn" layoutX="61.0" layoutY="372.0" mnemonicParsing="false" onAction="#Back" prefHeight="63.0" prefWidth="103.0" text="Back" />
+      <Button layoutX="61.0" layoutY="372.0" mnemonicParsing="false" onAction="#Back" prefHeight="63.0" prefWidth="103.0" text="Back" />
    </children>
 </Pane>

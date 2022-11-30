@@ -1,17 +1,15 @@
 package Application;
 
-import java.io.BufferedInputStream;
+
 import java.io.File;
-import java.io.FileInputStream;
 
 import javafx.scene.media.MediaPlayer;
-import javazoom.jl.player.Player;
 
 import javafx.scene.media.Media;
 
 public class MusicPlayer extends Thread
 {
-	Media media = null;
+	Media media;
 	MediaPlayer player;
 	/**
 	 * MusicPlayer method

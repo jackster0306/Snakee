@@ -5,19 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Iterator;
-
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 
@@ -78,9 +69,6 @@ public class StartScreenController {
     @FXML
     private ChoiceBox bgchoice;
 
-    @FXML
-    private TextField speedtf;
-
 
     @FXML
     private CheckBox checkbomb;
@@ -114,17 +102,9 @@ public class StartScreenController {
         snakechoice.setValue(snakecol);
         lvlchoice.setValue(level);
         diffchoice.setValue(diff);
-        diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
-             diff = newval.intValue() + 1;
-        });
-        scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
-            String col = CheckCol(newval.intValue());
-            scorecol = col;
-        });
-        snakechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
-            String col = CheckCol(newval.intValue());
-            snakecol = col;
-        });
+        diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> diff = newval.intValue() + 1);
+        scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> scorecol = CheckCol(newval.intValue()));
+        snakechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> snakecol = CheckCol(newval.intValue()));
         bgchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
             int i = newval.intValue();
             if(i == 0){
@@ -135,9 +115,7 @@ public class StartScreenController {
                 bg.setImage(new Image("Resources/UI-background2.png"));
             }
         });
-        lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
-            level = newval.intValue() + 1;
-        });
+        lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> level = newval.intValue() + 1);
     }
 
     public String CheckCol(int col){
@@ -152,10 +130,6 @@ public class StartScreenController {
         } else{
             return "orange";
         }
-    }
-
-    public void SetSpeed(){
-        speed = Integer.parseInt(speedtf.getText());
     }
 
     public static int GetSpeed(){
