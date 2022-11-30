@@ -35,12 +35,12 @@ public class StartScreenJFX extends Application {
         } else if (fxml == "PlayScreen") {
             tstage.setHeight(560+37);
             tstage.setWidth(870+14);
-        } else if (fxml == "StartScreen"){
-            tstage.setHeight(560+37);
-            tstage.setWidth(870+14);
-        } else{
+        } else if (fxml == "LeaderboardScreen"){
             tstage.setHeight(406+37);
             tstage.setWidth(400+14);
+        } else{
+            tstage.setHeight(560+37);
+            tstage.setWidth(870+14);
         }
     }
 
