@@ -82,7 +82,10 @@ public class PlayScreenController {
 
     boolean intersects;
 
+    double time = 0.3;
+
     public void initialize(){
+        time = StartScreenController.GetLevel();
         System.out.println(StartScreenController.snakecol);
         snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
         new MusicPlayer("src/Resources/frogger.mp3");
@@ -115,10 +118,10 @@ public class PlayScreenController {
         food = new Food(rand.nextInt((int)xbound),rand.nextInt((int)ybound), PlayPaneSky);
         BombTimelines();
         WallTimeline();
-        }
+    }
 
     public void MainTimeline(){
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.03), e -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(time), e -> {
             move();
             if(newfood){
                 AddSnakeBody();
@@ -154,6 +157,7 @@ public class PlayScreenController {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
+
             sclabnum.setText(Integer.toString(score));
             if(direction == 0){
                 SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY()+2);
@@ -266,9 +270,11 @@ public class PlayScreenController {
         snakebody.put(Integer.toString(snakebody.size()),circ);
         newfood = false;
     }
+    double x;
+    double y;
     public void moveSnakeBody(Circle bodypart, int num){
-        double x = xpositions.get(gameticks-((speed)*num));
-        double y = ypositions.get(gameticks-((speed)*num));
+        x = xpositions.get(gameticks-((speed)*num));
+        y = ypositions.get(gameticks-((speed)*num));
         bodypart.setLayoutX(x);
         bodypart.setLayoutY(y);
     }

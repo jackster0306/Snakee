@@ -170,7 +170,6 @@ public class StartScreenController {
             a.show();
         }
         else{
-            speed = level*5;
             bombs = checkbomb.isSelected();
             if(bombs)
                 chosen += 3;
@@ -181,6 +180,16 @@ public class StartScreenController {
             } else if (diff == 3) {
                 StartScreenJFX.setRoot("PlayScreenHard");
             }
+        }
+    }
+
+    public static double GetLevel(){
+        if(level == 1) {
+            return 0.03;
+        } else if(level == 2){
+            return 0.0175;
+        } else{
+            return 0.01;
         }
     }
 
