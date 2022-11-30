@@ -1,11 +1,10 @@
 package Application;
 
 
-import java.io.File;
-
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import javafx.scene.media.Media;
+import java.io.File;
 
 public class MusicPlayer extends Thread
 {

@@ -2,45 +2,35 @@ package Application;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class EndScreenController {
     @FXML
     private Label endsclabel;
+
+    String level;
+
+    String diffbomb;
     public void initialize() throws IOException {
         endsclabel.setText((PlayScreenController.GetScore()));
 
+        level = CheckLvl();
+        diffbomb = CheckDiffBomb();
 
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\SnakeeLeaderboard.xlsx");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+level+diffbomb+".txt");
 
-        FileInputStream inputStream = new FileInputStream(file);
-
-
-        Workbook wb = WorkbookFactory.create(inputStream);
-
-        Sheet sheet = wb.getSheetAt(StartScreenController.GetChosen());
-
-        int rownum = sheet.getLastRowNum() + 1;
-
-        Row row = sheet.createRow(rownum);
-
-        Cell cell = row.createCell(0);
-
-        cell.setCellValue(StartScreenController.GetPlayerName());
-
-        Cell cell2 = row.createCell(1);
-        cell2.setCellValue(Integer.parseInt(endsclabel.getText()));
-
-        FileOutputStream out = new FileOutputStream(file);
-        wb.write(out);
-
-        wb.close();
-        out.close();
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNext()){
+            scanner.next();
+        }
+        FileWriter writer = new FileWriter(file, true);
+        writer.write("\n");
+        writer.write(StartScreenController.GetPlayerName()+"          "+Integer.parseInt(endsclabel.getText())+"\n");
+        writer.close();
 
     }
     public void Restart() throws IOException {
@@ -49,5 +39,27 @@ public class EndScreenController {
 
     public void Exit(){
         System.exit(0);
+    }
+
+    public String CheckDiffBomb(){
+            int diff = StartScreenController.GetDiff();
+            boolean bombs = StartScreenController.GetToBomb();
+            if(diff == 1 && !bombs){
+                return "Easy";
+            } else if(diff == 2 && !bombs){
+                return "Med";
+            } else if(diff == 3 && !bombs){
+                return "Hard";
+            } else if(diff == 1){
+                return "EasyBombs";
+            } else if(diff == 2){
+                return "MedBombs";
+            } else{
+                return "HardBombs";
+            }
+    }
+
+    public String CheckLvl(){
+        return Integer.toString(StartScreenController.GetLevel());
     }
 }

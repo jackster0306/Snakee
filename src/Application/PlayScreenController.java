@@ -15,7 +15,9 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class PlayScreenController {
     @FXML
@@ -85,7 +87,7 @@ public class PlayScreenController {
     double time = 0.3;
 
     public void initialize(){
-        time = StartScreenController.GetLevel();
+        time = StartScreenController.GetSpeed();
         System.out.println(StartScreenController.snakecol);
         snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
         new MusicPlayer("src/Resources/frogger.mp3");
@@ -113,7 +115,7 @@ public class PlayScreenController {
 
 
         StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
-        speed = StartScreenController.GetSpeed();
+        speed = 5;
         MainTimeline();
         food = new Food(rand.nextInt((int)xbound),rand.nextInt((int)ybound), PlayPaneSky);
         BombTimelines();

@@ -4,7 +4,10 @@ package Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -132,10 +135,6 @@ public class StartScreenController {
         }
     }
 
-    public static int GetSpeed(){
-        return speed;
-    }
-
     @FXML
     private void PlayGame() throws IOException {
         if(playername == null){
@@ -157,7 +156,7 @@ public class StartScreenController {
         }
     }
 
-    public static double GetLevel(){
+    public static double GetSpeed(){
         if(level == 1) {
             return 0.03;
         } else if(level == 2){
@@ -165,6 +164,10 @@ public class StartScreenController {
         } else{
             return 0.01;
         }
+    }
+
+    public static int GetLevel(){
+        return level;
     }
 
 
