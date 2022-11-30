@@ -1,1 +1,6 @@
-Name          Score
+Lowest
+1000
+Highest
+3000
+Middle
+2000

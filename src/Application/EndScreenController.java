@@ -28,8 +28,7 @@ public class EndScreenController {
             scanner.next();
         }
         FileWriter writer = new FileWriter(file, true);
-        writer.write("\n");
-        writer.write(StartScreenController.GetPlayerName()+"          "+Integer.parseInt(endsclabel.getText())+"\n");
+        writer.write(StartScreenController.GetPlayerName()+"\n"+PlayScreenController.GetScore()+"\n");
         writer.close();
 
     }

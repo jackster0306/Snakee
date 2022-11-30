@@ -11,6 +11,8 @@ import javafx.scene.control.TextArea;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class LeaderboardController {
@@ -21,14 +23,6 @@ public class LeaderboardController {
     ObservableList<String> tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
     ObservableList<String> levels = FXCollections.observableArrayList("1", "2", "3");
 
-    @FXML
-    private TableView leaderboard;
-
-    @FXML
-    private TableColumn NameCol;
-
-    @FXML
-    private TableColumn ScoreCol;
 
     @FXML
     private ChoiceBox selecttable;
@@ -54,18 +48,59 @@ public class LeaderboardController {
         selecttable.setValue("No Bombs Easy");
     }
 
+    int list;
+
+    int i;
+    int j;
+
 
     public void SetupLeaderboard() {
+        list = 1;
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<Integer> scores = new ArrayList<>();
         textArea.clear();
+        textArea.appendText("Name        Score\n");
         File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+level+diffbomb+".txt");
-
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
-                textArea.appendText(scanner.nextLine());
-                textArea.appendText("\n");
+                if(list%2 == 0) {
+                    scores.add(Integer.parseInt(scanner.nextLine()));
+                } else{
+                    names.add(scanner.nextLine());
+                }
+                list++;
             }
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
+        }
+
+        SortLists(scores, names);
+
+        for(i = 0; i < scores.size(); i++){
+            textArea.appendText(names.get(i)+"     "+ scores.get(i) +"\n");
+        }
+
+
+    }
+
+    public void SortLists(ArrayList<Integer> scores, ArrayList<String> names){
+        for(i = 0; i < scores.size(); i++){
+            for(j = i; j < scores.size(); j++){
+                if(scores.get(j) > scores.get(i)){
+                    int smaller = scores.get(i);
+                    int larger = scores.get(j);
+                    scores.remove(i);
+                    scores.add(i,larger);
+                    scores.remove(j);
+                    scores.add(j, smaller);
+                    String smallst = names.get(i);
+                    String largerst = names.get(j);
+                    names.remove(i);
+                    names.add(i,largerst);
+                    names.remove(j);
+                    names.add(j, smallst);
+                }
+            }
         }
     }
     public void ToStartScreen() throws IOException {

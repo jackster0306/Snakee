@@ -10,11 +10,6 @@ public class MusicPlayer extends Thread
 {
 	Media media;
 	MediaPlayer player;
-	/**
-	 * MusicPlayer method
-	 * Changes the local variable filename to the given filename when the method is called
-	 * @param filename - the name of the file to be played
-	 */
 	public MusicPlayer(String filename)
 	{
 		media = new Media(new File(filename).toURI().toString());
