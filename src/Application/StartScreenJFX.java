@@ -36,8 +36,8 @@ public class StartScreenJFX extends Application {
             tstage.setHeight(560+37);
             tstage.setWidth(870+14);
         } else if (fxml == "LeaderboardScreen"){
-            tstage.setHeight(406+37);
-            tstage.setWidth(400+14);
+            tstage.setHeight(467+37);
+            tstage.setWidth(472+14);
         } else{
             tstage.setHeight(560+37);
             tstage.setWidth(870+14);

@@ -4,15 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class LeaderboardController {
@@ -31,7 +28,10 @@ public class LeaderboardController {
     private ChoiceBox lvlchoice;
 
     @FXML
-    private TextArea textArea;
+    private TextArea NamesArea;
+
+    @FXML
+    private TextArea ScoresArea;
 
     public void initialize(){
         selecttable.setItems(tablechoices);
@@ -58,8 +58,10 @@ public class LeaderboardController {
         list = 1;
         ArrayList<String> names = new ArrayList<>();
         ArrayList<Integer> scores = new ArrayList<>();
-        textArea.clear();
-        textArea.appendText("Name        Score\n");
+        NamesArea.clear();
+        NamesArea.appendText("Name\n");
+        ScoresArea.clear();
+        ScoresArea.appendText("Score\n");
         File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+level+diffbomb+".txt");
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
@@ -77,7 +79,8 @@ public class LeaderboardController {
         SortLists(scores, names);
 
         for(i = 0; i < scores.size(); i++){
-            textArea.appendText(names.get(i)+"     "+ scores.get(i) +"\n");
+            NamesArea.appendText(names.get(i)+"\n\n");
+            ScoresArea.appendText(scores.get(i)+"\n\n");
         }
 
 

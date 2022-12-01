@@ -100,4 +100,13 @@
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 1,1,1,1 );
 }
 
+.textArea{
+    -fx-font-size: 20px;
+    -fx-text-fill: "white";
+}
+
+.textArea .content {
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
 
