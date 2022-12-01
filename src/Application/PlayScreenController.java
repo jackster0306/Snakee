@@ -90,6 +90,7 @@ public class PlayScreenController {
     double time = 0.3;
 
     public void initialize(){
+        PlayPaneSky.setId(StartScreenController.GetBackground());
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
         time = StartScreenController.GetSpeed();
         System.out.println(StartScreenController.snakecol);
@@ -113,10 +114,6 @@ public class PlayScreenController {
         wall = new Wall(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
-        if(StartScreenController.GetBackground() == "cart"){
-            PlayPaneSky.setId("PlayPaneCart");
-        }
-
 
         StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         speed = 5;

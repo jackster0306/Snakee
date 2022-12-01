@@ -81,9 +81,6 @@ public class StartScreenController {
     private TextField name;
 
     @FXML
-    private ImageView bg;
-
-    @FXML
     private ChoiceBox lvlchoice;
 
 
@@ -96,26 +93,20 @@ public class StartScreenController {
 
     public void initialize() {
         chosen = 0;
-        scorechoice.setItems(colours);
-        snakechoice.setItems(colours);
-        diffchoice.setItems(difficulties);
-        lvlchoice.setItems(levels);
-        bgchoice.setItems(backgrounds);
-        scorechoice.setValue(scorecol);
-        snakechoice.setValue(snakecol);
-        lvlchoice.setValue(level);
-        diffchoice.setValue(diff);
+        SetChoiceBox(scorechoice, colours, "Score Colour");
+        SetChoiceBox(snakechoice, colours, "Snake Colour");
+        SetChoiceBox(diffchoice, difficulties, "Difficulty");
+        SetChoiceBox(lvlchoice, levels, "Level");
+        SetChoiceBox(bgchoice, backgrounds, "Theme");
         diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> diff = newval.intValue() + 1);
         scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> scorecol = CheckCol(newval.intValue()));
         snakechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> snakecol = CheckCol(newval.intValue()));
         bgchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
             int i = newval.intValue();
             if(i == 0){
-                background = "sky";
-                bg.setImage(new Image("Resources/UI-background.png"));
+                background = "PlayPaneSky";
             } else{
-                background = "cart";
-                bg.setImage(new Image("Resources/UI-background2.png"));
+                background = "PlayPaneCart";
             }
         });
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> level = newval.intValue() + 1);
@@ -181,5 +172,10 @@ public class StartScreenController {
 
     public void ShowLeaderboard() throws IOException {
         StartScreenJFX.setRoot("LeaderboardScreen");
+    }
+
+    public void SetChoiceBox(ChoiceBox cb,ObservableList ol, String st){
+        cb.setItems(ol);
+        cb.setValue(st);
     }
 }
