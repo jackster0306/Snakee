@@ -30,7 +30,7 @@ public class StartScreenController {
     }
 
 
-    static String background;
+    static String background = "PlayPaneSky";
 
     public static String GetBackground(){
         return background;
