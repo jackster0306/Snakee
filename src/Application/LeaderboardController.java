@@ -78,9 +78,15 @@ public class LeaderboardController {
 
         SortLists(scores, names);
 
-        for(i = 0; i < scores.size(); i++){
-            NamesArea.appendText(names.get(i)+"\n\n");
-            ScoresArea.appendText(scores.get(i)+"\n\n");
+        for(i = 0; i < 4; i++){
+            if(i == 3){
+                NamesArea.appendText(names.get(i));
+                ScoresArea.appendText(Integer.toString(scores.get(i)));
+            } else{
+                NamesArea.appendText(names.get(i)+"\n\n");
+                ScoresArea.appendText(scores.get(i)+"\n\n");
+            }
+
         }
 
 

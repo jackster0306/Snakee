@@ -32,6 +32,9 @@ public class PlayScreenController {
     @FXML
     Arc snakehead;
 
+    @FXML
+    private Label NameLabel;
+
     private static int score = 0;
     Food food;
 
@@ -87,6 +90,7 @@ public class PlayScreenController {
     double time = 0.3;
 
     public void initialize(){
+        NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
         time = StartScreenController.GetSpeed();
         System.out.println(StartScreenController.snakecol);
         snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");

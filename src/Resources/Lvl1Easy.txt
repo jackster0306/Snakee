@@ -4,3 +4,5 @@ Highest
 3000
 Middle
 2000
+Jack
+1042
