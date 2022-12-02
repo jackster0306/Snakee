@@ -38,7 +38,7 @@ public class StartScreenController {
 
     ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
 
-    ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Sky", "Cartoon Sky");
+    ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Sky", "Cartoon Sky", "Football");
 
     ObservableList<Integer> m_levels = FXCollections.observableArrayList(1, 2, 3);
     private static boolean m_bombs = false;
@@ -75,15 +75,24 @@ public class StartScreenController {
     public static String GetPlayerName(){
         return m_playername;
     }
-
-
-
-
+    public static String m_foodimg;
+    public static String m_wallimg;
+    public static String m_bombimg;
 
     private static int m_chosen;
 
     public static int GetChosen(){
         return m_chosen;
+    }
+
+    public static String GetFoodImg(){
+        return m_foodimg;
+    }
+    public static String GetWallImg(){
+        return m_wallimg;
+    }
+    public static String GetBombImg(){
+        return m_bombimg;
     }
 
     public void initialize() {
@@ -102,8 +111,13 @@ public class StartScreenController {
             int i = newval.intValue();
             if(i == 0){
                 m_background = "PlayPaneSky";
-            } else{
+            } else if(i == 1){
                 m_background = "PlayPaneCart";
+            } else{
+                m_background = "PlayPaneFootball";
+                m_wallimg = "Resources/yellowcard.png";
+                m_bombimg = "Resources/redcard.png";
+                m_foodimg = "Resources/football.png";
             }
         });
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);

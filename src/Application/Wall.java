@@ -1,5 +1,6 @@
 package Application;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -14,12 +15,12 @@ public class Wall {
     Random m_rand = new Random();
 
 
-    public Wall(double x, double y, Pane pane) {
+    public Wall(double x, double y, Pane pane, Image img) {
         this.m_pane = pane;
         m_wall = new ImageView();
         m_wall.setFitWidth(50);
         m_wall.setFitHeight(70);
-        m_wall.setImage(ImageUtil.m_images.get(19));
+        m_wall.setImage(img);
         m_wall.setLayoutX(x);
         m_wall.setLayoutY(y);
         m_wall.setVisible(true);

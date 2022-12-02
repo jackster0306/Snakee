@@ -1,6 +1,6 @@
 .Pane{
-    -fx-background-repeat: stretch;
     -fx-background-size: cover;
+    -fx-background-position: center;
 }
 
 #LeadPane{
@@ -25,6 +25,10 @@
 
 #PlayPaneCart{
     -fx-background-image: url("UI-background2.png");
+}
+
+#PlayPaneFootball{
+    -fx-background-image: url("footballpitch.png");
 }
 
 .ColBtns{

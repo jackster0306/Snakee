@@ -1,5 +1,6 @@
 package Application;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -9,9 +10,9 @@ public class Bomb {
 
     ImageView m_bomb;
 
-    public Bomb(int x, int y, Pane contpane) {
+    public Bomb(int x, int y, Pane contpane, Image img) {
         m_bomb = new ImageView();
-        m_bomb.setImage(ImageUtil.m_images.get(18));
+        m_bomb.setImage(img);
         m_bomb.setLayoutX(x- m_bomb.getFitWidth());
         m_bomb.setLayoutY(y- m_bomb.getFitHeight());
         m_bomb.setFitWidth(50);

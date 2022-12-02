@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -76,6 +77,8 @@ public class PlayScreenController {
 
     double m_time = 0.3;
 
+    Image m_wallimg;
+
     public static String GetScore() {
         return Integer.toString(m_score);
     }
@@ -88,7 +91,11 @@ public class PlayScreenController {
         return m_ybound;
     }
 
+
     public void initialize(){
+        Image foodimg = new Image(StartScreenController.GetFoodImg());
+        m_wallimg = new Image(StartScreenController.GetWallImg());
+        Image bombimg = new Image(StartScreenController.GetBombImg());
         PlayPaneSky.setId(StartScreenController.GetBackground());
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
         m_time = StartScreenController.GetSpeed();
@@ -106,16 +113,16 @@ public class PlayScreenController {
         } else if (m_difficulty == 3) {
             SetVariables(420,280,5);
         }
-        m_bomb = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
-        m_bomb1 = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
-        m_bomb2 = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
-        m_wall = new Wall(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
+        m_bomb = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky, bombimg);
+        m_bomb1 = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky, bombimg);
+        m_bomb2 = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky, bombimg);
+        m_wall = new Wall(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky, m_wallimg);
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         StartScreenJFX.m_scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         m_speed = 5;
         MainTimeline();
-        m_food = new Food(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
+        m_food = new Food(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky, foodimg);
         BombTimelines();
         WallTimeline();
     }
@@ -216,7 +223,7 @@ public class PlayScreenController {
     public void WallTimeline(){
         m_walltl = new Timeline(new KeyFrame(Duration.seconds(8), e -> {
             if(m_hit){
-                m_wall = new Wall(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
+                m_wall = new Wall(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky, m_wallimg);
             } else
                 m_wall.moveWall();
             m_hit = false;

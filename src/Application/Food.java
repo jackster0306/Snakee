@@ -1,5 +1,6 @@
 package Application;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -8,12 +9,15 @@ import java.util.Random;
 public class Food {
     ImageView m_food;
 
+    Image m_img;
+
     double m_boundx, m_boundy;
 
     Random m_rand = new Random();
-    public Food(double x, double y, Pane contpane) {
+    public Food(double x, double y, Pane contpane, Image img) {
+        m_img = img;
         m_food = new ImageView();
-        m_food.setImage(ImageUtil.m_images.get(m_rand.nextInt(17)));
+        m_food.setImage(m_img);
         m_food.setFitWidth(26);
         m_food.setFitHeight(36);
         m_food.setLayoutX(x);
@@ -29,6 +33,6 @@ public class Food {
     public void MoveFood(){
         m_food.setLayoutX(m_rand.nextInt((int) m_boundx));
         m_food.setLayoutY(m_rand.nextInt((int) m_boundy));
-        m_food.setImage(ImageUtil.m_images.get(m_rand.nextInt(17)));
+        m_food.setImage(m_img);
     }
 }
