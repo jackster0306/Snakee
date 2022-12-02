@@ -35,117 +35,114 @@ public class PlayScreenController {
     @FXML
     private Label NameLabel;
 
-    private static int score = 0;
-    Food food;
+    private static int m_score = 0;
+    Food m_food;
 
-    int direction = 3;
+    int m_direction = 3;
 
-    boolean alive = true;
+    boolean m_alive = true;
 
-    public Timeline timeline, bombspawntl, bombdonetl;
+    public Timeline m_timeline, m_bombspawntl, m_bombdonetl;
 
-    public Random rand = new Random();
+    public Random m_rand = new Random();
 
-    Map<String, Circle> snakebody = new HashMap<>();
+    Map<String, Circle> m_snakebody = new HashMap<>();
 
-    Map<Integer, Double> xpositions = new HashMap<>();
-    Map<Integer, Double> ypositions = new HashMap<>();
+    Map<Integer, Double> m_xpositions = new HashMap<>();
+    Map<Integer, Double> m_ypositions = new HashMap<>();
 
-    int gameticks = 0;
+    int m_gameticks = 0;
 
-    public boolean newfood = false;
+    public boolean m_newfood = false;
 
-    static double xbound, ybound;
+    static double m_xbound, m_ybound;
 
-    public boolean isbombs;
+    public boolean m_isbombs;
 
 
-    Bomb bomb, bomb1, bomb2;
+    Bomb m_bomb, m_bomb1, m_bomb2;
 
-    int bombspawn, difficulty, speed;
+    int m_bombspawn, m_difficulty, m_speed;
 
-    Wall wall;
+    Wall m_wall;
 
+    int m_wallticks;
+
+    Timeline m_walltl;
+
+    boolean m_hit = false;
+
+    boolean m_intersects;
+
+    double m_time = 0.3;
 
     public static String GetScore() {
-        return Integer.toString(score);
+        return Integer.toString(m_score);
     }
 
     public static Double GetXBound(){
-        return xbound;
+        return m_xbound;
     }
 
     public static Double GetYBound(){
-        return ybound;
+        return m_ybound;
     }
-
-    int wallticks;
-
-    Timeline walltl;
-
-    boolean hit = false;
-
-    boolean intersects;
-
-    double time = 0.3;
 
     public void initialize(){
         PlayPaneSky.setId(StartScreenController.GetBackground());
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
-        time = StartScreenController.GetSpeed();
-        System.out.println(StartScreenController.snakecol);
-        snakehead.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
+        m_time = StartScreenController.GetSpeed();
+        snakehead.setStyle("-fx-fill: "+StartScreenController.m_snakecol +";");
         new MusicPlayer("src/Resources/frogger.mp3");
-        wallticks = 0;
-        gameticks = 0;
-        score = 0;
-        isbombs = StartScreenController.GetToBomb();
-        difficulty = StartScreenController.GetDiff();
-        if(difficulty == 1){
+        m_wallticks = 0;
+        m_gameticks = 0;
+        m_score = 0;
+        m_isbombs = StartScreenController.GetToBomb();
+        m_difficulty = StartScreenController.GetDiff();
+        if(m_difficulty == 1){
             SetVariables(870,560,14);
-        } else if (difficulty == 2) {
+        } else if (m_difficulty == 2) {
             SetVariables(550,400,9);
-        } else if (difficulty == 3) {
+        } else if (m_difficulty == 3) {
             SetVariables(420,280,5);
         }
-        bomb = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
-        bomb1 = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
-        bomb2 = new Bomb(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
-        wall = new Wall(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
+        m_bomb = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
+        m_bomb1 = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
+        m_bomb2 = new Bomb(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
+        m_wall = new Wall(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
-
-        StartScreenJFX.scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
-        speed = 5;
+        StartScreenJFX.m_scene.addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
+        m_speed = 5;
         MainTimeline();
-        food = new Food(rand.nextInt((int)xbound),rand.nextInt((int)ybound), PlayPaneSky);
+        m_food = new Food(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
         BombTimelines();
         WallTimeline();
     }
 
     public void MainTimeline(){
-        timeline = new Timeline(new KeyFrame(Duration.seconds(time), e -> {
+        m_timeline = new Timeline(new KeyFrame(Duration.seconds(m_time), e -> {
             move();
-            if(newfood){
+            if(m_newfood){
                 AddSnakeBody();
             }
-            for(int i =0; i < snakebody.size(); i++){
-                moveSnakeBody(snakebody.get(Integer.toString(i)), i+1);
+            for(int i = 0; i < m_snakebody.size(); i++){
+                moveSnakeBody(m_snakebody.get(Integer.toString(i)), i+1);
             }
             try {
                 outofBounds();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            intersects = CheckBounds(food.food);
-            if (intersects) {
-                score+=521;
-                food.MoveFood();
-                newfood = true;
+            m_intersects = CheckBounds(m_food.m_food);
+            if (m_intersects) {
+                m_score +=521;
+                m_food.MoveFood();
+                m_newfood = true;
             }
-            intersects = CheckBounds(wall.wall);
-            if (intersects) {
-                wall.removeWall();
+            m_intersects = CheckBounds(m_wall.m_wall);
+            if (m_intersects) {
+                m_wall.removeWall();
                 try {
                     RemoveSnakeBody();
                 } catch (IOException ex) {
@@ -154,61 +151,60 @@ public class PlayScreenController {
             }
             SearchSnakeBody();
             try {
-                CheckBomb(bomb.bomb);
-                CheckBomb(bomb1.bomb);
-                CheckBomb(bomb2.bomb);
+                CheckBomb(m_bomb.m_bomb);
+                CheckBomb(m_bomb1.m_bomb);
+                CheckBomb(m_bomb2.m_bomb);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-
-            sclabnum.setText(Integer.toString(score));
-            if(direction == 0){
+            sclabnum.setText(Integer.toString(m_score));
+            if(m_direction == 0){
                 SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY()+2);
-            } else if (direction == 1) {
+            } else if (m_direction == 1) {
                 SetPositions(snakehead.getLayoutX()-2,snakehead.getLayoutY()-3);
-            } else if (direction == 2) {
+            } else if (m_direction == 2) {
                 SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY());
-            } else if (direction == 3) {
+            } else if (m_direction == 3) {
                 SetPositions(snakehead.getLayoutX()-4,snakehead.getLayoutY());
             }
-            gameticks++;
+            m_gameticks++;
         }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        m_timeline.setCycleCount(Timeline.INDEFINITE);
+        m_timeline.play();
     }
 
     public void BombTimelines(){
-        bombspawntl = new Timeline(new KeyFrame(Duration.seconds(bombspawn), e -> {
-            if(isbombs){
-                bomb.BombSpawn();
-                if(difficulty == 2)
-                    bomb1.BombSpawn();
-                else if(difficulty == 3){
-                    bomb1.BombSpawn();
-                    bomb2.BombSpawn();
+        m_bombspawntl = new Timeline(new KeyFrame(Duration.seconds(m_bombspawn), e -> {
+            if(m_isbombs){
+                m_bomb.BombSpawn();
+                if(m_difficulty == 2)
+                    m_bomb1.BombSpawn();
+                else if(m_difficulty == 3){
+                    m_bomb1.BombSpawn();
+                    m_bomb2.BombSpawn();
                 }
-                bombdonetl.play();
-                bombspawntl.stop();
+                m_bombdonetl.play();
+                m_bombspawntl.stop();
             }
         })
         );
-        bombspawntl.setCycleCount(Timeline.INDEFINITE);
-        bombspawntl.play();
-        bombdonetl = new Timeline(new KeyFrame(Duration.seconds(15), e -> {
-            bomb.BombEnd();
-            bomb1.BombEnd();
-            bomb2.BombEnd();
-            bombspawntl.play();
-            bombdonetl.stop();
+        m_bombspawntl.setCycleCount(Timeline.INDEFINITE);
+        m_bombspawntl.play();
+        m_bombdonetl = new Timeline(new KeyFrame(Duration.seconds(15), e -> {
+            m_bomb.BombEnd();
+            m_bomb1.BombEnd();
+            m_bomb2.BombEnd();
+            m_bombspawntl.play();
+            m_bombdonetl.stop();
         })
         );
-        bombdonetl.setCycleCount(Timeline.INDEFINITE);
+        m_bombdonetl.setCycleCount(Timeline.INDEFINITE);
     }
 
     public void SearchSnakeBody(){
-        for(int i =1; i < snakebody.size(); i++){
-            intersects = CheckBounds(snakebody.get(Integer.toString(i)));
-            if(intersects){
+        for(int i = 1; i < m_snakebody.size(); i++){
+            m_intersects = CheckBounds(m_snakebody.get(Integer.toString(i)));
+            if(m_intersects){
                 try {
                     ToEndScreen();
                 } catch (IOException ex) {
@@ -218,46 +214,46 @@ public class PlayScreenController {
         }
     }
     public void WallTimeline(){
-        walltl = new Timeline(new KeyFrame(Duration.seconds(8), e -> {
-            if(hit){
-                wall = new Wall(rand.nextInt((int) xbound), rand.nextInt((int) ybound), PlayPaneSky);
+        m_walltl = new Timeline(new KeyFrame(Duration.seconds(8), e -> {
+            if(m_hit){
+                m_wall = new Wall(m_rand.nextInt((int) m_xbound), m_rand.nextInt((int) m_ybound), PlayPaneSky);
             } else
-                wall.moveWall();
-            hit = false;
-            wallticks++;
+                m_wall.moveWall();
+            m_hit = false;
+            m_wallticks++;
         }));
-        walltl.setCycleCount(Timeline.INDEFINITE);
-        walltl.play();
+        m_walltl.setCycleCount(Timeline.INDEFINITE);
+        m_walltl.play();
     }
     public void SetPositions(double x, double y){
-        xpositions.put(gameticks, x);
-        ypositions.put(gameticks, y);
+        m_xpositions.put(m_gameticks, x);
+        m_ypositions.put(m_gameticks, y);
     }
 
     public void SetVariables(double x, double y, int b){
-        bombspawn = b;
-        xbound = x;
-        ybound = y;
+        m_bombspawn = b;
+        m_xbound = x;
+        m_ybound = y;
     }
 
     public void CheckBomb(ImageView thebomb) throws IOException {
         if(thebomb.isVisible()){
-            intersects = CheckBounds(thebomb);
-            if(intersects){
+            m_intersects = CheckBounds(thebomb);
+            if(m_intersects){
                 ToEndScreen();
             }
         }
     }
 
     public void RemoveSnakeBody() throws IOException {
-        if(!hit){
-            if(snakebody.size() == 0)
+        if(!m_hit){
+            if(m_snakebody.size() == 0)
                 ToEndScreen();
-            PlayPaneSky.getChildren().remove(snakebody.get(Integer.toString(snakebody.size()-1)));
-            snakebody.remove(Integer.toString(snakebody.size()-1));
-            score -= 521;
+            PlayPaneSky.getChildren().remove(m_snakebody.get(Integer.toString(m_snakebody.size()-1)));
+            m_snakebody.remove(Integer.toString(m_snakebody.size()-1));
+            m_score -= 521;
         }
-        hit = true;
+        m_hit = true;
     }
 
     public boolean CheckBounds(Node n){
@@ -268,58 +264,58 @@ public class PlayScreenController {
 
     public void AddSnakeBody(){
         Circle circ = new Circle(13);
-        circ.setStyle("-fx-fill: "+StartScreenController.snakecol+";");
+        circ.setStyle("-fx-fill: "+StartScreenController.m_snakecol +";");
         PlayPaneSky.getChildren().add(circ);
-        snakebody.put(Integer.toString(snakebody.size()),circ);
-        newfood = false;
+        m_snakebody.put(Integer.toString(m_snakebody.size()),circ);
+        m_newfood = false;
     }
     double x;
     double y;
     public void moveSnakeBody(Circle bodypart, int num){
-        x = xpositions.get(gameticks-((speed)*num));
-        y = ypositions.get(gameticks-((speed)*num));
+        x = m_xpositions.get(m_gameticks -((m_speed)*num));
+        y = m_ypositions.get(m_gameticks -((m_speed)*num));
         bodypart.setLayoutX(x);
         bodypart.setLayoutY(y);
     }
     public void ToEndScreen() throws IOException {
-        alive = false;
-        timeline.stop();
+        m_alive = false;
+        m_timeline.stop();
         StartScreenJFX.setRoot("EndScreen");
     }
 
     @FXML
     void KeyPressed(KeyEvent e){
         KeyCode code = e.getCode();
-        if((code.equals(KeyCode.UP) || code.equals(KeyCode.W))&& direction != 1){
-            direction = 0;
+        if((code.equals(KeyCode.UP) || code.equals(KeyCode.W))&& m_direction != 1){
+            m_direction = 0;
             snakehead.setRotate(-90);
-        } else if ((code.equals(KeyCode.DOWN) || code.equals(KeyCode.S)) && direction != 0) {
-            direction = 1;
+        } else if ((code.equals(KeyCode.DOWN) || code.equals(KeyCode.S)) && m_direction != 0) {
+            m_direction = 1;
             snakehead.setRotate(90);
-        } else if ((code.equals(KeyCode.LEFT) || code.equals(KeyCode.A))&& direction != 3) {
-            direction = 2;
+        } else if ((code.equals(KeyCode.LEFT) || code.equals(KeyCode.A))&& m_direction != 3) {
+            m_direction = 2;
             snakehead.setRotate(-180);
-        } else if ((code.equals(KeyCode.RIGHT) || code.equals(KeyCode.D))&& direction != 2) {
-            direction = 3;
+        } else if ((code.equals(KeyCode.RIGHT) || code.equals(KeyCode.D))&& m_direction != 2) {
+            m_direction = 3;
             snakehead.setRotate(0);
         }
     }
 
     public void move(){
-        if(direction == 0){
-            snakehead.setLayoutY(snakehead.getLayoutY()-speed);
-        } else if (direction == 1) {
-            snakehead.setLayoutY(snakehead.getLayoutY()+speed);
-        } else if (direction == 2) {
-            snakehead.setLayoutX(snakehead.getLayoutX()-speed);
-        } else if (direction == 3) {
-            snakehead.setLayoutX(snakehead.getLayoutX()+speed);
+        if(m_direction == 0){
+            snakehead.setLayoutY(snakehead.getLayoutY()- m_speed);
+        } else if (m_direction == 1) {
+            snakehead.setLayoutY(snakehead.getLayoutY()+ m_speed);
+        } else if (m_direction == 2) {
+            snakehead.setLayoutX(snakehead.getLayoutX()- m_speed);
+        } else if (m_direction == 3) {
+            snakehead.setLayoutX(snakehead.getLayoutX()+ m_speed);
         }
 
     }
     private void outofBounds() throws IOException {
-        boolean xOut = (snakehead.getLayoutX() <= 0 || snakehead.getLayoutX() >= xbound);
-        boolean yOut = (snakehead.getLayoutY() <= 0 || snakehead.getLayoutY() >= ybound);
+        boolean xOut = (snakehead.getLayoutX() <= 0 || snakehead.getLayoutX() >= m_xbound);
+        boolean yOut = (snakehead.getLayoutY() <= 0 || snakehead.getLayoutY() >= m_ybound);
 
         if (xOut || yOut)
         {

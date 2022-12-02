@@ -8,58 +8,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 
 
 
 public class StartScreenController {
-    ObservableList<String> colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
-
-    ObservableList<String> difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
-
-    ObservableList<String> backgrounds = FXCollections.observableArrayList("Sky", "Cartoon Sky");
-
-    ObservableList<Integer> levels = FXCollections.observableArrayList(1, 2, 3);
-    private static boolean bombs = false;
-
-    public static boolean GetToBomb(){
-        return bombs;
-    }
-
-
-    static String background = "PlayPaneSky";
-
-    public static String GetBackground(){
-        return background;
-    }
-
-    static String scorecol = "magenta";
-
-    static String snakecol = "green";
-
-    public static String GetScoreCol(){
-        return scorecol;
-    }
-
-    static int speed = 5;
-
-    static int diff = 1;
-
-    static int level = 1;
-
-    public static int GetDiff(){
-        return diff;
-    }
-
-    private static String playername;
-
-    public static String GetPlayerName(){
-        return playername;
-    }
-
     @FXML
     private ChoiceBox scorechoice;
 
@@ -72,85 +26,125 @@ public class StartScreenController {
     @FXML
     private ChoiceBox bgchoice;
 
-
     @FXML
     private CheckBox checkbomb;
-
 
     @FXML
     private TextField name;
 
     @FXML
     private ChoiceBox lvlchoice;
+    ObservableList<String> m_colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
+
+    ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
+
+    ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Sky", "Cartoon Sky");
+
+    ObservableList<Integer> m_levels = FXCollections.observableArrayList(1, 2, 3);
+    private static boolean m_bombs = false;
+
+    public static boolean GetToBomb(){
+        return m_bombs;
+    }
+
+
+    static String m_background = "PlayPaneSky";
+
+    public static String GetBackground(){
+        return m_background;
+    }
+
+    static String m_scorecol = "magenta";
+
+    static String m_snakecol = "green";
+
+    public static String GetScoreCol(){
+        return m_scorecol;
+    }
+
+    static int m_diff = 1;
+
+    static int m_level = 1;
+
+    public static int GetDiff(){
+        return m_diff;
+    }
+
+    private static String m_playername;
+
+    public static String GetPlayerName(){
+        return m_playername;
+    }
 
 
 
-    private static int chosen;
+
+
+    private static int m_chosen;
 
     public static int GetChosen(){
-        return chosen;
+        return m_chosen;
     }
 
     public void initialize() {
-        chosen = 0;
-        SetChoiceBox(scorechoice, colours, "Score Colour");
-        SetChoiceBox(snakechoice, colours, "Snake Colour");
-        SetChoiceBox(diffchoice, difficulties, "Difficulty");
-        SetChoiceBox(lvlchoice, levels, "Level");
-        SetChoiceBox(bgchoice, backgrounds, "Theme");
-        diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> diff = newval.intValue() + 1);
-        scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> scorecol = CheckCol(newval.intValue()));
-        snakechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> snakecol = CheckCol(newval.intValue()));
+        m_chosen = 0;
+        m_diff = 1;
+        m_level = 1;
+        SetChoiceBox(scorechoice, m_colours, "Score Colour");
+        SetChoiceBox(snakechoice, m_colours, "Snake Colour");
+        SetChoiceBox(diffchoice, m_difficulties, "Difficulty");
+        SetChoiceBox(lvlchoice, m_levels, "Level");
+        SetChoiceBox(bgchoice, m_backgrounds, "Theme");
+        diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_diff = newval.intValue() + 1);
+        scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_scorecol = CheckCol(newval.intValue()));
+        snakechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_snakecol = CheckCol(newval.intValue()));
         bgchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
             int i = newval.intValue();
             if(i == 0){
-                background = "PlayPaneSky";
+                m_background = "PlayPaneSky";
             } else{
-                background = "PlayPaneCart";
+                m_background = "PlayPaneCart";
             }
         });
-        lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> level = newval.intValue() + 1);
+        lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);
     }
 
     public String CheckCol(int col){
-        if(col == 0){
-            return "red";
-        } else if(col == 1){
-            return "yellow";
-        } else if(col == 2){
-            return "magenta";
-        } else if(col == 3){
-            return "green";
-        } else{
-            return "orange";
+        switch(col){
+            case 0: return "red";
+            case 1: return "yellow";
+            case 2: return "magenta";
+            case 3: return "green";
+            default: return "orange";
         }
     }
 
     @FXML
     private void PlayGame() throws IOException {
-        if(playername == null){
+        if(m_playername == null){
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("You must enter a name");
             a.show();
         }
         else{
-            bombs = checkbomb.isSelected();
-            if(bombs)
-                chosen += 3;
-            if(diff == 1){
+            m_bombs = checkbomb.isSelected();
+            if(m_bombs)
+                m_chosen += 3;
+            if(m_diff == 1){
                 StartScreenJFX.setRoot("PlayScreen");
-            } else if (diff == 2) {
+            } else if (m_diff == 2) {
                 StartScreenJFX.setRoot("PlayScreenMedium");
-            } else if (diff == 3) {
+            } else if (m_diff == 3) {
                 StartScreenJFX.setRoot("PlayScreenHard");
             }
+
         }
     }
 
     public static double GetSpeed(){
-        if(level == 1) {
+        if(m_level == 1) {
             return 0.03;
-        } else if(level == 2){
+        } else if(m_level == 2){
             return 0.0175;
         } else{
             return 0.01;
@@ -158,12 +152,12 @@ public class StartScreenController {
     }
 
     public static int GetLevel(){
-        return level;
+        return m_level;
     }
 
 
     public void SetName(){
-        playername = name.getText();
+        m_playername = name.getText();
     }
 
     public void ShowRules() throws IOException {

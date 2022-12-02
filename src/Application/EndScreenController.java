@@ -12,16 +12,16 @@ public class EndScreenController {
     @FXML
     private Label endsclabel;
 
-    String level;
+    String m_level;
 
-    String diffbomb;
+    String m_diffbomb;
     public void initialize() throws IOException {
         endsclabel.setText((PlayScreenController.GetScore()));
 
-        level = CheckLvl();
-        diffbomb = CheckDiffBomb();
+        m_level = CheckLvl();
+        m_diffbomb = CheckDiffBomb();
 
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+level+diffbomb+".txt");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+ m_level + m_diffbomb +".txt");
 
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){

@@ -7,34 +7,34 @@ import java.util.Random;
 
 public class Bomb {
 
-    ImageView bomb;
+    ImageView m_bomb;
 
     public Bomb(int x, int y, Pane contpane) {
-        bomb = new ImageView();
-        bomb.setImage(ImageUtil.images.get(18));
-        bomb.setLayoutX(x-bomb.getFitWidth());
-        bomb.setLayoutY(y-bomb.getFitHeight());
-        bomb.setFitWidth(50);
-        bomb.setFitHeight(50);
-        bomb.setVisible(false);
-        contpane.getChildren().add(bomb);
+        m_bomb = new ImageView();
+        m_bomb.setImage(ImageUtil.m_images.get(18));
+        m_bomb.setLayoutX(x- m_bomb.getFitWidth());
+        m_bomb.setLayoutY(y- m_bomb.getFitHeight());
+        m_bomb.setFitWidth(50);
+        m_bomb.setFitHeight(50);
+        m_bomb.setVisible(false);
+        contpane.getChildren().add(m_bomb);
         }
 
     public void BombSpawn(){
-        if(!bomb.isVisible()){
+        if(!m_bomb.isVisible()){
             Random rand = new Random();
             double x = PlayScreenController.GetXBound();
             double y = PlayScreenController.GetYBound();
-            int randx = rand.nextInt(((int)x)-(int)bomb.getFitWidth());
-            int randy = rand.nextInt(((int)y)-(int)bomb.getFitHeight());
-            bomb.setLayoutX(randx);
-            bomb.setLayoutY(randy);
-            bomb.setVisible(true);
+            int randx = rand.nextInt(((int)x)-(int) m_bomb.getFitWidth());
+            int randy = rand.nextInt(((int)y)-(int) m_bomb.getFitHeight());
+            m_bomb.setLayoutX(randx);
+            m_bomb.setLayoutY(randy);
+            m_bomb.setVisible(true);
         }
     }
     public void BombEnd(){
-        if(bomb.isVisible()){
-            bomb.setVisible(false);
+        if(m_bomb.isVisible()){
+            m_bomb.setVisible(false);
         }
     }
 }

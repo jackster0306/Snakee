@@ -6,36 +6,36 @@ import javafx.scene.layout.Pane;
 import java.util.Random;
 
 public class Wall {
-    ImageView wall;
-    Pane pane;
+    ImageView m_wall;
+    Pane m_pane;
 
-    double xbound, ybound;
+    double m_xbound, m_ybound;
 
-    Random rand = new Random();
+    Random m_rand = new Random();
 
 
     public Wall(double x, double y, Pane pane) {
-        this.pane = pane;
-        wall = new ImageView();
-        wall.setFitWidth(50);
-        wall.setFitHeight(70);
-        wall.setImage(ImageUtil.images.get(19));
-        wall.setLayoutX(x);
-        wall.setLayoutY(y);
-        wall.setVisible(true);
-        xbound = PlayScreenController.GetXBound();
-        ybound = PlayScreenController.GetYBound();
-        pane.getChildren().add(wall);
+        this.m_pane = pane;
+        m_wall = new ImageView();
+        m_wall.setFitWidth(50);
+        m_wall.setFitHeight(70);
+        m_wall.setImage(ImageUtil.m_images.get(19));
+        m_wall.setLayoutX(x);
+        m_wall.setLayoutY(y);
+        m_wall.setVisible(true);
+        m_xbound = PlayScreenController.GetXBound();
+        m_ybound = PlayScreenController.GetYBound();
+        pane.getChildren().add(m_wall);
     }
 
     public void moveWall(){
-        wall.setLayoutX(rand.nextInt((int)xbound)-wall.getFitWidth());
-        wall.setLayoutY(rand.nextInt((int)ybound)-wall.getFitHeight());
-        if(wall.isDisable())
-            wall.setDisable(false);
+        m_wall.setLayoutX(m_rand.nextInt((int) m_xbound)- m_wall.getFitWidth());
+        m_wall.setLayoutY(m_rand.nextInt((int) m_ybound)- m_wall.getFitHeight());
+        if(m_wall.isDisable())
+            m_wall.setDisable(false);
     }
 
     public void removeWall(){
-        pane.getChildren().remove(wall);
+        m_pane.getChildren().remove(m_wall);
     }
 }

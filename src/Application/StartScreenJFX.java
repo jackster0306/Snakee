@@ -9,38 +9,38 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StartScreenJFX extends Application {
-    static Scene scene;
-
+    static Scene m_scene;
+    public static Stage m_tstage;
     public static void main(String[] args) {
         launch(args);
     }
-    public static Stage tstage;
+
     @Override
     public void start(Stage stage) throws IOException {
-        tstage = stage;
-        scene = new Scene(loadFXML("StartScreen"));
-        tstage.setScene(scene);
-        tstage.show();
+        m_tstage = stage;
+        m_scene = new Scene(loadFXML("StartScreen"));
+        m_tstage.setScene(m_scene);
+        m_tstage.show();
     }
 
 
     static void setRoot(String fxml) throws IOException{
-        scene.setRoot(loadFXML(fxml));
+        m_scene.setRoot(loadFXML(fxml));
         if(fxml == "PlayScreenMedium"){
-            tstage.setHeight(420+37);
-            tstage.setWidth(600+14);
+            m_tstage.setHeight(420+37);
+            m_tstage.setWidth(600+14);
         } else if (fxml == "PlayScreenHard") {
-            tstage.setHeight(280+37);
-            tstage.setWidth(420+14);
+            m_tstage.setHeight(280+37);
+            m_tstage.setWidth(420+14);
         } else if (fxml == "PlayScreen") {
-            tstage.setHeight(560+37);
-            tstage.setWidth(870+14);
+            m_tstage.setHeight(560+37);
+            m_tstage.setWidth(870+14);
         } else if (fxml == "LeaderboardScreen"){
-            tstage.setHeight(467+37);
-            tstage.setWidth(472+14);
+            m_tstage.setHeight(467+37);
+            m_tstage.setWidth(472+14);
         } else{
-            tstage.setHeight(560+37);
-            tstage.setWidth(870+14);
+            m_tstage.setHeight(560+37);
+            m_tstage.setWidth(870+14);
         }
     }
 

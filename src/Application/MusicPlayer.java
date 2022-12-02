@@ -8,22 +8,22 @@ import java.io.File;
 
 public class MusicPlayer extends Thread
 {
-	Media media;
-	MediaPlayer player;
+	Media m_media;
+	MediaPlayer m_player;
 	public MusicPlayer(String filename)
 	{
-		media = new Media(new File(filename).toURI().toString());
-		player = new MediaPlayer(media);
+		m_media = new Media(new File(filename).toURI().toString());
+		m_player = new MediaPlayer(m_media);
 		Runnable loop = new Runnable() {
 			@Override
 			public void run() {
-				player.dispose();
-				player = new MediaPlayer(media);
-				player.play();
-				player.setOnEndOfMedia(this);
+				m_player.dispose();
+				m_player = new MediaPlayer(m_media);
+				m_player.play();
+				m_player.setOnEndOfMedia(this);
 			}
 		};
-		player.setOnEndOfMedia(loop);
-		player.play();
+		m_player.setOnEndOfMedia(loop);
+		m_player.play();
 	}
 }
