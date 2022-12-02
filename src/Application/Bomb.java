@@ -15,8 +15,8 @@ public class Bomb {
         m_bomb.setImage(img);
         m_bomb.setLayoutX(x- m_bomb.getFitWidth());
         m_bomb.setLayoutY(y- m_bomb.getFitHeight());
-        m_bomb.setFitWidth(50);
-        m_bomb.setFitHeight(50);
+        m_bomb.setFitWidth(70);
+        m_bomb.setFitHeight(70);
         m_bomb.setVisible(false);
         contpane.getChildren().add(m_bomb);
         }

@@ -38,7 +38,7 @@ public class StartScreenController {
 
     ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
 
-    ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Sky", "Cartoon Sky", "Football");
+    ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Snake", "Basketball", "Football");
 
     ObservableList<Integer> m_levels = FXCollections.observableArrayList(1, 2, 3);
     private static boolean m_bombs = false;
@@ -79,6 +79,10 @@ public class StartScreenController {
     public static String m_wallimg;
     public static String m_bombimg;
 
+    public static String m_snakebodyimg;
+
+    public static String m_snakeheadimg;
+
     private static int m_chosen;
 
     public static int GetChosen(){
@@ -87,6 +91,12 @@ public class StartScreenController {
 
     public static String GetFoodImg(){
         return m_foodimg;
+    }
+    public static String GetSnakeHImg(){
+        return m_snakeheadimg;
+    }
+    public static String GetSnakeBImg(){
+        return m_snakebodyimg;
     }
     public static String GetWallImg(){
         return m_wallimg;
@@ -111,13 +121,25 @@ public class StartScreenController {
             int i = newval.intValue();
             if(i == 0){
                 m_background = "PlayPaneSky";
+                m_wallimg = "Resources/brick-clipart-briks-10.png";
+                m_bombimg = "Resources/skull_bomb_by_alishavolkman_daf7ku4.png";
+                m_foodimg = "Resources/food-apple.png";
+                m_snakeheadimg = "Resources/in-snake-head-clipart-snake-head-cartoon-11562915033zdtswr66u1.png";
+                m_snakebodyimg = "Resources/snake-body.png";
             } else if(i == 1){
-                m_background = "PlayPaneCart";
+                m_background = "PlayPaneBB";
+                m_wallimg = "Resources/lebroninjured.png";
+                m_bombimg = "Resources/MichaelJordan.png";
+                m_foodimg = "Resources/Basketball.png";
+                m_snakeheadimg = "Resources/LeBron.png";
+                m_snakebodyimg = "Resources/lebronjersey.png";
             } else{
                 m_background = "PlayPaneFootball";
                 m_wallimg = "Resources/yellowcard.png";
                 m_bombimg = "Resources/redcard.png";
                 m_foodimg = "Resources/football.png";
+                m_snakeheadimg = "Resources/head.png";
+                m_snakebodyimg = "Resources/ArgShirt.png";
             }
         });
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);

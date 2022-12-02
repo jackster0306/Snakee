@@ -11,8 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.Circle;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class PlayScreenController {
     private Pane PlayPaneSky;
 
     @FXML
-    Arc snakehead;
+    Rectangle snakehead;
 
     @FXML
     private Label NameLabel;
@@ -47,7 +47,7 @@ public class PlayScreenController {
 
     public Random m_rand = new Random();
 
-    Map<String, Circle> m_snakebody = new HashMap<>();
+    Map<String, Rectangle> m_snakebody = new HashMap<String, Rectangle>();
 
     Map<Integer, Double> m_xpositions = new HashMap<>();
     Map<Integer, Double> m_ypositions = new HashMap<>();
@@ -79,6 +79,10 @@ public class PlayScreenController {
 
     Image m_wallimg;
 
+    Image snakeheadimg;
+
+    Image snakebodyimg;
+
     public static String GetScore() {
         return Integer.toString(m_score);
     }
@@ -99,7 +103,9 @@ public class PlayScreenController {
         PlayPaneSky.setId(StartScreenController.GetBackground());
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
         m_time = StartScreenController.GetSpeed();
-        snakehead.setStyle("-fx-fill: "+StartScreenController.m_snakecol +";");
+        snakeheadimg = new Image(StartScreenController.GetSnakeHImg());
+        snakehead.setFill(new ImagePattern(snakeheadimg));
+        snakebodyimg = new Image(StartScreenController.GetSnakeBImg());
         new MusicPlayer("src/Resources/frogger.mp3");
         m_wallticks = 0;
         m_gameticks = 0;
@@ -166,13 +172,13 @@ public class PlayScreenController {
             }
             sclabnum.setText(Integer.toString(m_score));
             if(m_direction == 0){
-                SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY()+2);
+                SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY());
             } else if (m_direction == 1) {
-                SetPositions(snakehead.getLayoutX()-2,snakehead.getLayoutY()-3);
+                SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY());
             } else if (m_direction == 2) {
-                SetPositions(snakehead.getLayoutX()-1,snakehead.getLayoutY());
+                SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY());
             } else if (m_direction == 3) {
-                SetPositions(snakehead.getLayoutX()-4,snakehead.getLayoutY());
+                SetPositions(snakehead.getLayoutX(),snakehead.getLayoutY());
             }
             m_gameticks++;
         }));
@@ -270,17 +276,17 @@ public class PlayScreenController {
     }
 
     public void AddSnakeBody(){
-        Circle circ = new Circle(13);
-        circ.setStyle("-fx-fill: "+StartScreenController.m_snakecol +";");
-        PlayPaneSky.getChildren().add(circ);
-        m_snakebody.put(Integer.toString(m_snakebody.size()),circ);
+        Rectangle rect = new Rectangle(26,26);
+        rect.setFill(new ImagePattern(snakebodyimg));
+        PlayPaneSky.getChildren().add(rect);
+        m_snakebody.put(Integer.toString(m_snakebody.size()),rect);
         m_newfood = false;
     }
     double x;
     double y;
-    public void moveSnakeBody(Circle bodypart, int num){
-        x = m_xpositions.get(m_gameticks -((m_speed)*num));
-        y = m_ypositions.get(m_gameticks -((m_speed)*num));
+    public void moveSnakeBody(Rectangle bodypart, int num){
+        x = m_xpositions.get(m_gameticks -((m_speed+1)*num));
+        y = m_ypositions.get(m_gameticks -((m_speed+1)*num));
         bodypart.setLayoutX(x);
         bodypart.setLayoutY(y);
     }
