@@ -97,15 +97,15 @@ public class PlayScreenController {
 
 
     public void initialize(){
-        Image foodimg = new Image(StartScreenController.GetFoodImg());
-        m_wallimg = new Image(StartScreenController.GetWallImg());
-        Image bombimg = new Image(StartScreenController.GetBombImg());
-        PlayPaneSky.setId(StartScreenController.GetBackground());
+        Image foodimg = new Image(Theme.GetFoodImg());
+        m_wallimg = new Image(Theme.GetWallImg());
+        Image bombimg = new Image(Theme.GetBombImg());
+        PlayPaneSky.setId(Theme.GetBackground());
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
         m_time = StartScreenController.GetSpeed();
-        snakeheadimg = new Image(StartScreenController.GetSnakeHImg());
+        snakeheadimg = new Image(Theme.GetSnakeHImg());
         snakehead.setFill(new ImagePattern(snakeheadimg));
-        snakebodyimg = new Image(StartScreenController.GetSnakeBImg());
+        snakebodyimg = new Image(Theme.GetSnakeBImg());
         new MusicPlayer("src/Resources/frogger.mp3");
         m_wallticks = 0;
         m_gameticks = 0;

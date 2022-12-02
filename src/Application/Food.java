@@ -17,7 +17,7 @@ public class Food {
     public Food(double x, double y, Pane contpane, Image img) {
         m_img = img;
         m_food = new ImageView();
-        if(StartScreenController.GetSnakeTheme()){
+        if(Theme.GetSnakeTheme()){
             m_food.setImage(ImageUtil.m_images.get(m_rand.nextInt(17)));
         } else{
             m_food.setImage(m_img);
@@ -37,7 +37,7 @@ public class Food {
     public void MoveFood(){
         m_food.setLayoutX(m_rand.nextInt((int) m_boundx));
         m_food.setLayoutY(m_rand.nextInt((int) m_boundy));
-        if(StartScreenController.GetSnakeTheme()){
+        if(Theme.GetSnakeTheme()){
             m_food.setImage(ImageUtil.m_images.get(m_rand.nextInt(17)));
         }
     }
