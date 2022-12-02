@@ -285,8 +285,8 @@ public class PlayScreenController {
     double x;
     double y;
     public void moveSnakeBody(Rectangle bodypart, int num){
-        x = m_xpositions.get(m_gameticks -((m_speed+1)*num));
-        y = m_ypositions.get(m_gameticks -((m_speed+1)*num));
+        x = m_xpositions.get(m_gameticks -((m_speed)*num)-1);
+        y = m_ypositions.get(m_gameticks -((m_speed)*num)-1);
         bodypart.setLayoutX(x);
         bodypart.setLayoutY(y);
     }

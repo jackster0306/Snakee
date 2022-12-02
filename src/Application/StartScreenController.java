@@ -85,6 +85,8 @@ public class StartScreenController {
 
     private static int m_chosen;
 
+    private static boolean m_snaketheme = true;
+
     public static int GetChosen(){
         return m_chosen;
     }
@@ -98,12 +100,10 @@ public class StartScreenController {
     public static String GetSnakeBImg(){
         return m_snakebodyimg;
     }
-    public static String GetWallImg(){
-        return m_wallimg;
-    }
-    public static String GetBombImg(){
-        return m_bombimg;
-    }
+    public static String GetWallImg() {return m_wallimg;}
+    public static String GetBombImg() {return m_bombimg;}
+    public static Boolean GetSnakeTheme() {return m_snaketheme;}
+
 
     public void initialize() {
         m_chosen = 0;
@@ -124,15 +124,17 @@ public class StartScreenController {
                 m_wallimg = "Resources/brick-clipart-briks-10.png";
                 m_bombimg = "Resources/skull_bomb_by_alishavolkman_daf7ku4.png";
                 m_foodimg = "Resources/food-apple.png";
-                m_snakeheadimg = "Resources/in-snake-head-clipart-snake-head-cartoon-11562915033zdtswr66u1.png";
+                m_snakeheadimg = "Resources/snake-head-right.png";
                 m_snakebodyimg = "Resources/snake-body.png";
+                m_snaketheme = true;
             } else if(i == 1){
                 m_background = "PlayPaneBB";
                 m_wallimg = "Resources/lebroninjured.png";
                 m_bombimg = "Resources/MichaelJordan.png";
                 m_foodimg = "Resources/Basketball.png";
                 m_snakeheadimg = "Resources/LeBron.png";
-                m_snakebodyimg = "Resources/lebronjersey.png";
+                m_snakebodyimg = "Resources/lebroncavsjersey.png";
+                m_snaketheme = false;
             } else{
                 m_background = "PlayPaneFootball";
                 m_wallimg = "Resources/yellowcard.png";
@@ -140,6 +142,7 @@ public class StartScreenController {
                 m_foodimg = "Resources/football.png";
                 m_snakeheadimg = "Resources/head.png";
                 m_snakebodyimg = "Resources/ArgShirt.png";
+                m_snaketheme = false;
             }
         });
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);

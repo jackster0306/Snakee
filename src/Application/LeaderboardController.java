@@ -45,6 +45,8 @@ public class LeaderboardController {
         selecttable.setValue("No Bombs Easy");
     }
     public void SetupLeaderboard() {
+        NamesArea.setEditable(true);
+        ScoresArea.setEditable(true);
         int list = 1;
         int i;
         ArrayList<String> names = new ArrayList<>();
@@ -69,6 +71,8 @@ public class LeaderboardController {
 
         SortLists(scores, names);
 
+        NamesArea.setEditable(false);
+        ScoresArea.setEditable(false);
         for(i = 0; i < 4; i++){
             if(i == 3){
                 NamesArea.appendText(names.get(i));
