@@ -69,7 +69,12 @@ public class StartScreenController {
     }
 
 
-
+    /**
+     * Sets up the Start Screen when it gets loaded
+     * Contains everything to do when the Start Screen is loaded
+     * Sets up all the components in the screen to have the default values
+     * Sets up the combo boxes with the necessary values
+     */
     public void initialize() {
         m_diff = 1;
         m_level = 1;
@@ -85,6 +90,11 @@ public class StartScreenController {
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);
     }
 
+    /**
+     * Returns the colour related to the integer provided
+     * @param col the integer that relates to a colour
+     * @return a String which is the colour that relates to the integer provided
+     */
     public String CheckCol(int col){
         switch(col){
             case 0: return "red";
@@ -95,6 +105,14 @@ public class StartScreenController {
         }
     }
 
+    /**
+     * Loads the Play Screen (Starts the game)
+     * Checks to see if a name has been entered
+     * If not, it lets the user know and the game is not started
+     * Sets the theme
+     * If name is entered, checks the difficulty and loads the correct Screen accordingly
+     * @throws IOException
+     */
     @FXML
     private void PlayGame() throws IOException {
         if(m_playername == null){
@@ -116,12 +134,29 @@ public class StartScreenController {
             }
         }
     }
+
+    /**
+     * Loads the rules screen
+     * @throws IOException
+     */
     public void ShowRules() throws IOException {
         StartScreenJFX.setRoot("RulesScreen");
     }
+
+    /**
+     * Loads the Leaderboard screen
+     * @throws IOException
+     */
     public void ShowLeaderboard() throws IOException {
         StartScreenJFX.setRoot("LeaderboardScreen");
     }
+
+    /**
+     * Sets up a ComboBox with the provided parameters
+     * @param cb the ComboBox to be setup
+     * @param ol the ObservableList containing the items to be put in the ComboBox
+     * @param st the String to set the value of the ComboBox to
+     */
     public void SetupComboBox(ComboBox cb, ObservableList ol, String st){
         cb.setItems(ol);
         cb.setValue(st);

@@ -29,6 +29,11 @@ public class LeaderboardController {
     ObservableList<String> m_tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
     ObservableList<String> m_levels = FXCollections.observableArrayList("1", "2", "3");
 
+    /**
+     * Sets up the Leaderboard Screen when it gets loaded
+     * Contains everything to do when the Leaderboard Screen is loaded
+     * Sets up the choice boxes to display the right information
+     */
     public void initialize(){
         selecttable.setItems(m_tablechoices);
         lvlchoice.setItems(m_levels);
@@ -43,6 +48,10 @@ public class LeaderboardController {
         lvlchoice.setValue("1");
         selecttable.setValue("No Bombs Easy");
     }
+
+    /**
+     * Sets up the Leaderboard and displays it to the user
+     */
     public void SetupLeaderboard() {
         NamesArea.setEditable(true);
         ScoresArea.setEditable(true);

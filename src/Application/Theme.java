@@ -27,6 +27,10 @@ public class Theme {
     public static String GetWallImg() {return m_wallimg;}
     public static String GetBombImg() {return m_bombimg;}
 
+    /**
+     * Sets the variables to different things depending on the integer provided, setting the theme
+     * @param i the integer that correlates to a theme
+     */
     public Theme(int i) {
         switch(i){
             case 0:

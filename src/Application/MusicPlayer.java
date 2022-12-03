@@ -11,6 +11,11 @@ public class MusicPlayer extends Thread
 	//Class Variables
 	Media m_media;
 	MediaPlayer m_player;
+
+	/**
+	 * Plays the Music in the given file and loops it to play again when it ends
+	 * @param filename the file path where the music file is located
+	 */
 	public MusicPlayer(String filename)
 	{
 		m_media = new Media(new File(filename).toURI().toString());

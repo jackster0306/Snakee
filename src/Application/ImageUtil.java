@@ -9,6 +9,11 @@ public class ImageUtil {
     //Class Variables
     public static Map<Integer, Image> m_images = new HashMap<>();
 
+    /**
+     * Contains all the food images
+     * These images are accessed using the Integer key they are given
+     * Which allows a random image to be chosen
+     */
     static{
         m_images.put(0, new Image("Resources/food-apple.png"));
         m_images.put(1, new Image("Resources/food-banana.png"));
@@ -28,7 +33,5 @@ public class ImageUtil {
         m_images.put(15, new Image("Resources/food-pitaya.png"));
         m_images.put(16, new Image("Resources/food-strawberry.png"));
         m_images.put(17, new Image("Resources/food-watermelon.png"));
-        m_images.put(18, new Image("Resources/skull_bomb_by_alishavolkman_daf7ku4.png"));
-        m_images.put(19, new Image("Resources/brick-clipart-briks-10.png"));
     }
 }

@@ -70,6 +70,12 @@ public class PlayScreenController {
         return m_ybound;
     }
 
+    /**
+     * Sets up the Play Screen when it gets loaded
+     * Contains everything to do when the Play Screen is loaded
+     * Sets up all the components in the screen to have the default values
+     * Calls the Timelines that are used to make the game run
+     */
     public void initialize(){
         Image foodimg = new Image(Theme.GetFoodImg());
         m_wallimg = new Image(Theme.GetWallImg());
@@ -107,6 +113,11 @@ public class PlayScreenController {
         WallTimeline();
     }
 
+    /**
+     * The main timeline of the game which 'updates' the screen every x seconds
+     * Used to move the snake and see if the snake has hit anything or gone out of bounds
+     * Used to keep the score updated
+     */
     public void MainTimeline(){
         m_timeline = new Timeline(new KeyFrame(Duration.seconds(m_time), e -> {
             move();
@@ -160,6 +171,10 @@ public class PlayScreenController {
         m_timeline.play();
     }
 
+    /**
+     * The timelines for the bombs
+     * If bombs are activated, it will spawn bombs after x seconds and then they will despawn after 15 seconds then repeat the process again
+     */
     public void BombTimelines(){
         m_bombspawntl = new Timeline(new KeyFrame(Duration.seconds(m_bombspawn), e -> {
             if(m_isbombs){
@@ -188,6 +203,10 @@ public class PlayScreenController {
         m_bombdonetl.setCycleCount(Timeline.INDEFINITE);
     }
 
+    /**
+     * Checks to see if the snakehead has collided with any of the snake body parts
+     * If so, the game ends and the user is sent to the End Screen
+     */
     public void SearchSnakeBody(){
         for(int i = 1; i < m_snakebody.size(); i++){
             m_intersects = CheckBounds(m_snakebody.get(Integer.toString(i)));
@@ -200,6 +219,13 @@ public class PlayScreenController {
             }
         }
     }
+
+    /**
+     * The timeline for the wall
+     * Spawns the wall after 8 seconds, and will move it or spawn a new one every 8 seconds
+     * If the current wall has been hit, it creates a new one
+     * If the current wall hasn't been hit, it moves it
+     */
     public void WallTimeline(){
         m_walltl = new Timeline(new KeyFrame(Duration.seconds(8), e -> {
             if(m_hit){
@@ -212,17 +238,35 @@ public class PlayScreenController {
         m_walltl.setCycleCount(Timeline.INDEFINITE);
         m_walltl.play();
     }
+
+    /**
+     * Adds the x and y co-ordinates of the snakehead at the time it is called to the X and Y Maps
+     * @param x the current x co-ordinate of the snakehead
+     * @param y the current y co-ordinate of the snakehead
+     */
     public void SetPositions(double x, double y){
         m_xpositions.put(m_gameticks, x);
         m_ypositions.put(m_gameticks, y);
     }
 
+    /**
+     * Sets the variables for how often bombs are spawned and the bounds of the screen
+     * @param x the x bound of the screen
+     * @param y the y bound of the screen
+     * @param b the number of seconds the bombs will spawn after
+     */
     public void SetVariables(double x, double y, int b){
         m_bombspawn = b;
         m_xbound = x;
         m_ybound = y;
     }
 
+    /**
+     * Checks to see if the snakehead has collided with the provided bomb
+     * If it has, the game is ended and the End Screen is loaded
+     * @param thebomb the bomb to be checked
+     * @throws IOException
+     */
     public void CheckBomb(ImageView thebomb) throws IOException {
         if(thebomb.isVisible()){
             m_intersects = CheckBounds(thebomb);
@@ -232,6 +276,11 @@ public class PlayScreenController {
         }
     }
 
+    /**
+     * Removes the tail of the snake
+     * Called when the snakehead hits a wall
+     * @throws IOException
+     */
     public void RemoveSnakeBody() throws IOException {
         if(!m_hit){
             if(m_snakebody.size() == 0)
@@ -243,12 +292,21 @@ public class PlayScreenController {
         m_hit = true;
     }
 
+    /**
+     * Checks if the snakehead has collided with the given Node
+     * @param n the node to check
+     * @return a boolean whether the snake head has hit the given node
+     */
     public boolean CheckBounds(Node n){
         Bounds bound = n.getBoundsInLocal();
         Bounds snakebound = n.localToScene(bound);
         return snakehead.intersects(snakehead.sceneToLocal(snakebound));
     }
 
+    /**
+     * Adds a body part to the snake
+     * Called when the snake 'eats' a piece of food
+     */
     public void AddSnakeBody(){
         Rectangle rect = new Rectangle(26,26);
         rect.setFill(new ImagePattern(snakebodyimg));
@@ -256,20 +314,37 @@ public class PlayScreenController {
         m_snakebody.put(Integer.toString(m_snakebody.size()),rect);
         m_newfood = false;
     }
-    double x;
-    double y;
+
+    /**
+     * Moves the given body part of the snake
+     * Sets the x and y co-ordinates of the body part
+     * @param bodypart the body part to move
+     * @param num the body part number
+     */
     public void moveSnakeBody(Rectangle bodypart, int num){
-        x = m_xpositions.get(m_gameticks -((m_speed)*num)-1);
-        y = m_ypositions.get(m_gameticks -((m_speed)*num)-1);
+        double x = m_xpositions.get(m_gameticks -((m_speed)*num)-1);
+        double y = m_ypositions.get(m_gameticks -((m_speed)*num)-1);
         bodypart.setLayoutX(x);
         bodypart.setLayoutY(y);
     }
+
+    /**
+     * Loads the End Screen
+     * Called when the game is over
+     * @throws IOException
+     */
     public void ToEndScreen() throws IOException {
         m_alive = false;
         m_timeline.stop();
         StartScreenJFX.setRoot("EndScreen");
     }
 
+    /**
+     * Changes the direction of the snake and rotates the head
+     * Called when a key is pressed
+     * Checks which key is pressed and changes direction and rotates the head accordingly
+     * @param e the event (key pressed)
+     */
     @FXML
     void KeyPressed(KeyEvent e){
         KeyCode code = e.getCode();
@@ -288,6 +363,10 @@ public class PlayScreenController {
         }
     }
 
+    /**
+     * Moves the snakehead
+     * Checks which direction the snakehead is facing and changes the x and y co-ordinates accordingly
+     */
     public void move(){
         if(m_direction == 0){
             snakehead.setLayoutY(snakehead.getLayoutY()- m_speed);
@@ -298,8 +377,13 @@ public class PlayScreenController {
         } else if (m_direction == 3) {
             snakehead.setLayoutX(snakehead.getLayoutX()+ m_speed);
         }
-
     }
+
+    /**
+     * Checks to see if the snakehead is out of bounds
+     * If it is the game is ended and the End Screen is loaded
+     * @throws IOException
+     */
     private void outofBounds() throws IOException {
         boolean xOut = (snakehead.getLayoutX() <= 0 || snakehead.getLayoutX() >= m_xbound);
         boolean yOut = (snakehead.getLayoutY() <= 0 || snakehead.getLayoutY() >= m_ybound);

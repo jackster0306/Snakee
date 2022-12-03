@@ -16,6 +16,11 @@ public class StartScreenJFX extends Application {
         launch(args);
     }
 
+    /**
+     * Sets up and starts the stage when the program is run
+     * @param stage the stage to setup and run
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         m_tstage = stage;
@@ -23,6 +28,13 @@ public class StartScreenJFX extends Application {
         m_tstage.setScene(m_scene);
         m_tstage.show();
     }
+
+    /**
+     * Changes the root of the Scene
+     * Switches scene to the string provided
+     * @param fxml the name of the fxml file to switch the root to
+     * @throws IOException
+     */
     static void setRoot(String fxml) throws IOException{
         m_scene.setRoot(loadFXML(fxml));
         if(fxml == "PlayScreenMedium"){
@@ -42,6 +54,13 @@ public class StartScreenJFX extends Application {
             m_tstage.setWidth(870+14);
         }
     }
+
+    /**
+     * Loads the fxml file
+     * @param fxml the name of the fxml file
+     * @return the loaded screen
+     * @throws IOException
+     */
     private static Parent loadFXML(String fxml) throws IOException{
         FXMLLoader fxmlloader = new FXMLLoader(StartScreenJFX.class.getResource(fxml + ".fxml"));
         return fxmlloader.load();
