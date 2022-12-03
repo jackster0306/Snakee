@@ -54,20 +54,10 @@ public class WallTests {
     @Nested
     class WallMove{
         @Test
-        void BombDisabled(){
-            wallview.setDisable(true);
+        void WallMoves(){
             wall.moveWall();
             assertNotEquals(820, wallview.getLayoutX());
             assertNotEquals(490, wallview.getLayoutY());
-            assertEquals(false, wallview.isDisable());
-        }
-        @Test
-        void BombNotDisabled(){
-            wallview.setDisable(false);
-            wall.moveWall();
-            assertNotEquals(820, wallview.getLayoutX());
-            assertNotEquals(490, wallview.getLayoutY());
-            assertEquals(false, wallview.isVisible());
         }
     }
 }
