@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ImageUtil {
+    //Class Variables
     public static Map<Integer, Image> m_images = new HashMap<>();
 
     static{

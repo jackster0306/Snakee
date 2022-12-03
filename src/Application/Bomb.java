@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import java.util.Random;
 
 public class Bomb {
-
+    //Class Variables
     ImageView m_bomb;
 
     public Bomb(int x, int y, Pane contpane, Image img) {
@@ -20,7 +20,6 @@ public class Bomb {
         m_bomb.setVisible(false);
         contpane.getChildren().add(m_bomb);
         }
-
     public void BombSpawn(){
         if(!m_bomb.isVisible()){
             Random rand = new Random();

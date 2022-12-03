@@ -9,20 +9,18 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class EndScreenController {
+    //FXML Variables
     @FXML
     private Label endsclabel;
 
+    //Class Variables
     String m_level;
-
     String m_diffbomb;
     public void initialize() throws IOException {
         endsclabel.setText((PlayScreenController.GetScore()));
-
         m_level = CheckLvl();
         m_diffbomb = CheckDiffBomb();
-
         File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+ m_level + m_diffbomb +".txt");
-
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
             scanner.next();
@@ -57,7 +55,6 @@ public class EndScreenController {
                 return "HardBombs";
             }
     }
-
     public String CheckLvl(){
         return Integer.toString(StartScreenController.GetLevel());
     }

@@ -21,80 +21,54 @@ import java.util.Map;
 import java.util.Random;
 
 public class PlayScreenController {
+    //FXML Variables
     @FXML
     private Label sclab;
-
     @FXML
     private Label sclabnum;
-
     @FXML
     private Pane PlayPaneSky;
-
     @FXML
     Rectangle snakehead;
-
     @FXML
     private Label NameLabel;
 
+    //Class Variables
     private static int m_score = 0;
     Food m_food;
-
     int m_direction = 3;
-
     boolean m_alive = true;
-
     public Timeline m_timeline, m_bombspawntl, m_bombdonetl;
-
     public Random m_rand = new Random();
-
     Map<String, Rectangle> m_snakebody = new HashMap<String, Rectangle>();
-
     Map<Integer, Double> m_xpositions = new HashMap<>();
     Map<Integer, Double> m_ypositions = new HashMap<>();
-
     int m_gameticks = 0;
-
     public boolean m_newfood = false;
-
     static double m_xbound, m_ybound;
-
     public boolean m_isbombs;
-
-
     Bomb m_bomb, m_bomb1, m_bomb2;
-
     int m_bombspawn, m_difficulty, m_speed;
-
     Wall m_wall;
-
     int m_wallticks;
-
     Timeline m_walltl;
-
     boolean m_hit = false;
-
     boolean m_intersects;
-
     double m_time = 0.3;
-
     Image m_wallimg;
-
     Image snakeheadimg;
-
     Image snakebodyimg;
 
+    //Getters
     public static String GetScore() {
         return Integer.toString(m_score);
     }
-
     public static Double GetXBound(){
         return m_xbound;
     }
-
     public static Double GetYBound(){
         return m_ybound;
     }
-
 
     public void initialize(){
         Image foodimg = new Image(Theme.GetFoodImg());

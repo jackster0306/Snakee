@@ -7,13 +7,11 @@ import javafx.scene.layout.Pane;
 import java.util.Random;
 
 public class Wall {
+    //Class Variables
     ImageView m_wall;
     Pane m_pane;
-
     double m_xbound, m_ybound;
-
     Random m_rand = new Random();
-
 
     public Wall(double x, double y, Pane pane, Image img) {
         this.m_pane = pane;
@@ -28,14 +26,12 @@ public class Wall {
         m_ybound = PlayScreenController.GetYBound();
         pane.getChildren().add(m_wall);
     }
-
     public void moveWall(){
         m_wall.setLayoutX(m_rand.nextInt((int) m_xbound)- m_wall.getFitWidth());
         m_wall.setLayoutY(m_rand.nextInt((int) m_ybound)- m_wall.getFitHeight());
         if(m_wall.isDisable())
             m_wall.setDisable(false);
     }
-
     public void removeWall(){
         m_pane.getChildren().remove(m_wall);
     }

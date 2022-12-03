@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StartScreenJFX extends Application {
+    //Class Variables
     static Scene m_scene;
     public static Stage m_tstage;
     public static void main(String[] args) {
@@ -22,8 +23,6 @@ public class StartScreenJFX extends Application {
         m_tstage.setScene(m_scene);
         m_tstage.show();
     }
-
-
     static void setRoot(String fxml) throws IOException{
         m_scene.setRoot(loadFXML(fxml));
         if(fxml == "PlayScreenMedium"){
@@ -43,7 +42,6 @@ public class StartScreenJFX extends Application {
             m_tstage.setWidth(870+14);
         }
     }
-
     private static Parent loadFXML(String fxml) throws IOException{
         FXMLLoader fxmlloader = new FXMLLoader(StartScreenJFX.class.getResource(fxml + ".fxml"));
         return fxmlloader.load();

@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
 import java.io.IOException;
-
-
 
 public class StartScreenController {
     //FXML Variables
@@ -49,6 +46,7 @@ public class StartScreenController {
     }
     private int thetheme = 0;
 
+    //Getters
     public static boolean GetToBomb(){
         return m_bombs;
     }

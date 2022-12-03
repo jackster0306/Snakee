@@ -8,6 +8,7 @@ import java.io.File;
 
 public class MusicPlayer extends Thread
 {
+	//Class Variables
 	Media m_media;
 	MediaPlayer m_player;
 	public MusicPlayer(String filename)

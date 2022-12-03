@@ -1,16 +1,14 @@
 package Application;
 
 public class Theme {
+    //Class variables
     public static String m_foodimg;
     public static String m_wallimg;
     public static String m_bombimg;
     public static String m_snakebodyimg;
     public static String m_snakeheadimg;
     private static String m_background = "PlayPaneSky";
-
     private static boolean m_snaketheme = true;
-
-
 
     //Getters
     public static boolean GetSnakeTheme(){return m_snaketheme;}
