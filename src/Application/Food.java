@@ -36,12 +36,12 @@ public class Food {
         }
         m_food.setFitWidth(26);
         m_food.setFitHeight(36);
-        m_food.setLayoutX(x);
-        m_food.setLayoutY(y);
+        this.m_boundx = (PlayScreenController.GetXBound() - m_food.getFitWidth());
+        this.m_boundy = (PlayScreenController.GetYBound() - m_food.getFitHeight());
+        m_food.setLayoutX(m_boundx);
+        m_food.setLayoutY(m_boundy);
         m_food.setPreserveRatio(true);
         m_food.setSmooth(true);
-        this.m_boundx = (PlayScreenController.GetXBound());
-        this.m_boundy = (PlayScreenController.GetYBound());
         contpane.getChildren().add(m_food);
     }
 

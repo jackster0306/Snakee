@@ -1,8 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import Application.Food;
-import Application.ImageUtil;
-import Application.Theme;
+import Application.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -21,6 +19,8 @@ public class FoodTests {
 
     @BeforeEach
     public void init(){
+        PlayScreenController.SetXBound(870);
+        PlayScreenController.SetYBound(560);
         Theme.SetSnakeTheme(false);
         Pane pane = new Pane();
         Image img = null;
@@ -62,6 +62,7 @@ public class FoodTests {
 
         @Test
         void CheckNotSnakeTheme(){
+            food.MoveFood();
             assertNotEquals(844, foodview.getLayoutX());
             assertNotEquals(524, foodview.getLayoutY());
             assertEquals(null, foodview.getImage());
