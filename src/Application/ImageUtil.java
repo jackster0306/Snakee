@@ -13,6 +13,7 @@ public class ImageUtil {
     //Class Variables
     public static Map<Integer, Image> m_images = new HashMap<>();
 
+
     /**
      * Contains all the food images
      * These images are accessed using the Integer key they are given

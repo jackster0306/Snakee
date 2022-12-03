@@ -76,6 +76,10 @@ public class PlayScreenController {
         return m_ybound;
     }
 
+    //Setters
+    public static void SetXBound(double x){m_xbound = x;}
+    public static void SetYBound(double y){m_ybound = y;}
+
     /**
      * Sets up the Play Screen when it gets loaded
      * Contains everything to do when the Play Screen is loaded

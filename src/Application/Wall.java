@@ -17,6 +17,9 @@ public class Wall {
     double m_xbound, m_ybound;
     Random m_rand = new Random();
 
+    //Getters
+    public ImageView GetM_wall(){return m_wall;}
+
     /**
      * Creates and spawns a Wall
      * Sets the x and y co-ordinates of the Wall, as well as the size and image

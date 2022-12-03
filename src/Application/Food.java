@@ -16,6 +16,8 @@ public class Food {
     double m_boundx, m_boundy;
     Random m_rand = new Random();
 
+    public ImageView GetM_food(){return m_food;}
+
     /**
      * Creates a food for the game
      * Sets the height width and layout as well as an Image for the food

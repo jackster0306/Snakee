@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import Application.Bomb;
+import Application.PlayScreenController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -51,6 +52,11 @@ public class BombTests {
 
     @Nested
     class BombSpawn{
+        @BeforeEach
+        public  void init(){
+            PlayScreenController.SetXBound(870);
+            PlayScreenController.SetYBound(560);
+        }
         @Test
         void BombAlreadyVisible(){
             bombview.setVisible(true);

@@ -47,7 +47,7 @@ public class Bomb {
             Random rand = new Random();
             double x = PlayScreenController.GetXBound();
             double y = PlayScreenController.GetYBound();
-            int randx = rand.nextInt(((int)x)-(int) m_bomb.getFitWidth());
+            int randx = rand.nextInt(((int)x)-(int)m_bomb.getFitWidth());
             int randy = rand.nextInt(((int)y)-(int) m_bomb.getFitHeight());
             m_bomb.setLayoutX(randx);
             m_bomb.setLayoutY(randy);
