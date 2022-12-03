@@ -13,6 +13,8 @@ public class Bomb {
     //Class Variables
     ImageView m_bomb;
 
+    public ImageView GetM_bomb(){return  m_bomb;}
+
     /**
      * Creates and adds the 'bomb' to the Pane provided.
      * Sets an image to the ImageView m_bomb and sets the layout and its height and width
@@ -25,10 +27,10 @@ public class Bomb {
     public Bomb(int x, int y, Pane contpane, Image img) {
         m_bomb = new ImageView();
         m_bomb.setImage(img);
-        m_bomb.setLayoutX(x- m_bomb.getFitWidth());
-        m_bomb.setLayoutY(y- m_bomb.getFitHeight());
         m_bomb.setFitWidth(70);
         m_bomb.setFitHeight(70);
+        m_bomb.setLayoutX(x- m_bomb.getFitWidth());
+        m_bomb.setLayoutY(y- m_bomb.getFitHeight());
         m_bomb.setVisible(false);
         contpane.getChildren().add(m_bomb);
         }
