@@ -18,7 +18,7 @@ public class BombTests {
     public void init(){
         Pane pane = new Pane();
         Image img = null;
-        bomb = new Bomb(870,560, pane, img);
+        bomb = new Bomb(pane, img);
         bombview = bomb.GetM_bomb();
     }
 
@@ -39,12 +39,6 @@ public class BombTests {
         }
 
         @Test
-        void CheckLayout(){
-            assertEquals(800, bombview.getLayoutX());
-            assertEquals(490, bombview.getLayoutY());
-        }
-
-        @Test
         void CheckImg(){
             assertEquals(null, bombview.getImage());
         }
@@ -52,24 +46,16 @@ public class BombTests {
 
     @Nested
     class BombSpawn{
-        @BeforeEach
-        public  void init(){
-            PlayScreenController.SetXBound(870);
-            PlayScreenController.SetYBound(560);
-        }
         @Test
         void BombAlreadyVisible(){
             bombview.setVisible(true);
             bomb.BombSpawn();
-            assertEquals(800, bombview.getLayoutX());
-            assertEquals(490, bombview.getLayoutY());
+            assertEquals(true, bombview.isVisible());
         }
         @Test
         void BombNotVisible(){
             bombview.setVisible(false);
             bomb.BombSpawn();
-            assertNotEquals(800, bombview.getLayoutX());
-            assertNotEquals(490, bombview.getLayoutY());
             assertEquals(true, bombview.isVisible());
         }
     }

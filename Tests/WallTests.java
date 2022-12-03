@@ -19,7 +19,7 @@ public class WallTests {
     public void init(){
         Pane pane = new Pane();
         Image img = null;
-        wall = new Wall(870,560, pane, img);
+        wall = new Wall(pane, img);
         wallview = wall.GetM_wall();
     }
 
@@ -40,12 +40,6 @@ public class WallTests {
         }
 
         @Test
-        void CheckLayout(){
-            assertEquals(820, wallview.getLayoutX());
-            assertEquals(490, wallview.getLayoutY());
-        }
-
-        @Test
         void CheckImg(){
             assertEquals(null, wallview.getImage());
         }
@@ -55,9 +49,11 @@ public class WallTests {
     class WallMove{
         @Test
         void WallMoves(){
+            double x = wallview.getLayoutX();
+            double y = wallview.getLayoutY();
             wall.moveWall();
-            assertNotEquals(820, wallview.getLayoutX());
-            assertNotEquals(490, wallview.getLayoutY());
+            assertNotEquals(x, wallview.getLayoutX());
+            assertNotEquals(y, wallview.getLayoutY());
         }
     }
 }

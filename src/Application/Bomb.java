@@ -11,26 +11,31 @@ import java.util.Random;
  */
 public class Bomb {
     //Class Variables
+    Random m_rand = new Random();
     ImageView m_bomb;
 
     public ImageView GetM_bomb(){return  m_bomb;}
+
+    double m_xbound;
+
+    double m_ybound;
 
     /**
      * Creates and adds the 'bomb' to the Pane provided.
      * Sets an image to the ImageView m_bomb and sets the layout and its height and width
      * Makes the ImageView to not be visible.
-     * @param x the max value the 'bombs' x co-ordinate should be, the x boundary
-     * @param y the max value the 'bombs' y co-ordinate should be, the y boundary
      * @param contpane the pane to add the 'bomb' to
      * @param img the image to set the 'bomb' to
      */
-    public Bomb(int x, int y, Pane contpane, Image img) {
+    public Bomb(Pane contpane, Image img) {
         m_bomb = new ImageView();
         m_bomb.setImage(img);
         m_bomb.setFitWidth(70);
         m_bomb.setFitHeight(70);
-        m_bomb.setLayoutX(x- m_bomb.getFitWidth());
-        m_bomb.setLayoutY(y- m_bomb.getFitHeight());
+        m_xbound = (PlayScreenController.GetXBound() - m_bomb.getFitWidth());
+        m_ybound = (PlayScreenController.GetYBound() - m_bomb.getFitHeight());
+        m_bomb.setLayoutX(m_rand.nextInt((int)m_xbound));
+        m_bomb.setLayoutY(m_rand.nextInt((int)m_ybound));
         m_bomb.setVisible(false);
         contpane.getChildren().add(m_bomb);
         }
@@ -44,13 +49,8 @@ public class Bomb {
      */
     public void BombSpawn(){
         if(!m_bomb.isVisible()){
-            Random rand = new Random();
-            double x = PlayScreenController.GetXBound();
-            double y = PlayScreenController.GetYBound();
-            int randx = rand.nextInt(((int)x)-(int)m_bomb.getFitWidth());
-            int randy = rand.nextInt(((int)y)-(int) m_bomb.getFitHeight());
-            m_bomb.setLayoutX(randx);
-            m_bomb.setLayoutY(randy);
+            m_bomb.setLayoutX(m_rand.nextInt((int)m_xbound));
+            m_bomb.setLayoutY(m_rand.nextInt((int)m_ybound));
             m_bomb.setVisible(true);
         }
     }

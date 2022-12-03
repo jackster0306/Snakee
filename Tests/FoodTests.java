@@ -24,7 +24,7 @@ public class FoodTests {
         Theme.SetSnakeTheme(false);
         Pane pane = new Pane();
         Image img = null;
-        food = new Food(870,560, pane, img);
+        food = new Food(pane, img);
         foodview = food.GetM_food();
     }
 
@@ -46,12 +46,6 @@ public class FoodTests {
         }
 
         @Test
-        void CheckLayout(){;
-            assertEquals(844, foodview.getLayoutX());
-            assertEquals(524, foodview.getLayoutY());
-        }
-
-        @Test
         void CheckImgNotSnakeTheme(){
             assertEquals(null, foodview.getImage());
         }
@@ -63,8 +57,6 @@ public class FoodTests {
         @Test
         void CheckNotSnakeTheme(){
             food.MoveFood();
-            assertNotEquals(844, foodview.getLayoutX());
-            assertNotEquals(524, foodview.getLayoutY());
             assertEquals(null, foodview.getImage());
             assertTrue(foodview.isVisible());
         }

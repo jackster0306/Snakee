@@ -26,7 +26,7 @@ public class Food {
      * @param contpane the pane to add the food to
      * @param img the image to set the food to
      */
-    public Food(double x, double y, Pane contpane, Image img) {
+    public Food(Pane contpane, Image img) {
         m_img = img;
         m_food = new ImageView();
         if(Theme.GetSnakeTheme()){
@@ -38,8 +38,8 @@ public class Food {
         m_food.setFitHeight(36);
         this.m_boundx = (PlayScreenController.GetXBound() - m_food.getFitWidth());
         this.m_boundy = (PlayScreenController.GetYBound() - m_food.getFitHeight());
-        m_food.setLayoutX(m_boundx);
-        m_food.setLayoutY(m_boundy);
+        m_food.setLayoutX(m_rand.nextInt((int)m_boundx));
+        m_food.setLayoutY(m_rand.nextInt((int)m_boundy));
         m_food.setPreserveRatio(true);
         m_food.setSmooth(true);
         contpane.getChildren().add(m_food);
@@ -51,8 +51,8 @@ public class Food {
      * Sets a new Image to the food
      */
     public void MoveFood(){
-        m_food.setLayoutX((m_rand.nextInt((int) m_boundx)) - m_food.getFitHeight());
-        m_food.setLayoutY((m_rand.nextInt((int) m_boundy)) - m_food.getFitWidth());
+        m_food.setLayoutX((m_rand.nextInt((int) m_boundx)));
+        m_food.setLayoutY((m_rand.nextInt((int) m_boundy)));
         if(Theme.GetSnakeTheme()){
             m_food.setImage(ImageUtil.m_images.get(m_rand.nextInt(17)));
         }

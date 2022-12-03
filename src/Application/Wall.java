@@ -24,12 +24,10 @@ public class Wall {
      * Creates and spawns a Wall
      * Sets the x and y co-ordinates of the Wall, as well as the size and image
      * Makes the wall visible and adds it to the Pane
-     * @param x the x bound, the maximum the x co-ordinate should be
-     * @param y the y bound, the maximum the y co-ordinate should be
      * @param pane the pane to add the Wall to
      * @param img the image to set the Wall to
      */
-    public Wall(double x, double y, Pane pane, Image img) {
+    public Wall(Pane pane, Image img) {
         this.m_pane = pane;
         m_wall = new ImageView();
         m_wall.setFitWidth(50);
@@ -37,8 +35,8 @@ public class Wall {
         m_xbound = PlayScreenController.GetXBound() - m_wall.getFitWidth();
         m_ybound = PlayScreenController.GetYBound() - m_wall.getFitHeight();
         m_wall.setImage(img);
-        m_wall.setLayoutX(m_xbound);
-        m_wall.setLayoutY(m_ybound);
+        m_wall.setLayoutX(m_rand.nextInt((int)m_xbound));
+        m_wall.setLayoutY(m_rand.nextInt((int)m_ybound));
         m_wall.setVisible(true);
         pane.getChildren().add(m_wall);
     }
@@ -47,8 +45,8 @@ public class Wall {
      * Moves the wall
      */
     public void moveWall(){
-        m_wall.setLayoutX(m_rand.nextInt((int) m_xbound)- m_wall.getFitWidth());
-        m_wall.setLayoutY(m_rand.nextInt((int) m_ybound)- m_wall.getFitHeight());
+        m_wall.setLayoutX(m_rand.nextInt((int)m_xbound));
+        m_wall.setLayoutY(m_rand.nextInt((int)m_ybound));
     }
 
     /**
