@@ -34,12 +34,12 @@ public class Wall {
         m_wall = new ImageView();
         m_wall.setFitWidth(50);
         m_wall.setFitHeight(70);
+        m_xbound = PlayScreenController.GetXBound() - m_wall.getFitWidth();
+        m_ybound = PlayScreenController.GetYBound() - m_wall.getFitHeight();
         m_wall.setImage(img);
-        m_wall.setLayoutX(x);
-        m_wall.setLayoutY(y);
+        m_wall.setLayoutX(m_xbound);
+        m_wall.setLayoutY(m_ybound);
         m_wall.setVisible(true);
-        m_xbound = PlayScreenController.GetXBound();
-        m_ybound = PlayScreenController.GetYBound();
         pane.getChildren().add(m_wall);
     }
 
