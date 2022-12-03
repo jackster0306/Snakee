@@ -7,6 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
 
+/**
+ * Controls the Start Screen
+ * Used to set up all the variables ready for the game to be played
+ */
 public class StartScreenController {
     //FXML Variables
     @FXML

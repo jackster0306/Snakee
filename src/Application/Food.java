@@ -6,6 +6,9 @@ import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
+/**
+ * Food class that is used to create and move Food
+ */
 public class Food {
     //Class Variables
     ImageView m_food;

@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Controls the Leaderboard class
+ */
 public class LeaderboardController {
     //FXML Variables
     @FXML

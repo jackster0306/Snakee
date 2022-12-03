@@ -20,6 +20,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * Controls the Play Screen
+ * The main class that allows the user to be able to play
+ * Moves the snake, spawns food, bombs and walls
+ * Refreshes the screen
+ */
 public class PlayScreenController {
     //FXML Variables
     @FXML

@@ -2,6 +2,9 @@ package Application;
 
 import java.io.IOException;
 
+/**
+ * Controls the Rules Screen
+ */
 public class RulesController {
     /**
      * Loads the Start Screen

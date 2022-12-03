@@ -6,6 +6,9 @@ import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
+/**
+ * Bomb class that is used to create, spawn and remove bombs
+ */
 public class Bomb {
     //Class Variables
     ImageView m_bomb;

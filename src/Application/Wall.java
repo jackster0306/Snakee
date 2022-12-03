@@ -6,6 +6,10 @@ import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
+/**
+ * Class for a Wall
+ * Creates, removes and moves Walls
+ */
 public class Wall {
     //Class Variables
     ImageView m_wall;

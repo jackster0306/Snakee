@@ -6,6 +6,9 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
+/**
+ * Plays Music in the provided filename
+ */
 public class MusicPlayer extends Thread
 {
 	//Class Variables

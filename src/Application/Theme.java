@@ -1,5 +1,8 @@
 package Application;
 
+/**
+ * Contains the information for each Theme
+ */
 public class Theme {
     //Class variables
     public static String m_foodimg;

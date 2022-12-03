@@ -5,6 +5,10 @@ import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Gets images from a Map using an Integer key
+ * Each key relates to a particular image
+ */
 public class ImageUtil {
     //Class Variables
     public static Map<Integer, Image> m_images = new HashMap<>();

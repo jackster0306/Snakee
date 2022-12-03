@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Runs the program
+ * Sets up the stage and is used to change screen
+ */
 public class StartScreenJFX extends Application {
     //Class Variables
     static Scene m_scene;
