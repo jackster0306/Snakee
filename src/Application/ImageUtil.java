@@ -5,29 +5,38 @@ import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Gets images from a Map using an Integer key
+ * Each key relates to a particular image
+ */
 public class ImageUtil {
-    public static Map<Integer, Image> images = new HashMap<>();
+    //Class Variables
+    public static Map<Integer, Image> m_images = new HashMap<>();
 
+
+    /**
+     * Contains all the food images
+     * These images are accessed using the Integer key they are given
+     * Which allows a random image to be chosen
+     */
     static{
-        images.put(0, new Image("example/food-apple.png"));
-        images.put(1, new Image("example/food-banana.png"));
-        images.put(2, new Image("example/food-blueberry.png"));
-        images.put(3, new Image("example/food-cherry.png"));
-        images.put(4, new Image("example/food-durian.png"));
-        images.put(5, new Image("example/food-grape.png"));
-        images.put(6, new Image("example/food-grapefruit.png"));
-        images.put(7, new Image("example/food-kiwi.png"));
-        images.put(8, new Image("example/food-lemon.png"));
-        images.put(9, new Image("example/food-litchi.png"));
-        images.put(10, new Image("example/food-mango.png"));
-        images.put(11, new Image("example/food-orange.png"));
-        images.put(12, new Image("example/food-peach.png"));
-        images.put(13, new Image("example/food-pear.png"));
-        images.put(14, new Image("example/food-pineapple.png"));
-        images.put(15, new Image("example/food-pitaya.png"));
-        images.put(16, new Image("example/food-strawberry.png"));
-        images.put(17, new Image("example/food-watermelon.png"));
-        images.put(18, new Image("Application/skull_bomb_by_alishavolkman_daf7ku4.png"));
-        images.put(19, new Image("Application/brick-clipart-briks-10.png"));
+        m_images.put(0, new Image("Resources/Images/food-apple.png"));
+        m_images.put(1, new Image("Resources/Images/food-banana.png"));
+        m_images.put(2, new Image("Resources/Images/food-blueberry.png"));
+        m_images.put(3, new Image("Resources/Images/food-cherry.png"));
+        m_images.put(4, new Image("Resources/Images/food-durian.png"));
+        m_images.put(5, new Image("Resources/Images/food-grape.png"));
+        m_images.put(6, new Image("Resources/Images/food-grapefruit.png"));
+        m_images.put(7, new Image("Resources/Images/food-kiwi.png"));
+        m_images.put(8, new Image("Resources/Images/food-lemon.png"));
+        m_images.put(9, new Image("Resources/Images/food-litchi.png"));
+        m_images.put(10, new Image("Resources/Images/food-mango.png"));
+        m_images.put(11, new Image("Resources/Images/food-orange.png"));
+        m_images.put(12, new Image("Resources/Images/food-peach.png"));
+        m_images.put(13, new Image("Resources/Images/food-pear.png"));
+        m_images.put(14, new Image("Resources/Images/food-pineapple.png"));
+        m_images.put(15, new Image("Resources/Images/food-pitaya.png"));
+        m_images.put(16, new Image("Resources/Images/food-strawberry.png"));
+        m_images.put(17, new Image("Resources/Images/food-watermelon.png"));
     }
 }

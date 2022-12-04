@@ -1,39 +1,41 @@
 package Application;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-
-import javafx.scene.media.MediaPlayer;
-import javazoom.jl.player.Player;
 
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
+
+/**
+ * Plays Music in the provided filename
+ */
 public class MusicPlayer extends Thread
 {
-	Media media = null;
-	MediaPlayer player;
+	//Class Variables
+	Media m_media;
+	MediaPlayer m_player;
+
 	/**
-	 * MusicPlayer method
-	 * Changes the local variable filename to the given filename when the method is called
-	 * @param filename - the name of the file to be played
+	 * Plays the Music in the given file and loops it to play again when it ends
+	 * @param filename the file path where the music file is located
+	 * @param toloop the boolean that decides whether the music is to be looped or not
 	 */
-	public MusicPlayer(String filename)
+	public MusicPlayer(String filename, boolean toloop)
 	{
-		media = new Media(new File(filename).toURI().toString());
-		player = new MediaPlayer(media);
-		Runnable loop = new Runnable() {
-			@Override
-			public void run() {
-				player.dispose();
-				player = new MediaPlayer(media);
-				player.play();
-				player.setOnEndOfMedia(this);
-			}
-		};
-		player.setOnEndOfMedia(loop);
-		player.play();
+		m_media = new Media(new File(filename).toURI().toString());
+		m_player = new MediaPlayer(m_media);
+		if(toloop){
+			Runnable loop = new Runnable() {
+				@Override
+				public void run() {
+					m_player.dispose();
+					m_player = new MediaPlayer(m_media);
+					m_player.play();
+					m_player.setOnEndOfMedia(this);
+				}
+			};
+			m_player.setOnEndOfMedia(loop);
+		}
+		m_player.play();
 	}
-
-
 }

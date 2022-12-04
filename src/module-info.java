@@ -4,9 +4,12 @@ module CW.Snake {
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
-    requires org.apache.poi.poi;
-    requires org.apache.poi.ooxml;
     requires javafx.media;
     opens example;
     opens Application;
+    opens Resources.Music;
+    opens Resources.Images;
+    opens Resources.TextFiles;
+    opens Application.Controllers;
+    opens Application.Obstacles;
 }
