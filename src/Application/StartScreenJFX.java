@@ -14,8 +14,10 @@ import java.io.IOException;
  */
 public class StartScreenJFX extends Application {
     //Class Variables
-    static Scene m_scene;
+    private static Scene m_scene;
     public static Stage m_tstage;
+
+    public static Scene GetM_scene(){return m_scene;}
     public static void main(String[] args) {
         launch(args);
     }
@@ -39,7 +41,7 @@ public class StartScreenJFX extends Application {
      * @param fxml the name of the fxml file to switch the root to
      * @throws IOException
      */
-    static void setRoot(String fxml) throws IOException{
+    public static void setRoot(String fxml) throws IOException{
         m_scene.setRoot(loadFXML(fxml));
         if(fxml == "PlayScreenMedium"){
             m_tstage.setHeight(420+37);
@@ -66,7 +68,7 @@ public class StartScreenJFX extends Application {
      * @throws IOException
      */
     private static Parent loadFXML(String fxml) throws IOException{
-        FXMLLoader fxmlloader = new FXMLLoader(StartScreenJFX.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlloader = new FXMLLoader(StartScreenJFX.class.getResource("FXMLFiles/"+fxml + ".fxml"));
         return fxmlloader.load();
     }
 }

@@ -1,6 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import Application.*;
+import Application.Controllers.PlayScreenController;
+import Application.Obstacles.Food;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;

@@ -8,4 +8,6 @@ module CW.Snake {
     opens example;
     opens Application;
     opens Resources;
+    opens Application.Controllers;
+    opens Application.Obstacles;
 }
