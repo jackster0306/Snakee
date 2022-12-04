@@ -18,21 +18,24 @@ public class MusicPlayer extends Thread
 	/**
 	 * Plays the Music in the given file and loops it to play again when it ends
 	 * @param filename the file path where the music file is located
+	 * @param toloop the boolean that decides whether the music is to be looped or not
 	 */
-	public MusicPlayer(String filename)
+	public MusicPlayer(String filename, boolean toloop)
 	{
 		m_media = new Media(new File(filename).toURI().toString());
 		m_player = new MediaPlayer(m_media);
-		Runnable loop = new Runnable() {
-			@Override
-			public void run() {
-				m_player.dispose();
-				m_player = new MediaPlayer(m_media);
-				m_player.play();
-				m_player.setOnEndOfMedia(this);
-			}
-		};
-		m_player.setOnEndOfMedia(loop);
+		if(toloop){
+			Runnable loop = new Runnable() {
+				@Override
+				public void run() {
+					m_player.dispose();
+					m_player = new MediaPlayer(m_media);
+					m_player.play();
+					m_player.setOnEndOfMedia(this);
+				}
+			};
+			m_player.setOnEndOfMedia(loop);
+		}
 		m_player.play();
 	}
 }

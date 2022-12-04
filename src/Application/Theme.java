@@ -12,6 +12,8 @@ public class Theme {
     public static String m_snakeheadimg;
     private static String m_background = "PlayPaneSky";
     private static boolean m_snaketheme = true;
+    private static String m_foodeffect;
+    private static String m_walleffect;
 
     //Getters
     public static boolean GetSnakeTheme(){return m_snaketheme;}
@@ -29,6 +31,8 @@ public class Theme {
     }
     public static String GetWallImg() {return m_wallimg;}
     public static String GetBombImg() {return m_bombimg;}
+    public static String GetFoodSound(){return m_foodeffect;}
+    public static String GetWallSound(){return m_walleffect;}
 
     public static void SetSnakeTheme(boolean b){m_snaketheme = b;}
 
@@ -45,6 +49,8 @@ public class Theme {
                 m_foodimg = "Resources/Images/food-apple.png";
                 m_snakeheadimg = "Resources/Images/snake-head-right.png";
                 m_snakebodyimg = "Resources/Images/snake-body.png";
+                m_foodeffect = "src/Resources/Music/eatingaudio.mp3";
+                m_walleffect = "src/Resources/Music/wallhitaudio.mp3";
                 m_snaketheme = true;
                 break;
             case 1:
@@ -54,6 +60,8 @@ public class Theme {
                 m_foodimg = "Resources/Images/Basketball.png";
                 m_snakeheadimg = "Resources/Images/LeBron.png";
                 m_snakebodyimg = "Resources/Images/lebroncavsjersey.png";
+                m_foodeffect = "src/Resources/Music/Basketball-net-swish.mp3";
+                m_walleffect = "src/Resources/Music/lebronjamesaudio.mp3";
                 m_snaketheme = false;
                 break;
             case 2:
@@ -63,6 +71,8 @@ public class Theme {
                 m_foodimg = "Resources/Images/Football.png";
                 m_snakeheadimg = "Resources/Images/head.png";
                 m_snakebodyimg = "Resources/Images/ArgShirt.png";
+                m_foodeffect = "src/Resources/Music/Ronaldo-suiii.mp3";
+                m_walleffect = "src/Resources/Music/refereewhistle.mp3";
                 m_snaketheme = false;
         }
     }

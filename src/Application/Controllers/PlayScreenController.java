@@ -98,7 +98,6 @@ public class PlayScreenController {
         snakeheadimg = new Image(Theme.GetSnakeHImg());
         snakehead.setFill(new ImagePattern(snakeheadimg));
         snakebodyimg = new Image(Theme.GetSnakeBImg());
-        new MusicPlayer("src/Resources/Music/frogger.mp3");
         m_wallticks = 0;
         m_gameticks = 0;
         m_score = 0;
@@ -146,6 +145,7 @@ public class PlayScreenController {
             }
             m_intersects = CheckBounds(m_food.GetM_food());
             if (m_intersects) {
+                new MusicPlayer(Theme.GetFoodSound(), false);
                 m_score +=521;
                 m_food.MoveFood();
                 m_newfood = true;
@@ -295,6 +295,7 @@ public class PlayScreenController {
      */
     public void RemoveSnakeBody() throws IOException {
         if(!m_hit){
+            new MusicPlayer(Theme.GetWallSound(), false);
             if(m_snakebody.size() == 0)
                 ToEndScreen();
             PlayPaneSky.getChildren().remove(m_snakebody.get(Integer.toString(m_snakebody.size()-1)));
@@ -346,6 +347,7 @@ public class PlayScreenController {
      * @throws IOException
      */
     public void ToEndScreen() throws IOException {
+        new MusicPlayer("src/Resources/Music/Gameoveraudio.mp3", false);
         m_alive = false;
         m_timeline.stop();
         StartScreenJFX.setRoot("EndScreen");
