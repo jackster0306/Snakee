@@ -18,8 +18,6 @@ public class StartScreenController {
     @FXML
     private ComboBox scorechoice;
     @FXML
-    private ComboBox snakechoice;
-    @FXML
     private ComboBox diffchoice;
     @FXML
     private ComboBox bgchoice;
@@ -85,13 +83,11 @@ public class StartScreenController {
         m_diff = 1;
         m_level = 1;
         SetupComboBox(scorechoice, m_colours, "Score Colour");
-        SetupComboBox(snakechoice, m_colours, "Snake Colour");
         SetupComboBox(diffchoice, m_difficulties, "Difficulty");
         SetupComboBox(lvlchoice, m_levels, "Level");
         SetupComboBox(bgchoice, m_backgrounds, "Theme");
         diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_diff = newval.intValue() + 1);
         scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_scorecol = CheckCol(newval.intValue()));
-        snakechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_snakecol = CheckCol(newval.intValue()));
         bgchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> thetheme = newval.intValue());
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);
     }

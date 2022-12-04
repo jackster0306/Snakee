@@ -40,29 +40,29 @@ public class Theme {
         switch(i){
             case 0:
                 m_background = "PlayPaneSky";
-                m_wallimg = "Resources/brick-clipart-briks-10.png";
-                m_bombimg = "Resources/skull_bomb_by_alishavolkman_daf7ku4.png";
-                m_foodimg = "Resources/food-apple.png";
-                m_snakeheadimg = "Resources/snake-head-right.png";
-                m_snakebodyimg = "Resources/snake-body.png";
+                m_wallimg = "Resources/Images/brick-clipart-briks-10.png";
+                m_bombimg = "Resources/Images/skull_bomb_by_alishavolkman_daf7ku4.png";
+                m_foodimg = "Resources/Images/food-apple.png";
+                m_snakeheadimg = "Resources/Images/snake-head-right.png";
+                m_snakebodyimg = "Resources/Images/snake-body.png";
                 m_snaketheme = true;
                 break;
             case 1:
                 m_background = "PlayPaneBB";
-                m_wallimg = "Resources/lebroninjured.png";
-                m_bombimg = "Resources/MichaelJordan.png";
-                m_foodimg = "Resources/Basketball.png";
-                m_snakeheadimg = "Resources/LeBron.png";
-                m_snakebodyimg = "Resources/lebroncavsjersey.png";
+                m_wallimg = "Resources/Images/lebroninjured.png";
+                m_bombimg = "Resources/Images/MichaelJordan.png";
+                m_foodimg = "Resources/Images/Basketball.png";
+                m_snakeheadimg = "Resources/Images/LeBron.png";
+                m_snakebodyimg = "Resources/Images/lebroncavsjersey.png";
                 m_snaketheme = false;
                 break;
             case 2:
                 m_background = "PlayPaneFootball";
-                m_wallimg = "Resources/yellowcard.png";
-                m_bombimg = "Resources/redcard.png";
+                m_wallimg = "Resources/Images/yellowcard.png";
+                m_bombimg = "Resources/Images/redcard.png";
                 m_foodimg = "Resources/football.png";
-                m_snakeheadimg = "Resources/head.png";
-                m_snakebodyimg = "Resources/ArgShirt.png";
+                m_snakeheadimg = "Resources/Images/head.png";
+                m_snakebodyimg = "Resources/Images/ArgShirt.png";
                 m_snaketheme = false;
         }
     }
