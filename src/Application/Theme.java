@@ -60,7 +60,7 @@ public class Theme {
                 m_background = "PlayPaneFootball";
                 m_wallimg = "Resources/Images/yellowcard.png";
                 m_bombimg = "Resources/Images/redcard.png";
-                m_foodimg = "Resources/football.png";
+                m_foodimg = "Resources/Images/Football.png";
                 m_snakeheadimg = "Resources/Images/head.png";
                 m_snakebodyimg = "Resources/Images/ArgShirt.png";
                 m_snaketheme = false;

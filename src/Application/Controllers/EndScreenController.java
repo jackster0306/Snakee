@@ -35,7 +35,7 @@ public class EndScreenController {
         endsclabel.setText((PlayScreenController.GetScore()));
         m_level = CheckLvl();
         m_diffbomb = CheckDiffBomb();
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+ m_level + m_diffbomb +".txt");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\Lvl"+ m_level + m_diffbomb +".txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
             scanner.next();

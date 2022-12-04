@@ -67,7 +67,7 @@ public class LeaderboardController {
         NamesArea.appendText("Name\n");
         ScoresArea.clear();
         ScoresArea.appendText("Score\n");
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\Lvl"+ m_level + m_diffbomb +".txt");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\Lvl"+ m_level + m_diffbomb +".txt");
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
                 if(list %2 == 0) {

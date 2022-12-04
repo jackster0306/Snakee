@@ -7,7 +7,9 @@ module CW.Snake {
     requires javafx.media;
     opens example;
     opens Application;
-    opens Resources;
+    opens Resources.Music;
+    opens Resources.Images;
+    opens Resources.TextFiles;
     opens Application.Controllers;
     opens Application.Obstacles;
 }

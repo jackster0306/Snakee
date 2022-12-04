@@ -98,7 +98,7 @@ public class PlayScreenController {
         snakeheadimg = new Image(Theme.GetSnakeHImg());
         snakehead.setFill(new ImagePattern(snakeheadimg));
         snakebodyimg = new Image(Theme.GetSnakeBImg());
-        new MusicPlayer("src/Resources/frogger.mp3");
+        new MusicPlayer("src/Resources/Music/frogger.mp3");
         m_wallticks = 0;
         m_gameticks = 0;
         m_score = 0;
