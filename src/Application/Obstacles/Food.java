@@ -15,9 +15,9 @@ import java.util.Random;
 public class Food {
     //Class Variables
     private ImageView m_food;
-    Image m_img;
-    double m_boundx, m_boundy;
-    Random m_rand = new Random();
+    private Image m_img;
+    private double m_boundx, m_boundy;
+    private Random m_rand = new Random();
 
     public ImageView GetM_food(){return m_food;}
 
@@ -31,7 +31,7 @@ public class Food {
         m_img = img;
         m_food = new ImageView();
         if(Theme.GetSnakeTheme()){
-            m_food.setImage(ImageUtil.m_images.get(m_rand.nextInt(17)));
+            m_food.setImage(ImageUtil.GetM_images().get(m_rand.nextInt(17)));
         } else{
             m_food.setImage(m_img);
         }
@@ -54,8 +54,7 @@ public class Food {
     public void MoveFood(){
         m_food.setLayoutX((m_rand.nextInt((int) m_boundx)));
         m_food.setLayoutY((m_rand.nextInt((int) m_boundy)));
-        if(Theme.GetSnakeTheme()){
-            m_food.setImage(ImageUtil.m_images.get(m_rand.nextInt(17)));
-        }
+        if(Theme.GetSnakeTheme())
+            m_food.setImage(ImageUtil.GetM_images().get(m_rand.nextInt(17)));
     }
 }

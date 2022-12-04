@@ -11,7 +11,9 @@ import java.util.Map;
  */
 public class ImageUtil {
     //Class Variables
-    public static Map<Integer, Image> m_images = new HashMap<>();
+    private  static Map<Integer, Image> m_images = new HashMap<>();
+
+    public static Map<Integer, Image> GetM_images(){return m_images;}
 
 
     /**

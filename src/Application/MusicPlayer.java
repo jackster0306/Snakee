@@ -12,8 +12,7 @@ import java.io.File;
 public class MusicPlayer extends Thread
 {
 	//Class Variables
-	Media m_media;
-	MediaPlayer m_player;
+	private MediaPlayer m_player;
 
 	/**
 	 * Plays the Music in the given file and loops it to play again when it ends
@@ -22,14 +21,14 @@ public class MusicPlayer extends Thread
 	 */
 	public MusicPlayer(String filename, boolean toloop)
 	{
-		m_media = new Media(new File(filename).toURI().toString());
-		m_player = new MediaPlayer(m_media);
+		Media media = new Media(new File(filename).toURI().toString());
+		m_player = new MediaPlayer(media);
 		if(toloop){
 			Runnable loop = new Runnable() {
 				@Override
 				public void run() {
 					m_player.dispose();
-					m_player = new MediaPlayer(m_media);
+					m_player = new MediaPlayer(media);
 					m_player.play();
 					m_player.setOnEndOfMedia(this);
 				}

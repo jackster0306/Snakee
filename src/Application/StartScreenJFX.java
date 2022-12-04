@@ -15,7 +15,7 @@ import java.io.IOException;
 public class StartScreenJFX extends Application {
     //Class Variables
     private static Scene m_scene;
-    public static Stage m_tstage;
+    private static Stage m_tstage;
 
     public static Scene GetM_scene(){return m_scene;}
     public static void main(String[] args) {

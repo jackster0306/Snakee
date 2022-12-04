@@ -28,10 +28,10 @@ public class LeaderboardController {
     private TextArea ScoresArea;
 
     //Class Variables
-    public String m_level = "1";
-    public String m_diffbomb = "Easy";
-    ObservableList<String> m_tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
-    ObservableList<String> m_levels = FXCollections.observableArrayList("1", "2", "3");
+    private String m_level = "1";
+    private String m_diffbomb = "Easy";
+    private ObservableList<String> m_tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
+    private ObservableList<String> m_levels = FXCollections.observableArrayList("1", "2", "3");
 
     /**
      * Sets up the Leaderboard Screen when it gets loaded

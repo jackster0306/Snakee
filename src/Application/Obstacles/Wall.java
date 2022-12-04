@@ -13,10 +13,10 @@ import java.util.Random;
  */
 public class Wall {
     //Class Variables
-    ImageView m_wall;
-    Pane m_pane;
-    double m_xbound, m_ybound;
-    Random m_rand = new Random();
+    private ImageView m_wall;
+    private Pane m_pane;
+    private double m_xbound, m_ybound;
+    private Random m_rand = new Random();
 
     //Getters
     public ImageView GetM_wall(){return m_wall;}

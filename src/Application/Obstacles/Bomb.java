@@ -12,14 +12,13 @@ import java.util.Random;
  */
 public class Bomb {
     //Class Variables
-    Random m_rand = new Random();
-    ImageView m_bomb;
+    private Random m_rand = new Random();
+    private ImageView m_bomb;
+    private double m_xbound;
+    private double m_ybound;
 
+    //Getters
     public ImageView GetM_bomb(){return  m_bomb;}
-
-    double m_xbound;
-
-    double m_ybound;
 
     /**
      * Creates and adds the 'bomb' to the Pane provided.

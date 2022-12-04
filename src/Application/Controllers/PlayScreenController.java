@@ -37,35 +37,34 @@ public class PlayScreenController {
     @FXML
     private Pane PlayPaneSky;
     @FXML
-    Rectangle snakehead;
+    private Rectangle snakehead;
     @FXML
     private Label NameLabel;
 
     //Class Variables
     private static int m_score = 0;
-    Food m_food;
-    int m_direction = 3;
-    boolean m_alive = true;
-    public Timeline m_timeline, m_bombspawntl, m_bombdonetl;
-    public Random m_rand = new Random();
-    Map<String, Rectangle> m_snakebody = new HashMap<String, Rectangle>();
-    Map<Integer, Double> m_xpositions = new HashMap<>();
-    Map<Integer, Double> m_ypositions = new HashMap<>();
-    int m_gameticks = 0;
-    public boolean m_newfood = false;
-    static double m_xbound, m_ybound;
-    public boolean m_isbombs;
-    Bomb m_bomb, m_bomb1, m_bomb2;
-    int m_bombspawn, m_difficulty, m_speed;
-    Wall m_wall;
-    int m_wallticks;
-    Timeline m_walltl;
-    boolean m_hit = false;
-    boolean m_intersects;
-    double m_time = 0.3;
-    Image m_wallimg;
-    Image snakeheadimg;
-    Image snakebodyimg;
+    private Food m_food;
+    private int m_direction = 3;
+    private boolean m_alive = true;
+    private Timeline m_timeline, m_bombspawntl, m_bombdonetl;
+    private Random m_rand = new Random();
+    private Map<String, Rectangle> m_snakebody = new HashMap<String, Rectangle>();
+    private Map<Integer, Double> m_xpositions = new HashMap<>();
+    private Map<Integer, Double> m_ypositions = new HashMap<>();
+    private int m_gameticks = 0;
+    private boolean m_newfood = false;
+    private static double m_xbound, m_ybound;
+    private boolean m_isbombs;
+    private Bomb m_bomb, m_bomb1, m_bomb2;
+    private int m_bombspawn, m_difficulty, m_speed;
+    private Wall m_wall;
+    private Timeline m_walltl;
+    private boolean m_hit = false;
+    private boolean m_intersects;
+    private double m_time = 0.3;
+    private Image m_wallimg;
+    private Image snakeheadimg;
+    private Image snakebodyimg;
 
     //Getters
     public static String GetScore() {
@@ -98,7 +97,6 @@ public class PlayScreenController {
         snakeheadimg = new Image(Theme.GetSnakeHImg());
         snakehead.setFill(new ImagePattern(snakeheadimg));
         snakebodyimg = new Image(Theme.GetSnakeBImg());
-        m_wallticks = 0;
         m_gameticks = 0;
         m_score = 0;
         m_isbombs = StartScreenController.GetToBomb();
@@ -245,7 +243,6 @@ public class PlayScreenController {
             } else
                 m_wall.moveWall();
             m_hit = false;
-            m_wallticks++;
         }));
         m_walltl.setCycleCount(Timeline.INDEFINITE);
         m_walltl.play();

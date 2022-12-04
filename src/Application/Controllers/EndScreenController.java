@@ -1,7 +1,5 @@
 package Application.Controllers;
 
-import Application.Controllers.PlayScreenController;
-import Application.Controllers.StartScreenController;
 import Application.StartScreenJFX;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,10 +17,6 @@ public class EndScreenController {
     @FXML
     private Label endsclabel;
 
-    //Class Variables
-    String m_level;
-    String m_diffbomb;
-
     /**
      * Contains everything to do when the End Screen is loaded
      * Sets a label to the score from the game that just ended
@@ -33,9 +27,9 @@ public class EndScreenController {
      */
     public void initialize() throws IOException {
         endsclabel.setText((PlayScreenController.GetScore()));
-        m_level = CheckLvl();
-        m_diffbomb = CheckDiffBomb();
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\Lvl"+ m_level + m_diffbomb +".txt");
+        String level = CheckLvl();
+        String diffbomb = CheckDiffBomb();
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\Lvl"+ level + diffbomb +".txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
             scanner.next();

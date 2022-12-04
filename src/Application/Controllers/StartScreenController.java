@@ -29,28 +29,25 @@ public class StartScreenController {
     private ComboBox lvlchoice;
 
     //Class Variables
-    ObservableList<String> m_colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
-    ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
-    ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Snake", "Basketball", "Football");
-    ObservableList<Integer> m_levels = FXCollections.observableArrayList(1, 2, 3);
+    private ObservableList<String> m_colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
+    private ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
+    private ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Snake", "Basketball", "Football");
+    private ObservableList<Integer> m_levels = FXCollections.observableArrayList(1, 2, 3);
     private static boolean m_bombs = false;
-    static String m_scorecol = "magenta";
-    static String m_snakecol = "green";
+    private static String m_scorecol = "magenta";
     public static String GetScoreCol(){
         return m_scorecol;
     }
-    static int m_diff = 1;
-    static int m_level = 1;
-    public static int GetDiff(){
-        return m_diff;
-    }
+    private static int m_diff = 1;
+    private static int m_level = 1;
     private static String m_playername;
-    public static String GetPlayerName(){
-        return m_playername;
-    }
     private int thetheme = 0;
 
     //Getters
+    public static int GetDiff() {return m_diff;}
+    public static String GetPlayerName(){
+        return m_playername;
+    }
     public static boolean GetToBomb(){
         return m_bombs;
     }
