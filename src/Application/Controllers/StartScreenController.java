@@ -65,12 +65,6 @@ public class StartScreenController {
         }
     }
 
-    //Setters
-    public void SetName(){
-        m_playername = name.getText();
-    }
-
-
     /**
      * Sets up the Start Screen when it gets loaded
      * Contains everything to do when the Start Screen is loaded
@@ -116,12 +110,13 @@ public class StartScreenController {
      */
     @FXML
     private void PlayGame() throws IOException {
-        if(m_playername == null){
+        if(name.getText() == ""){
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("You must enter a name");
             a.show();
         }
         else{
+            m_playername = name.getText();
             new Theme(thetheme);
             MusicPlayer.StopMusic();
             m_bombs = checkbomb.isSelected();
