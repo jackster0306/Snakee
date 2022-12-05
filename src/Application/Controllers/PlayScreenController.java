@@ -45,9 +45,7 @@ public class PlayScreenController {
     private static int m_score = 0;
     private Food m_food;
     private int m_direction = 3;
-    private boolean m_alive = true;
     private Timeline m_timeline, m_bombspawntl, m_bombdonetl;
-    private Random m_rand = new Random();
     private Map<String, Rectangle> m_snakebody = new HashMap<>();
     private Map<Integer, Double> m_xpositions = new HashMap<>();
     private Map<Integer, Double> m_ypositions = new HashMap<>();
@@ -345,7 +343,6 @@ public class PlayScreenController {
      */
     public void ToEndScreen() throws IOException {
         new MusicPlayer("src/Resources/Music/Gameoveraudio.mp3", false);
-        m_alive = false;
         m_timeline.stop();
         StartScreenJFX.setRoot("EndScreen");
     }

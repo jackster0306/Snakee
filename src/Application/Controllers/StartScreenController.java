@@ -1,6 +1,7 @@
 package Application.Controllers;
 
 
+import Application.MusicPlayer;
 import Application.StartScreenJFX;
 import Application.Theme;
 import javafx.collections.FXCollections;
@@ -77,6 +78,7 @@ public class StartScreenController {
      * Sets up the combo boxes with the necessary values
      */
     public void initialize() {
+        new MusicPlayer("src/Resources/Music/frogger.mp3", true);
         m_diff = 1;
         m_level = 1;
         SetupComboBox(scorechoice, m_colours, "Score Colour");
@@ -121,6 +123,7 @@ public class StartScreenController {
         }
         else{
             new Theme(thetheme);
+            MusicPlayer.StopMusic();
             m_bombs = checkbomb.isSelected();
             switch(m_diff){
                 case 1:

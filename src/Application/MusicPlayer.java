@@ -12,7 +12,7 @@ import java.io.File;
 public class MusicPlayer extends Thread
 {
 	//Class Variables
-	private MediaPlayer m_player;
+	private static MediaPlayer m_player;
 
 	/**
 	 * Plays the Music in the given file and loops it to play again when it ends
@@ -36,5 +36,9 @@ public class MusicPlayer extends Thread
 			m_player.setOnEndOfMedia(loop);
 		}
 		m_player.play();
+	}
+
+	public static void StopMusic(){
+		m_player.stop();
 	}
 }
