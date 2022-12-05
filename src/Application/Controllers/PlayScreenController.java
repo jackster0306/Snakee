@@ -48,7 +48,7 @@ public class PlayScreenController {
     private boolean m_alive = true;
     private Timeline m_timeline, m_bombspawntl, m_bombdonetl;
     private Random m_rand = new Random();
-    private Map<String, Rectangle> m_snakebody = new HashMap<String, Rectangle>();
+    private Map<String, Rectangle> m_snakebody = new HashMap<>();
     private Map<Integer, Double> m_xpositions = new HashMap<>();
     private Map<Integer, Double> m_ypositions = new HashMap<>();
     private int m_gameticks = 0;
