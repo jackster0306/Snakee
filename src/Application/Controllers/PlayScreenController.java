@@ -47,25 +47,27 @@ public class PlayScreenController {
     private static int m_score = 0;
     private Food m_food;
     private int m_direction = 3;
-    private Timeline m_timeline, m_bombspawntl, m_bombdonetl;
+    private static Timeline m_timeline;
+    private Timeline m_bombspawntl;
+    private Timeline m_bombdonetl;
     private static Map<Integer, Rectangle> m_snakebody;
     private Map<Integer, Double> m_xpositions;
     private Map<Integer, Double> m_ypositions;
     private int m_gameticks = 0;
-    private boolean m_newfood = false;
+    private static boolean m_newfood = false;
     private static double m_xbound, m_ybound;
     private boolean m_isbombs;
     private Bomb m_bomb, m_bomb1, m_bomb2;
     private int m_bombspawn, m_difficulty, SPEED;
     private Wall m_wall;
     private Timeline m_walltl;
-    private boolean m_hit = false;
+    private static boolean m_hit = false;
     private boolean m_intersects;
     private double m_time = 0.3;
     private Image m_wallimg;
-    private Image m_snakeheadimg;
-    private Image m_snakebodyimg;
     private int m_playlevel;
+    Image m_snakeheadimg;
+    Snake m_snake;
 
     //Getters
     public static String GetScore() {
@@ -81,6 +83,11 @@ public class PlayScreenController {
     //Setters
     public static void SetXBound(double x){m_xbound = x;}
     public static void SetYBound(double y){m_ybound = y;}
+    public static void SetM_newfood(boolean b){
+        m_newfood = b;
+    }
+    public static void SetScore(int i){m_score = i;}
+    public static void SetHit(boolean b){m_hit = b;}
 
     /**
      * Sets up the Play Screen when it gets loaded
@@ -101,7 +108,6 @@ public class PlayScreenController {
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
         m_snakeheadimg = new Image(Theme.GetSnakeHImg());
         snakehead.setFill(new ImagePattern(m_snakeheadimg));
-        m_snakebodyimg = new Image(Theme.GetSnakeBImg());
         m_gameticks = 0;
         m_score = 0;
         m_isbombs = StartScreenController.GetToBomb();
@@ -119,8 +125,10 @@ public class PlayScreenController {
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         StartScreenJFX.GetM_scene().addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         SPEED = 5;
-        mainTimeline();
         m_food = new Food(PlayPaneSky, foodimg);
+        m_snake = new Snake(PlayPaneSky, snakehead, m_xbound, m_ybound);
+        mainTimeline();
+
         bombTimelines();
         wallTimeline();
     }
@@ -139,15 +147,16 @@ public class PlayScreenController {
                 }
 
             }
-
             if(m_newfood){
-                addSnakeBody();
+                m_snake.addSnakeBody(m_snakebody);
             }
             for(int i = 0; i < m_snakebody.size(); i++){
-                moveSnakeBody(m_snakebody.get(i), i+1);
+                double x = m_xpositions.get(m_gameticks -((SPEED)*(i+1))-1);
+                double y = m_ypositions.get(m_gameticks -((SPEED)*(i+1))-1);
+                m_snake.moveSnakeBody(m_snakebody.get(i),x, y );
             }
             try {
-                outofBounds();
+                m_snake.outofBounds();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -162,7 +171,7 @@ public class PlayScreenController {
             if (m_intersects) {
                 m_wall.removeWall();
                 try {
-                    RemoveSnakeBody();
+                    m_snake.RemoveSnakeBody(m_hit, m_snakebody);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -296,23 +305,6 @@ public class PlayScreenController {
     }
 
     /**
-     * Removes the tail of the snake
-     * Called when the snakehead hits a wall
-     * @throws IOException
-     */
-    public void RemoveSnakeBody() throws IOException {
-        if(!m_hit){
-            new MusicPlayer(Theme.GetWallSound(), false);
-            if(m_snakebody.size() == 0)
-                toEndScreen();
-            PlayPaneSky.getChildren().remove(m_snakebody.get(m_snakebody.size()-1));
-            m_snakebody.remove(m_snakebody.size()-1);
-            m_score -= 521;
-        }
-        m_hit = true;
-    }
-
-    /**
      * Checks if the snakehead has collided with the given Node
      * @param n the node to check
      * @return a boolean whether the snake head has hit the given node
@@ -323,37 +315,16 @@ public class PlayScreenController {
         return snakehead.intersects(snakehead.sceneToLocal(snakebound));
     }
 
-    /**
-     * Adds a body part to the snake
-     * Called when the snake 'eats' a piece of food
-     */
-    private void addSnakeBody(){
-        Rectangle rect = new Rectangle(26,26);
-        rect.setFill(new ImagePattern(m_snakebodyimg));
-        PlayPaneSky.getChildren().add(rect);
-        m_snakebody.put(m_snakebody.size(),rect);
-        m_newfood = false;
-    }
 
-    /**
-     * Moves the given body part of the snake
-     * Sets the x and y co-ordinates of the body part
-     * @param bodypart the body part to move
-     * @param num the body part number
-     */
-    private void moveSnakeBody(Rectangle bodypart, int num){
-        double x = m_xpositions.get(m_gameticks -((SPEED)*num)-1);
-        double y = m_ypositions.get(m_gameticks -((SPEED)*num)-1);
-        bodypart.setLayoutX(x);
-        bodypart.setLayoutY(y);
-    }
+    //Transition. AnchorPane opacity to 1, Stop timeline, Fade in Fade out, sequential, change speed, start timeline
+
 
     /**
      * Loads the End Screen
      * Called when the game is over
      * @throws IOException
      */
-    private void toEndScreen() throws IOException {
+    public static void toEndScreen() throws IOException {
         new MusicPlayer("src/Resources/Music/Gameoveraudio.mp3", false);
         m_timeline.stop();
         StartScreenJFX.SetRoot("EndScreen");
@@ -396,21 +367,6 @@ public class PlayScreenController {
             snakehead.setLayoutX(snakehead.getLayoutX()- SPEED);
         } else if (m_direction == 3) {
             snakehead.setLayoutX(snakehead.getLayoutX()+ SPEED);
-        }
-    }
-
-    /**
-     * Checks to see if the snakehead is out of bounds
-     * If it is the game is ended and the End Screen is loaded
-     * @throws IOException
-     */
-    private void outofBounds() throws IOException {
-        boolean xOut = (snakehead.getLayoutX() <= 0 || snakehead.getLayoutX() >= m_xbound);
-        boolean yOut = (snakehead.getLayoutY() <= 0 || snakehead.getLayoutY() >= m_ybound);
-
-        if (xOut || yOut)
-        {
-            toEndScreen();
         }
     }
 

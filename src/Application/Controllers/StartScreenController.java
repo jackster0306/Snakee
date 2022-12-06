@@ -57,6 +57,7 @@ public class StartScreenController {
      */
     public void initialize() {
         new MusicPlayer("src/Resources/Music/frogger.mp3", true);
+        PlayScreenController.SetScore(0);
         m_diff = 1;
         setupComboBox(scorechoice, m_colours, "Score Colour");
         setupComboBox(diffchoice, m_difficulties, "Difficulty");
