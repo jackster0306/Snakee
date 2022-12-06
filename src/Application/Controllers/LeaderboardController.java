@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 import java.io.File;
@@ -19,7 +20,7 @@ import java.util.Scanner;
 public class LeaderboardController {
     //FXML Variables
     @FXML
-    private ChoiceBox selecttable;
+    private ComboBox selecttable;
     @FXML
     private TextArea NamesArea;
     @FXML
