@@ -27,8 +27,8 @@ public class EndScreenController {
      */
     public void initialize() throws IOException {
         endsclabel.setText((PlayScreenController.GetScore()));
-        String level = CheckLvl();
-        String diffbomb = CheckDiffBomb();
+        String level = checkLvl();
+        String diffbomb = checkDiffBomb();
         File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\Lvl"+ level + diffbomb +".txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
@@ -46,7 +46,7 @@ public class EndScreenController {
      * @throws IOException
      */
     public void Restart() throws IOException {
-        StartScreenJFX.setRoot("StartScreen");
+        StartScreenJFX.SetRoot("StartScreen");
     }
 
     /**
@@ -62,7 +62,7 @@ public class EndScreenController {
      * Returns a String depending on the difficulty and whether bombs were activated.
      * @return a string that correlates to part of the name of a text file
      */
-    public String CheckDiffBomb(){
+    private String checkDiffBomb(){
             int diff = StartScreenController.GetDiff();
             boolean bombs = StartScreenController.GetToBomb();
             if(diff == 1 && !bombs){
@@ -85,7 +85,7 @@ public class EndScreenController {
      * String returned correlates to part of the name of a text file
      * @return a String of the level of the game just played
      */
-    public String CheckLvl(){
+    private String checkLvl(){
         return Integer.toString(StartScreenController.GetLevel());
     }
 }

@@ -75,12 +75,12 @@ public class StartScreenController {
         new MusicPlayer("src/Resources/Music/frogger.mp3", true);
         m_diff = 1;
         m_level = 1;
-        SetupComboBox(scorechoice, m_colours, "Score Colour");
-        SetupComboBox(diffchoice, m_difficulties, "Difficulty");
-        SetupComboBox(lvlchoice, m_levels, "Level");
-        SetupComboBox(bgchoice, m_backgrounds, "Theme");
+        setupComboBox(scorechoice, m_colours, "Score Colour");
+        setupComboBox(diffchoice, m_difficulties, "Difficulty");
+        setupComboBox(lvlchoice, m_levels, "Level");
+        setupComboBox(bgchoice, m_backgrounds, "Theme");
         diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_diff = newval.intValue() + 1);
-        scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_scorecol = CheckCol(newval.intValue()));
+        scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_scorecol = checkCol(newval.intValue()));
         bgchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> thetheme = newval.intValue());
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);
     }
@@ -90,7 +90,7 @@ public class StartScreenController {
      * @param col the integer that relates to a colour
      * @return a String which is the colour that relates to the integer provided
      */
-    public String CheckCol(int col){
+    private String checkCol(int col){
         switch(col){
             case 0: return "red";
             case 1: return "yellow";
@@ -109,7 +109,7 @@ public class StartScreenController {
      * @throws IOException
      */
     @FXML
-    private void PlayGame() throws IOException {
+    private void playGame() throws IOException {
         if(name.getText() == ""){
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("You must enter a name");
@@ -122,12 +122,12 @@ public class StartScreenController {
             m_bombs = checkbomb.isSelected();
             switch(m_diff){
                 case 1:
-                    StartScreenJFX.setRoot("PlayScreen");
+                    StartScreenJFX.SetRoot("PlayScreen");
                     break;
                 case 2:
-                    StartScreenJFX.setRoot("PlayScreenMedium");
+                    StartScreenJFX.SetRoot("PlayScreenMedium");
                     break;
-                case 3: StartScreenJFX.setRoot("PlayScreenHard");
+                case 3: StartScreenJFX.SetRoot("PlayScreenHard");
             }
         }
     }
@@ -137,7 +137,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowRules() throws IOException {
-        StartScreenJFX.setRoot("RulesScreen");
+        StartScreenJFX.SetRoot("RulesScreen");
     }
 
     /**
@@ -145,7 +145,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowLeaderboard() throws IOException {
-        StartScreenJFX.setRoot("LeaderboardScreen");
+        StartScreenJFX.SetRoot("LeaderboardScreen");
     }
 
     /**
@@ -154,7 +154,7 @@ public class StartScreenController {
      * @param ol the ObservableList containing the items to be put in the ComboBox
      * @param st the String to set the value of the ComboBox to
      */
-    public void SetupComboBox(ComboBox cb, ObservableList ol, String st){
+    private void setupComboBox(ComboBox cb, ObservableList ol, String st){
         cb.setItems(ol);
         cb.setValue(st);
     }

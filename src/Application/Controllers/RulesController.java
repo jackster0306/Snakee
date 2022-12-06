@@ -14,6 +14,6 @@ public class RulesController {
      * @throws IOException
      */
     public void Back() throws IOException {
-        StartScreenJFX.setRoot("StartScreen");
+        StartScreenJFX.SetRoot("StartScreen");
     }
 }

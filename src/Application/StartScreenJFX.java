@@ -41,7 +41,7 @@ public class StartScreenJFX extends Application {
      * @param fxml the name of the fxml file to switch the root to
      * @throws IOException
      */
-    public static void setRoot(String fxml) throws IOException{
+    public static void SetRoot(String fxml) throws IOException{
         m_scene.setRoot(loadFXML(fxml));
         if(fxml == "PlayScreenMedium"){
             m_tstage.setHeight(420+37);

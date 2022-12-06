@@ -42,12 +42,12 @@ public class LeaderboardController {
         selecttable.setItems(m_tablechoices);
         lvlchoice.setItems(m_levels);
         selecttable.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
-            m_diffbomb = CheckDiffBombs(newval.intValue());
-            SetupLeaderboard();
+            m_diffbomb = checkDiffBombs(newval.intValue());
+            setupLeaderboard();
         });
         lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
             m_level = Integer.toString(newval.intValue() + 1);
-            SetupLeaderboard();
+            setupLeaderboard();
         });
         lvlchoice.setValue("1");
         selecttable.setValue("No Bombs Easy");
@@ -56,7 +56,7 @@ public class LeaderboardController {
     /**
      * Sets up the Leaderboard and displays it to the user
      */
-    public void SetupLeaderboard() {
+    private void setupLeaderboard() {
         NamesArea.setEditable(true);
         ScoresArea.setEditable(true);
         int list = 1;
@@ -81,7 +81,7 @@ public class LeaderboardController {
             System.out.println(ex);
         }
 
-        SortLists(scores, names);
+        sortLists(scores, names);
 
         NamesArea.setEditable(false);
         ScoresArea.setEditable(false);
@@ -100,7 +100,7 @@ public class LeaderboardController {
         }
     }
 
-    public void SortLists(ArrayList<Integer> scores, ArrayList<String> names){
+    private void sortLists(ArrayList<Integer> scores, ArrayList<String> names){
         int i;
         int j;
         for(i = 0; i < scores.size(); i++){
@@ -123,9 +123,9 @@ public class LeaderboardController {
         }
     }
     public void ToStartScreen() throws IOException {
-        StartScreenJFX.setRoot("StartScreen");}
+        StartScreenJFX.SetRoot("StartScreen");}
 
-    public String CheckDiffBombs(int num){
+    private String checkDiffBombs(int num){
         if(num == 0){
             return "Easy";
         } else if(num == 1){
