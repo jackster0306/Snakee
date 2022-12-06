@@ -26,21 +26,17 @@ public class StartScreenController {
     private CheckBox checkbomb;
     @FXML
     private TextField name;
-    @FXML
-    private ComboBox lvlchoice;
 
     //Class Variables
     private ObservableList<String> m_colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
     private ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
     private ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Snake", "Basketball", "Football");
-    private ObservableList<Integer> m_levels = FXCollections.observableArrayList(1, 2, 3);
     private static boolean m_bombs = false;
     private static String m_scorecol = "magenta";
     public static String GetScoreCol(){
         return m_scorecol;
     }
     private static int m_diff = 1;
-    private static int m_level = 1;
     private static String m_playername;
     private int thetheme = 0;
 
@@ -52,18 +48,6 @@ public class StartScreenController {
     public static boolean GetToBomb(){
         return m_bombs;
     }
-    public static int GetLevel(){
-        return m_level;
-    }
-    public static double GetSpeed(){
-        if(m_level == 1) {
-            return 0.03;
-        } else if(m_level == 2){
-            return 0.0175;
-        } else{
-            return 0.01;
-        }
-    }
 
     /**
      * Sets up the Start Screen when it gets loaded
@@ -74,15 +58,12 @@ public class StartScreenController {
     public void initialize() {
         new MusicPlayer("src/Resources/Music/frogger.mp3", true);
         m_diff = 1;
-        m_level = 1;
         setupComboBox(scorechoice, m_colours, "Score Colour");
         setupComboBox(diffchoice, m_difficulties, "Difficulty");
-        setupComboBox(lvlchoice, m_levels, "Level");
         setupComboBox(bgchoice, m_backgrounds, "Theme");
         diffchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_diff = newval.intValue() + 1);
         scorechoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_scorecol = checkCol(newval.intValue()));
         bgchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> thetheme = newval.intValue());
-        lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> m_level = newval.intValue() + 1);
     }
 
     /**

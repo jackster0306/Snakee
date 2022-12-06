@@ -1,12 +1,15 @@
 package Application.Controllers;
 
 import Application.*;
-import Application.Obstacles.*;
+import Application.Obstacles.Bomb;
+import Application.Obstacles.Food;
+import Application.Obstacles.Wall;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -62,6 +65,7 @@ public class PlayScreenController {
     private Image m_wallimg;
     private Image m_snakeheadimg;
     private Image m_snakebodyimg;
+    private int m_playlevel;
 
     //Getters
     public static String GetScore() {
@@ -85,12 +89,13 @@ public class PlayScreenController {
      * Calls the Timelines that are used to make the game run
      */
     public void initialize(){
+        m_playlevel = 1;
         Image foodimg = new Image(Theme.GetFoodImg());
         m_wallimg = new Image(Theme.GetWallImg());
         Image bombimg = new Image(Theme.GetBombImg());
         PlayPaneSky.setId(Theme.GetBackground());
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
-        m_time = StartScreenController.GetSpeed();
+        m_time = 0.03;
         m_snakeheadimg = new Image(Theme.GetSnakeHImg());
         snakehead.setFill(new ImagePattern(m_snakeheadimg));
         m_snakebodyimg = new Image(Theme.GetSnakeBImg());
@@ -127,6 +132,13 @@ public class PlayScreenController {
     private void mainTimeline(){
         m_timeline = new Timeline(new KeyFrame(Duration.seconds(m_time), e -> {
             move();
+            if(m_score >= (1000*m_playlevel)*m_playlevel){
+                if(m_playlevel < 3){
+                    SwitchLevel();
+                }
+
+            }
+
             if(m_newfood){
                 addSnakeBody();
             }
@@ -399,5 +411,20 @@ public class PlayScreenController {
         {
             toEndScreen();
         }
+    }
+
+    private void SwitchLevel(){
+        m_timeline.stop();
+        if(m_playlevel == 1){
+            m_time = 0.0175;
+        } else{
+            m_time = 0.01;
+        }
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setHeaderText("Level "+m_playlevel);
+        a.setContentText("Score: "+sclabnum.getText()+"\nOnto Level "+(m_playlevel+1));
+        a.setOnHidden(evt -> mainTimeline());
+        a.show();
+        m_playlevel++;
     }
 }

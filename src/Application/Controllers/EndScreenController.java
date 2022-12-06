@@ -27,9 +27,8 @@ public class EndScreenController {
      */
     public void initialize() throws IOException {
         endsclabel.setText((PlayScreenController.GetScore()));
-        String level = checkLvl();
         String diffbomb = checkDiffBomb();
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\Lvl"+ level + diffbomb +".txt");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\"+ diffbomb +".txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
             scanner.next();
@@ -80,12 +79,4 @@ public class EndScreenController {
             }
     }
 
-    /**
-     * Gets and returns the level of the game just played
-     * String returned correlates to part of the name of a text file
-     * @return a String of the level of the game just played
-     */
-    private String checkLvl(){
-        return Integer.toString(StartScreenController.GetLevel());
-    }
 }

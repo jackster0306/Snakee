@@ -21,8 +21,6 @@ public class LeaderboardController {
     @FXML
     private ChoiceBox selecttable;
     @FXML
-    private ChoiceBox lvlchoice;
-    @FXML
     private TextArea NamesArea;
     @FXML
     private TextArea ScoresArea;
@@ -31,7 +29,6 @@ public class LeaderboardController {
     private String m_level = "1";
     private String m_diffbomb = "Easy";
     private ObservableList<String> m_tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
-    private ObservableList<String> m_levels = FXCollections.observableArrayList("1", "2", "3");
 
     /**
      * Sets up the Leaderboard Screen when it gets loaded
@@ -40,16 +37,10 @@ public class LeaderboardController {
      */
     public void initialize(){
         selecttable.setItems(m_tablechoices);
-        lvlchoice.setItems(m_levels);
         selecttable.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
             m_diffbomb = checkDiffBombs(newval.intValue());
             setupLeaderboard();
         });
-        lvlchoice.getSelectionModel().selectedIndexProperty().addListener((ov, old, newval) -> {
-            m_level = Integer.toString(newval.intValue() + 1);
-            setupLeaderboard();
-        });
-        lvlchoice.setValue("1");
         selecttable.setValue("No Bombs Easy");
     }
 
@@ -67,7 +58,7 @@ public class LeaderboardController {
         NamesArea.appendText("Name\n");
         ScoresArea.clear();
         ScoresArea.appendText("Score\n");
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\Lvl"+ m_level + m_diffbomb +".txt");
+        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\" + m_diffbomb +".txt");
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
                 if(list %2 == 0) {
