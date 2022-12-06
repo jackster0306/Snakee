@@ -24,7 +24,7 @@
 Snakee by Jack Gribble
 
 ### Brief Project Description
-
+This project is based on a classic retro game called Snake. A new implementation was created and ran but not completed. My task was to maintain and develop this software
   
 
 ### How to Install and Run
@@ -32,18 +32,32 @@ Snakee by Jack Gribble
  2. Unzip the folder
  3. Download IntelliJ and open it
  4. Create a new IntelliJ Project
-5. 
+5. Name the project and choose a location to store it
+6. Open the unzipped src folder and drop and drag the content into you newly created IntelliJ project
+7. Download javafx-sdk-17.0.0.1 and save it somewhere easy to locate
+8. Select Libraries, press the '+' then select Java
+9. Locate the downloaded javafx-sdk-17.0.0.1 you downloaded and select it
+10. Open the class called Main and press run (located in the top right of your screen)
 
   
 
 ### How to Play
-Run the game
-This will load a start screen where you can change the settings.
-Enter you name in the text box provided.
-Press Play
-Use the arrow keys or WASD to move the snake
-Avoid the bombs and walls
-Eat the food to gain score
-Do not hit yourself
+When you run the game, a start screen will be loaded. Here you can change the settings using the provided drop-downs
+
+Enter you name in the text box provided in the start screen
+
+Click the Rules button if you are unsure on the rules at any time.
+Click the Leaderboard button, and it will take you to the high scores
+
+Press the Play button to start the game
+
+Use the arrow keys or WASD to move the snake. Avoid the bombs and walls, the bombs will end the game and the walls will cause you to lose score and a body part . Eat the food to gain score and a body part. Do not hit yourself, the game will end
+
+When the game ends, your score and name will be displayed. There will be 2 buttons.
+The Play Again button will take you back to the Start Screen.
+The Exit button will close the program.
+
+Enjoy and have fun
 ### Credits
-IntelliJ
+* IntelliJ
+* JavaFx
