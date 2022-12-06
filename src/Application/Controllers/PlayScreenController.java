@@ -53,7 +53,7 @@ public class PlayScreenController {
     private static double m_xbound, m_ybound;
     private boolean m_isbombs;
     private Bomb m_bomb, m_bomb1, m_bomb2;
-    private int m_bombspawn, m_difficulty, m_speed;
+    private int m_bombspawn, m_difficulty, SPEED;
     private Wall m_wall;
     private Timeline m_walltl;
     private boolean m_hit = false;
@@ -112,7 +112,7 @@ public class PlayScreenController {
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         StartScreenJFX.GetM_scene().addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
-        m_speed = 5;
+        SPEED = 5;
         mainTimeline();
         m_food = new Food(PlayPaneSky, foodimg);
         bombTimelines();
@@ -329,8 +329,8 @@ public class PlayScreenController {
      * @param num the body part number
      */
     private void moveSnakeBody(Rectangle bodypart, int num){
-        double x = m_xpositions.get(m_gameticks -((m_speed)*num)-1);
-        double y = m_ypositions.get(m_gameticks -((m_speed)*num)-1);
+        double x = m_xpositions.get(m_gameticks -((SPEED)*num)-1);
+        double y = m_ypositions.get(m_gameticks -((SPEED)*num)-1);
         bodypart.setLayoutX(x);
         bodypart.setLayoutY(y);
     }
@@ -376,13 +376,13 @@ public class PlayScreenController {
      */
     private void move(){
         if(m_direction == 0){
-            snakehead.setLayoutY(snakehead.getLayoutY()- m_speed);
+            snakehead.setLayoutY(snakehead.getLayoutY()- SPEED);
         } else if (m_direction == 1) {
-            snakehead.setLayoutY(snakehead.getLayoutY()+ m_speed);
+            snakehead.setLayoutY(snakehead.getLayoutY()+ SPEED);
         } else if (m_direction == 2) {
-            snakehead.setLayoutX(snakehead.getLayoutX()- m_speed);
+            snakehead.setLayoutX(snakehead.getLayoutX()- SPEED);
         } else if (m_direction == 3) {
-            snakehead.setLayoutX(snakehead.getLayoutX()+ m_speed);
+            snakehead.setLayoutX(snakehead.getLayoutX()+ SPEED);
         }
     }
 
