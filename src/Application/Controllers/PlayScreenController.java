@@ -48,9 +48,9 @@ public class PlayScreenController {
     private Food m_food;
     private int m_direction = 3;
     private Timeline m_timeline, m_bombspawntl, m_bombdonetl;
-    private Map<String, Rectangle> m_snakebody = new HashMap<>();
-    private Map<Integer, Double> m_xpositions = new HashMap<>();
-    private Map<Integer, Double> m_ypositions = new HashMap<>();
+    private static Map<Integer, Rectangle> m_snakebody;
+    private Map<Integer, Double> m_xpositions;
+    private Map<Integer, Double> m_ypositions;
     private int m_gameticks = 0;
     private boolean m_newfood = false;
     private static double m_xbound, m_ybound;
@@ -89,13 +89,16 @@ public class PlayScreenController {
      * Calls the Timelines that are used to make the game run
      */
     public void initialize(){
+        m_snakebody = new HashMap<>();
+        m_ypositions = new HashMap<>();
+        m_xpositions = new HashMap<>();
         m_playlevel = 1;
+        m_time = 0.03;
         Image foodimg = new Image(Theme.GetFoodImg());
         m_wallimg = new Image(Theme.GetWallImg());
         Image bombimg = new Image(Theme.GetBombImg());
         PlayPaneSky.setId(Theme.GetBackground());
         NameLabel.setText("Player Name: "+StartScreenController.GetPlayerName());
-        m_time = 0.03;
         m_snakeheadimg = new Image(Theme.GetSnakeHImg());
         snakehead.setFill(new ImagePattern(m_snakeheadimg));
         m_snakebodyimg = new Image(Theme.GetSnakeBImg());
@@ -105,10 +108,8 @@ public class PlayScreenController {
         m_difficulty = StartScreenController.GetDiff();
         if(m_difficulty == 1){
             setVariables(870,560,14);
-        } else if (m_difficulty == 2) {
-            setVariables(550,400,9);
-        } else if (m_difficulty == 3) {
-            setVariables(420,280,5);
+        } else {
+            setVariables(552, 375, 9);
         }
         m_bomb = new Bomb(PlayPaneSky, bombimg);
         m_bomb1 = new Bomb(PlayPaneSky, bombimg);
@@ -143,7 +144,7 @@ public class PlayScreenController {
                 addSnakeBody();
             }
             for(int i = 0; i < m_snakebody.size(); i++){
-                moveSnakeBody(m_snakebody.get(Integer.toString(i)), i+1);
+                moveSnakeBody(m_snakebody.get(i), i+1);
             }
             try {
                 outofBounds();
@@ -154,7 +155,7 @@ public class PlayScreenController {
             if (m_intersects) {
                 new MusicPlayer(Theme.GetFoodSound(), false);
                 m_score +=521;
-                m_food.MoveFood();
+                m_food.MoveFood(snakehead);
                 m_newfood = true;
             }
             m_intersects = CheckBounds(m_wall.GetM_wall());
@@ -197,12 +198,12 @@ public class PlayScreenController {
     private void bombTimelines(){
         m_bombspawntl = new Timeline(new KeyFrame(Duration.seconds(m_bombspawn), e -> {
             if(m_isbombs){
-                m_bomb.BombSpawn();
+                m_bomb.BombSpawn(snakehead);
                 if(m_difficulty == 2)
-                    m_bomb1.BombSpawn();
+                    m_bomb1.BombSpawn(snakehead);
                 else if(m_difficulty == 3){
-                    m_bomb1.BombSpawn();
-                    m_bomb2.BombSpawn();
+                    m_bomb1.BombSpawn(snakehead);
+                    m_bomb2.BombSpawn(snakehead);
                 }
                 m_bombdonetl.play();
                 m_bombspawntl.stop();
@@ -228,7 +229,7 @@ public class PlayScreenController {
      */
     private void searchSnakeBody(){
         for(int i = 1; i < m_snakebody.size(); i++){
-            m_intersects = CheckBounds(m_snakebody.get(Integer.toString(i)));
+            m_intersects = CheckBounds(m_snakebody.get(i));
             if(m_intersects){
                 try {
                     toEndScreen();
@@ -250,7 +251,7 @@ public class PlayScreenController {
             if(m_hit){
                 m_wall = new Wall(PlayPaneSky, m_wallimg);
             } else
-                m_wall.moveWall();
+                m_wall.moveWall(snakehead);
             m_hit = false;
         }));
         m_walltl.setCycleCount(Timeline.INDEFINITE);
@@ -304,8 +305,8 @@ public class PlayScreenController {
             new MusicPlayer(Theme.GetWallSound(), false);
             if(m_snakebody.size() == 0)
                 toEndScreen();
-            PlayPaneSky.getChildren().remove(m_snakebody.get(Integer.toString(m_snakebody.size()-1)));
-            m_snakebody.remove(Integer.toString(m_snakebody.size()-1));
+            PlayPaneSky.getChildren().remove(m_snakebody.get(m_snakebody.size()-1));
+            m_snakebody.remove(m_snakebody.size()-1);
             m_score -= 521;
         }
         m_hit = true;
@@ -330,7 +331,7 @@ public class PlayScreenController {
         Rectangle rect = new Rectangle(26,26);
         rect.setFill(new ImagePattern(m_snakebodyimg));
         PlayPaneSky.getChildren().add(rect);
-        m_snakebody.put(Integer.toString(m_snakebody.size()),rect);
+        m_snakebody.put(m_snakebody.size(),rect);
         m_newfood = false;
     }
 

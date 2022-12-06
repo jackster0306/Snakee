@@ -4,6 +4,7 @@ import Application.Controllers.PlayScreenController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
 
@@ -45,9 +46,15 @@ public class Wall {
     /**
      * Moves the wall
      */
-    public void moveWall(){
-        m_wall.setLayoutX(m_rand.nextInt((int)m_xbound));
-        m_wall.setLayoutY(m_rand.nextInt((int)m_ybound));
+    public void moveWall(Rectangle head){
+        int x = m_rand.nextInt((int) m_xbound);
+        int y = m_rand.nextInt((int) m_ybound);
+        if(head.getX() == x || head.getY() == y){
+            x = m_rand.nextInt((int) m_xbound);
+            y = m_rand.nextInt((int) m_ybound);
+        }
+        m_wall.setLayoutX(x);
+        m_wall.setLayoutY(y);
     }
 
     /**

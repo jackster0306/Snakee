@@ -4,6 +4,7 @@ import Application.Controllers.PlayScreenController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
 
@@ -47,10 +48,16 @@ public class Bomb {
      * Makes the bomb visible
      * If the bomb is visible, then method does nothing
      */
-    public void BombSpawn(){
+    public void BombSpawn(Rectangle head){
         if(!m_bomb.isVisible()){
-            m_bomb.setLayoutX(m_rand.nextInt((int)m_xbound));
-            m_bomb.setLayoutY(m_rand.nextInt((int)m_ybound));
+            int x = m_rand.nextInt((int) m_xbound);
+            int y = m_rand.nextInt((int) m_ybound);
+            if(head.getX() == x || head.getY() == y){
+                x = m_rand.nextInt((int) m_xbound);
+                y = m_rand.nextInt((int) m_ybound);
+            }
+            m_bomb.setLayoutX(x);
+            m_bomb.setLayoutY(y);
             m_bomb.setVisible(true);
         }
     }

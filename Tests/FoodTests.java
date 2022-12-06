@@ -6,6 +6,7 @@ import Application.Obstacles.Food;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -58,7 +59,7 @@ public class FoodTests {
 
         @Test
         void CheckNotSnakeTheme(){
-            food.MoveFood();
+            food.MoveFood(new Rectangle());
             assertEquals(null, foodview.getImage());
             assertTrue(foodview.isVisible());
         }

@@ -29,7 +29,7 @@ public class StartScreenController {
 
     //Class Variables
     private ObservableList<String> m_colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
-    private ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Medium", "Hard");
+    private ObservableList<String> m_difficulties = FXCollections.observableArrayList("Easy", "Hard");
     private ObservableList<String> m_backgrounds = FXCollections.observableArrayList("Snake", "Basketball", "Football");
     private static boolean m_bombs = false;
     private static String m_scorecol = "magenta";
@@ -108,7 +108,6 @@ public class StartScreenController {
                 case 2:
                     StartScreenJFX.SetRoot("PlayScreenMedium");
                     break;
-                case 3: StartScreenJFX.SetRoot("PlayScreenHard");
             }
         }
     }

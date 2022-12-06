@@ -44,11 +44,8 @@ public class StartScreenJFX extends Application {
     public static void SetRoot(String fxml) throws IOException{
         m_scene.setRoot(loadFXML(fxml));
         if(fxml == "PlayScreenMedium"){
-            m_tstage.setHeight(420+37);
-            m_tstage.setWidth(600+14);
-        } else if (fxml == "PlayScreenHard") {
-            m_tstage.setHeight(280+37);
-            m_tstage.setWidth(420+14);
+            m_tstage.setHeight(375+37);
+            m_tstage.setWidth(552+14);
         } else if (fxml == "PlayScreen") {
             m_tstage.setHeight(560+37);
             m_tstage.setWidth(870+14);

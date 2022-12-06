@@ -6,6 +6,7 @@ import Application.Theme;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
 
@@ -51,9 +52,15 @@ public class Food {
      * Sets a new x and y co-ordinate using the max bounds given when the food was created
      * Sets a new Image to the food
      */
-    public void MoveFood(){
-        m_food.setLayoutX((m_rand.nextInt((int) m_boundx)));
-        m_food.setLayoutY((m_rand.nextInt((int) m_boundy)));
+    public void MoveFood(Rectangle head){
+        int x = m_rand.nextInt((int) m_boundx);
+        int y = m_rand.nextInt((int) m_boundy);
+        if(head.getX() == x || head.getY() == y){
+            x = m_rand.nextInt((int) m_boundx);
+            y = m_rand.nextInt((int) m_boundy);
+        }
+        m_food.setLayoutX(x);
+        m_food.setLayoutY(y);
         if(Theme.GetSnakeTheme())
             m_food.setImage(ImageUtil.GetM_images().get(m_rand.nextInt(17)));
     }
