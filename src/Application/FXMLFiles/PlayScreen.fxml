@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane fx:id="PlayPaneSky" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../../Resources/Images/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.PlayScreenController">
+   <children>
+      <Label fx:id="sclab" layoutX="14.0" layoutY="7.0" styleClass="ScLbl" stylesheets="@../../Resources/Images/style.css" text="Score: " />
+      <Label fx:id="sclabnum" layoutX="116.0" layoutY="8.0" styleClass="ScLbl" stylesheets="@../../Resources/Images/style.css" text="0" />
+      <Label fx:id="NameLabel" layoutX="14.0" layoutY="44.0" text="Player Name: " />
+      <Rectangle fx:id="snakehead" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="26.0" layoutX="40.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="26.0" />
+   </children>
+</Pane>
