@@ -51,11 +51,11 @@ Click the Leaderboard button, and it will take you to the high scores
 
 Press the Play button to start the game
 
-Use the arrow keys or WASD to move the snake. Avoid the bombs and walls, the bombs will end the game and the walls will cause you to lose score and a body part . Eat the food to gain score and a body part. Do not hit yourself, the game will end
+Use the arrow keys or WASD to move the snake. Avoid the bombs and walls, eat the food to gain score and a body part. Do not hit yourself, the game will end
 
 When the game ends, your score and name will be displayed. There will be 2 buttons.
-The Play Again button will take you back to the Start Screen.
-The Exit button will close the program.
+The Play Again will restart the game.
+The Exit button closes the program.
 
 Enjoy and have fun
 ### Credits
