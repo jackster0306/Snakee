@@ -4,6 +4,7 @@ import Application.Obstacles.Bomb;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -48,13 +49,13 @@ public class BombTests {
         @Test
         void BombAlreadyVisible(){
             bombview.setVisible(true);
-            bomb.BombSpawn();
+            bomb.BombSpawn(new Rectangle());
             assertEquals(true, bombview.isVisible());
         }
         @Test
         void BombNotVisible(){
             bombview.setVisible(false);
-            bomb.BombSpawn();
+            bomb.BombSpawn(new Rectangle());
             assertEquals(true, bombview.isVisible());
         }
     }

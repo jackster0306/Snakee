@@ -104,7 +104,7 @@ public class Theme {
                 m_snakeheadimg = "Resources/Images/LeBron.png";
                 m_snakebodyimg = "Resources/Images/lebroncavsjersey.png";
                 m_foodeffect = "src/Resources/Music/Basketball-net-swish.mp3";
-                m_walleffect = "src/Resources/Music/lebronjamesaudio.mp3";
+                m_walleffect = "src/Resources/Music/crowdboo.mp3";
                 m_snaketheme = false;
                 break;
             case 2:
@@ -114,7 +114,7 @@ public class Theme {
                 m_foodimg = "Resources/Images/Football.png";
                 m_snakeheadimg = "Resources/Images/head.png";
                 m_snakebodyimg = "Resources/Images/ArgShirt.png";
-                m_foodeffect = "src/Resources/Music/Ronaldo-suiii.mp3";
+                m_foodeffect = "src/Resources/Music/crowdcheer.mp3";
                 m_walleffect = "src/Resources/Music/refereewhistle.mp3";
                 m_snaketheme = false;
         }
