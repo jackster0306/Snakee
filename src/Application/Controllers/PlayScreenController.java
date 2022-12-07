@@ -418,6 +418,7 @@ public class PlayScreenController {
         } else{
             m_time = 0.01;
         }
+        new MusicPlayer("src/Resources/Music/level_up.mp3", false);
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setHeaderText("Level "+m_playlevel);
         a.setContentText("Score: "+sclabnum.getText()+"\nOnto Level "+(m_playlevel+1));
