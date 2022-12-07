@@ -1,6 +1,5 @@
 module CW.Snake {
     requires java.desktop;
-    requires jlayer;
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
@@ -12,4 +11,5 @@ module CW.Snake {
     opens Resources.TextFiles;
     opens Application.Controllers;
     opens Application.Obstacles;
+
 }
