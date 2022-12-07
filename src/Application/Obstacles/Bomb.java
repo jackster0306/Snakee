@@ -10,6 +10,7 @@ import java.util.Random;
 
 /**
  * Bomb class that is used to create, spawn and remove bombs
+ * @author Jack Gribble
  */
 public class Bomb {
     //Class Variables
@@ -19,6 +20,11 @@ public class Bomb {
     private double m_ybound;
 
     //Getters
+
+    /**
+     * Gets the 'bomb'
+     * @return the bomb
+     */
     public ImageView GetM_bomb(){return  m_bomb;}
 
     /**

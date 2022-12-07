@@ -11,6 +11,7 @@ import java.util.Random;
 /**
  * Class for a Wall
  * Creates, removes and moves Walls
+ * @author Jack Gribble
  */
 public class Wall {
     //Class Variables
@@ -20,6 +21,10 @@ public class Wall {
     private Random m_rand = new Random();
 
     //Getters
+    /**
+     * Gets the 'wall'
+     * @return the wall
+     */
     public ImageView GetM_wall(){return m_wall;}
 
     /**

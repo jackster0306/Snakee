@@ -12,6 +12,7 @@ import java.util.Random;
 
 /**
  * Food class that is used to create and move Food
+ * @author Jack Gribble
  */
 public class Food {
     //Class Variables
@@ -20,6 +21,10 @@ public class Food {
     private double m_boundx, m_boundy;
     private Random m_rand = new Random();
 
+    /**
+     * Gets the 'food'
+     * @return the food
+     */
     public ImageView GetM_food(){return m_food;}
 
     /**

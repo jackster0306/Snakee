@@ -8,11 +8,16 @@ import java.util.Map;
 /**
  * Gets images from a Map using an Integer key
  * Each key relates to a particular image
+ * @author Jack Gribble
  */
 public class ImageUtil {
     //Class Variables
     private  static Map<Integer, Image> m_images = new HashMap<>();
 
+    /**
+     * Gets the images Map
+     * @return the images map
+     */
     public static Map<Integer, Image> GetM_images(){return m_images;}
 
 

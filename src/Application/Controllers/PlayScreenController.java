@@ -29,6 +29,7 @@ import java.util.Map;
  * The main class that allows the user to be able to play
  * Moves the snake, spawns food, bombs and walls
  * Refreshes the screen
+ * @author Jack Gribble
  */
 public class PlayScreenController {
     //FXML Variables
@@ -69,23 +70,57 @@ public class PlayScreenController {
     Snake m_snake;
 
     //Getters
+
+    /**
+     * Gets the score
+     * @return the current score
+     */
     public static String GetScore() {
         return Integer.toString(m_score);
     }
+    /**
+     * Gets the x bound
+     * @return the x bound
+     */
     public static Double GetXBound(){
         return m_xbound;
     }
+    /**
+     * Gets the y bound
+     * @return the y bound
+     */
     public static Double GetYBound(){
         return m_ybound;
     }
 
     //Setters
+
+    /**
+     * Sets the x bound
+     * @param x the bound
+     */
     public static void SetXBound(double x){m_xbound = x;}
+    /**
+     * Sets the y bound
+     * @param y the bound
+     */
     public static void SetYBound(double y){m_ybound = y;}
+    /**
+     * Sets whether a new food is needed
+     * @param b true or false
+     */
     public static void SetM_newfood(boolean b){
         m_newfood = b;
     }
+    /**
+     * Sets the score
+     * @param i integer to set the score to
+     */
     public static void SetScore(int i){m_score = i;}
+    /**
+     * Sets if the wall has been hit
+     * @param b true or false
+     */
     public static void SetHit(boolean b){m_hit = b;}
 
     /**
@@ -372,6 +407,10 @@ public class PlayScreenController {
         }
     }
 
+    /**
+     * Switches to the next level
+     * Will increase the speed of the snake
+     */
     private void SwitchLevel(){
         m_timeline.stop();
         if(m_playlevel == 1){

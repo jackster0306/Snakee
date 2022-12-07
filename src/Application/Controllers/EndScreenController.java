@@ -11,11 +11,15 @@ import java.util.Scanner;
 
 /**
  * Controls the End Screen
+ * @author Jack Gribble
  */
 public class EndScreenController {
     //FXML Variables
     @FXML
     private Label endsclabel;
+
+    @FXML
+    private Label endname;
 
     /**
      * Contains everything to do when the End Screen is loaded
@@ -26,6 +30,7 @@ public class EndScreenController {
      * @throws IOException
      */
     public void initialize() throws IOException {
+        endname.setText(StartScreenController.GetPlayerName());
         endsclabel.setText((PlayScreenController.GetScore()));
         String diffbomb = checkDiffBomb();
         File file = new File("src/Resources/TextFiles/"+ diffbomb +".txt");

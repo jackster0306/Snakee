@@ -9,6 +9,10 @@ import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Snake class that is used to Add and Remove snake body parts
+ * @author Jack Gribble
+ */
 public class Snake {
     private Image m_snakebodyimg;
     private Pane m_pane;
@@ -17,7 +21,14 @@ public class Snake {
     private Rectangle m_head;
 
 
-
+    /**
+     * Default Constructor for class
+     * Sets up variables
+     * @param pane the pane a body part will be added to
+     * @param head the snake head from the Play Screen
+     * @param x the x-co-ordinate boundary, the maximum it can be
+     * @param y the x-co-ordinate boundary, the maximum it can be
+     */
     public Snake(Pane pane, Rectangle head, double x, double y){
         m_pane = pane;
         m_head = head;
