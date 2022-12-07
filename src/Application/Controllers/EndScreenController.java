@@ -67,13 +67,9 @@ public class EndScreenController {
             if(diff == 1 && !bombs){
                 return "Easy";
             } else if(diff == 2 && !bombs){
-                return "Med";
-            } else if(diff == 3 && !bombs){
                 return "Hard";
             } else if(diff == 1){
                 return "EasyBombs";
-            } else if(diff == 2){
-                return "MedBombs";
             } else{
                 return "HardBombs";
             }

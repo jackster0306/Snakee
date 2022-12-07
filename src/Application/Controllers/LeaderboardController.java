@@ -28,7 +28,7 @@ public class LeaderboardController {
     //Class Variables
     private String m_level = "1";
     private String m_diffbomb = "Easy";
-    private ObservableList<String> m_tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Medium", "No Bombs Hard","Bombs Easy","Bombs Medium","Bombs Hard");
+    private ObservableList<String> m_tablechoices = FXCollections.observableArrayList("No Bombs Easy", "No Bombs Hard","Bombs Easy","Bombs Hard");
 
     /**
      * Sets up the Leaderboard Screen when it gets loaded
@@ -120,13 +120,9 @@ public class LeaderboardController {
         if(num == 0){
             return "Easy";
         } else if(num == 1){
-            return "Med";
-        } else if(num == 2){
             return "Hard";
-        } else if(num == 3){
+        } else if(num == 2){
             return "EasyBombs";
-        } else if(num == 4){
-            return "MedBombs";
         } else{
             return "HardBombs";
         }
