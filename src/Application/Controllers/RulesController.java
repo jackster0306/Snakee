@@ -1,6 +1,7 @@
 package Application.Controllers;
 
 import Application.Main;
+import Application.MusicPlayer;
 
 import java.io.IOException;
 
@@ -15,6 +16,7 @@ public class RulesController {
      * @throws IOException
      */
     public void Back() throws IOException {
+        MusicPlayer.StopMusic();
         Main.SetRoot("StartScreen");
     }
 }

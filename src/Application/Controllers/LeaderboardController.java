@@ -1,6 +1,7 @@
 package Application.Controllers;
 
 import Application.Main;
+import Application.MusicPlayer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -115,7 +116,9 @@ public class LeaderboardController {
         }
     }
     public void ToStartScreen() throws IOException {
-        Main.SetRoot("StartScreen");}
+        MusicPlayer.StopMusic();
+        Main.SetRoot("StartScreen");
+    }
 
     private String checkDiffBombs(int num){
         if(num == 0){
