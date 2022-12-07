@@ -18,6 +18,10 @@ public class Main extends Application {
     private static Scene m_scene;
     private static Stage m_tstage;
 
+    /**
+     * Gets the current scene
+     * @return the scene
+     */
     public static Scene GetM_scene(){return m_scene;}
     public static void main(String[] args) {
         launch(args);

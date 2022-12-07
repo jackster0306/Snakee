@@ -20,6 +20,11 @@ public class Bomb {
     private double m_ybound;
 
     //Getters
+
+    /**
+     * Gets the 'bomb'
+     * @return the bomb
+     */
     public ImageView GetM_bomb(){return  m_bomb;}
 
     /**

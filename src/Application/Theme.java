@@ -17,23 +17,67 @@ public class Theme {
     private static String m_walleffect;
 
     //Getters
+
+    /**
+     * Gets if the theme is the snake theme
+     * @return true or false
+     */
     public static boolean GetSnakeTheme(){return m_snaketheme;}
+
+    /**
+     * Gets the background filename
+     * @return the background filename
+     */
     public static String GetBackground(){
         return m_background;
     }
+
+    /**
+     * Gets the filepath for the image of the food
+     * @return the filepath
+     */
     public static String GetFoodImg(){
         return m_foodimg;
     }
+    /**
+     * Gets the filepath for the image of the snake head
+     * @return the filepath
+     */
     public static String GetSnakeHImg(){
         return m_snakeheadimg;
     }
+    /**
+     * Gets the filepath for the image of the snake body
+     * @return the filepath
+     */
     public static String GetSnakeBImg(){
         return m_snakebodyimg;
     }
+    /**
+     * Gets the filepath for the image of the wall
+     * @return the filepath
+     */
     public static String GetWallImg() {return m_wallimg;}
+    /**
+     * Gets the filepath for the image of the bomb
+     * @return the filepath
+     */
     public static String GetBombImg() {return m_bombimg;}
+    /**
+     * Gets the filepath for the sound when food is eaten
+     * @return the filepath
+     */
     public static String GetFoodSound(){return m_foodeffect;}
+    /**
+     * Gets the filepath for the sound when a wall is hit
+     * @return the filepath
+     */
     public static String GetWallSound(){return m_walleffect;}
+
+    /**
+     * Sets if the theme is the Snake theme
+     * @param b true or false
+     */
     public static void SetSnakeTheme(boolean b){m_snaketheme = b;}
 
     /**

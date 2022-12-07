@@ -14,6 +14,10 @@ public class ImageUtil {
     //Class Variables
     private  static Map<Integer, Image> m_images = new HashMap<>();
 
+    /**
+     * Gets the images Map
+     * @return the images map
+     */
     public static Map<Integer, Image> GetM_images(){return m_images;}
 
 

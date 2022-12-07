@@ -21,6 +21,10 @@ public class Food {
     private double m_boundx, m_boundy;
     private Random m_rand = new Random();
 
+    /**
+     * Gets the 'food'
+     * @return the food
+     */
     public ImageView GetM_food(){return m_food;}
 
     /**

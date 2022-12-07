@@ -42,10 +42,25 @@ public class StartScreenController {
     private int thetheme = 0;
 
     //Getters
+
+    /**
+     * Gets the difficulty
+     * @return the difficulty
+     */
     public static int GetDiff() {return m_diff;}
+
+    /**
+     * Gets the player name entered
+     * @return the name
+     */
     public static String GetPlayerName(){
         return m_playername;
     }
+
+    /**
+     * Gets if bombs are active or not
+     * @return true or false
+     */
     public static boolean GetToBomb(){
         return m_bombs;
     }

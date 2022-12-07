@@ -39,6 +39,9 @@ public class MusicPlayer extends Thread
 		m_player.play();
 	}
 
+	/**
+	 * Stops the music currently playing
+	 */
 	public static void StopMusic(){
 		m_player.stop();
 	}

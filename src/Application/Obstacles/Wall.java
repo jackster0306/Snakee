@@ -21,6 +21,10 @@ public class Wall {
     private Random m_rand = new Random();
 
     //Getters
+    /**
+     * Gets the 'wall'
+     * @return the wall
+     */
     public ImageView GetM_wall(){return m_wall;}
 
     /**

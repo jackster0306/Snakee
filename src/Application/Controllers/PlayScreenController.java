@@ -70,23 +70,57 @@ public class PlayScreenController {
     Snake m_snake;
 
     //Getters
+
+    /**
+     * Gets the score
+     * @return the current score
+     */
     public static String GetScore() {
         return Integer.toString(m_score);
     }
+    /**
+     * Gets the x bound
+     * @return the x bound
+     */
     public static Double GetXBound(){
         return m_xbound;
     }
+    /**
+     * Gets the y bound
+     * @return the y bound
+     */
     public static Double GetYBound(){
         return m_ybound;
     }
 
     //Setters
+
+    /**
+     * Sets the x bound
+     * @param x the bound
+     */
     public static void SetXBound(double x){m_xbound = x;}
+    /**
+     * Sets the y bound
+     * @param y the bound
+     */
     public static void SetYBound(double y){m_ybound = y;}
+    /**
+     * Sets whether a new food is needed
+     * @param b true or false
+     */
     public static void SetM_newfood(boolean b){
         m_newfood = b;
     }
+    /**
+     * Sets the score
+     * @param i integer to set the score to
+     */
     public static void SetScore(int i){m_score = i;}
+    /**
+     * Sets if the wall has been hit
+     * @param b true or false
+     */
     public static void SetHit(boolean b){m_hit = b;}
 
     /**
