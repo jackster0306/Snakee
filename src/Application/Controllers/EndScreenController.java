@@ -17,6 +17,9 @@ public class EndScreenController {
     @FXML
     private Label endsclabel;
 
+    @FXML
+    private Label endname;
+
     /**
      * Contains everything to do when the End Screen is loaded
      * Sets a label to the score from the game that just ended
@@ -26,6 +29,7 @@ public class EndScreenController {
      * @throws IOException
      */
     public void initialize() throws IOException {
+        endname.setText(StartScreenController.GetPlayerName());
         endsclabel.setText((PlayScreenController.GetScore()));
         String diffbomb = checkDiffBomb();
         File file = new File("src/Resources/TextFiles/"+ diffbomb +".txt");
