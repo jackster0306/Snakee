@@ -28,7 +28,7 @@ public class EndScreenController {
     public void initialize() throws IOException {
         endsclabel.setText((PlayScreenController.GetScore()));
         String diffbomb = checkDiffBomb();
-        File file = new File("C:\\Users\\jackg\\OneDrive\\Documents\\University\\Computer Science\\Year 2\\COMP2013 - Developing Maintainable Software\\CW - Snake\\src\\Resources\\TextFiles\\"+ diffbomb +".txt");
+        File file = new File("src/Resources/TextFiles/"+ diffbomb +".txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
             scanner.next();
