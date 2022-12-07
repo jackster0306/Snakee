@@ -75,7 +75,7 @@ public class Theme {
     public static String GetWallSound(){return m_walleffect;}
     /**
      * Gets the filepath for the image of the wall
-     * @return the filepath
+     * @param b true or false
      */
     public static void SetSnakeTheme(boolean b){m_snaketheme = b;}
 

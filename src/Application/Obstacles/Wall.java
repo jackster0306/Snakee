@@ -50,6 +50,7 @@ public class Wall {
 
     /**
      * Moves the wall
+     * @param head the snake head from PlayScreenController
      */
     public void moveWall(Rectangle head){
         int x = m_rand.nextInt((int) m_xbound);

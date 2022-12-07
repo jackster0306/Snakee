@@ -4,31 +4,31 @@
 }
 
 #LeadPane{
-    -fx-background-image: url("wp3906260.jpg");
+    -fx-background-image: url("../Resources/Images/wp3906260.jpg");
 }
 
 #RulePane{
-    -fx-background-image: url("wp3906260.jpg");
+    -fx-background-image: url("../Resources/Images/wp3906260.jpg");
 }
 
 #SSPane{
-    -fx-background-image: url("wp9142232.jpg");
+    -fx-background-image: url("../Resources/Images/wp9142232.jpg");
 }
 
 #EndPane{
-    -fx-background-image: url("end.png");
+    -fx-background-image: url("../Resources/Images/end.png");
 }
 
 #PlayPaneSky{
-    -fx-background-image: url("UI-background.png");
+    -fx-background-image: url("../Resources/Images/UI-background.png");
 }
 
 #PlayPaneBB{
-    -fx-background-image: url("il_680x540.588590119_ftm2.jpg");
+    -fx-background-image: url("../Resources/Images/il_680x540.588590119_ftm2.jpg");
 }
 
 #PlayPaneFootball{
-    -fx-background-image: url("footballpitch.png");
+    -fx-background-image: url("../Resources/Images/footballpitch.png");
 }
 
 .ColBtns{
