@@ -6,6 +6,7 @@ import java.io.IOException;
 
 /**
  * Controls the Rules Screen
+ * @author Jack Gribble
  */
 public class RulesController {
     /**

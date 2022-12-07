@@ -2,6 +2,7 @@ package Application;
 
 /**
  * Contains the information for each Theme
+ * @author Jack Gribble
  */
 public class Theme {
     //Class variables

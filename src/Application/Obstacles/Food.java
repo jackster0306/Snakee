@@ -12,6 +12,7 @@ import java.util.Random;
 
 /**
  * Food class that is used to create and move Food
+ * @author Jack Gribble
  */
 public class Food {
     //Class Variables

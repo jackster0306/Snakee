@@ -11,6 +11,7 @@ import java.io.IOException;
 /**
  * Runs the program
  * Sets up the stage and is used to change screen
+ * @author Jack Gribble
  */
 public class Main extends Application {
     //Class Variables

@@ -10,6 +10,7 @@ import java.util.Random;
 
 /**
  * Bomb class that is used to create, spawn and remove bombs
+ * @author Jack Gribble
  */
 public class Bomb {
     //Class Variables

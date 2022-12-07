@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * Gets images from a Map using an Integer key
  * Each key relates to a particular image
+ * @author Jack Gribble
  */
 public class ImageUtil {
     //Class Variables

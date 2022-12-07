@@ -8,6 +8,7 @@ import java.io.File;
 
 /**
  * Plays Music in the provided filename
+ * @author Jack Gribble
  */
 public class MusicPlayer extends Thread
 {

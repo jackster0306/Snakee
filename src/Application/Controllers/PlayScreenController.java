@@ -29,6 +29,7 @@ import java.util.Map;
  * The main class that allows the user to be able to play
  * Moves the snake, spawns food, bombs and walls
  * Refreshes the screen
+ * @author Jack Gribble
  */
 public class PlayScreenController {
     //FXML Variables
@@ -372,6 +373,10 @@ public class PlayScreenController {
         }
     }
 
+    /**
+     * Switches to the next level
+     * Will increase the speed of the snake
+     */
     private void SwitchLevel(){
         m_timeline.stop();
         if(m_playlevel == 1){

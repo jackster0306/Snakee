@@ -11,6 +11,7 @@ import java.util.Random;
 /**
  * Class for a Wall
  * Creates, removes and moves Walls
+ * @author Jack Gribble
  */
 public class Wall {
     //Class Variables

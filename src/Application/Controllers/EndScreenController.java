@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 /**
  * Controls the End Screen
+ * @author Jack Gribble
  */
 public class EndScreenController {
     //FXML Variables

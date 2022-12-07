@@ -13,6 +13,7 @@ import java.io.IOException;
 /**
  * Controls the Start Screen
  * Used to set up all the variables ready for the game to be played
+ * @author Jack Gribble
  */
 public class StartScreenController {
     //FXML Variables

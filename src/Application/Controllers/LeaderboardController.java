@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 /**
  * Controls the Leaderboard class
+ * @author Jack Gribble
  */
 public class LeaderboardController {
     //FXML Variables
