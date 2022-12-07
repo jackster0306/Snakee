@@ -49,7 +49,7 @@ public class Wall {
     public void moveWall(Rectangle head){
         int x = m_rand.nextInt((int) m_xbound);
         int y = m_rand.nextInt((int) m_ybound);
-        if(head.getX() == x || head.getY() == y){
+        while(head.getX() == x || head.getY() == y){
             x = m_rand.nextInt((int) m_xbound);
             y = m_rand.nextInt((int) m_ybound);
         }

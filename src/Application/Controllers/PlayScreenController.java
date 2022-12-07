@@ -95,6 +95,7 @@ public class PlayScreenController {
      * Calls the Timelines that are used to make the game run
      */
     public void initialize(){
+        m_hit = false;
         m_snakebody = new HashMap<>();
         m_ypositions = new HashMap<>();
         m_xpositions = new HashMap<>();
@@ -125,6 +126,8 @@ public class PlayScreenController {
         Main.GetM_scene().addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         SPEED = 5;
         m_food = new Food(PlayPaneSky, foodimg);
+        m_food.GetM_food().setLayoutX(400);
+        m_food.GetM_food().setLayoutY(325);
         m_snake = new Snake(PlayPaneSky, snakehead, m_xbound, m_ybound);
         mainTimeline();
 
