@@ -24,7 +24,7 @@
 Snakee by Jack Gribble
 
 ### Brief Project Description
-This project is based on a classic retro game called Snake. A new implementation was created and ran but not completed. My task was to maintain and develop this software
+This project is based on a classic retro game called Snake. A new runnable implementation was created. My task was to maintain and develop this software
   
 
 ### How to Install and Run
@@ -57,7 +57,6 @@ When the game ends, your score and name will be displayed. There will be 2 butto
 The Play Again will restart the game.
 The Exit button closes the program.
 
-Enjoy and have fun
 ### Credits
 * IntelliJ
 * JavaFx
