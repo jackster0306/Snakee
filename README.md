@@ -55,7 +55,7 @@ Use the arrow keys or WASD to move the snake. Avoid the bombs and walls, eat the
 
 When the game ends, your score and name will be displayed. There will be 2 buttons.
 The Play Again will restart the game.
-The Exit button closes the program.
+The Exit button closes the program
 
 ### Credits
 * IntelliJ
