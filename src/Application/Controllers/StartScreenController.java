@@ -2,7 +2,7 @@ package Application.Controllers;
 
 
 import Application.MusicPlayer;
-import Application.StartScreenJFX;
+import Application.Main;
 import Application.Theme;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -104,10 +104,10 @@ public class StartScreenController {
             m_bombs = checkbomb.isSelected();
             switch(m_diff){
                 case 1:
-                    StartScreenJFX.SetRoot("PlayScreen");
+                    Main.SetRoot("PlayScreen");
                     break;
                 case 2:
-                    StartScreenJFX.SetRoot("PlayScreenMedium");
+                    Main.SetRoot("PlayScreenMedium");
                     break;
             }
         }
@@ -118,7 +118,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowRules() throws IOException {
-        StartScreenJFX.SetRoot("RulesScreen");
+        Main.SetRoot("RulesScreen");
     }
 
     /**
@@ -126,7 +126,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowLeaderboard() throws IOException {
-        StartScreenJFX.SetRoot("LeaderboardScreen");
+        Main.SetRoot("LeaderboardScreen");
     }
 
     /**

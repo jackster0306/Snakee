@@ -1,10 +1,9 @@
 package Application.Controllers;
 
-import Application.StartScreenJFX;
+import Application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
@@ -115,7 +114,7 @@ public class LeaderboardController {
         }
     }
     public void ToStartScreen() throws IOException {
-        StartScreenJFX.SetRoot("StartScreen");}
+        Main.SetRoot("StartScreen");}
 
     private String checkDiffBombs(int num){
         if(num == 0){

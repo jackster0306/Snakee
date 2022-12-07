@@ -1,6 +1,6 @@
 package Application.Controllers;
 
-import Application.StartScreenJFX;
+import Application.Main;
 
 import java.io.IOException;
 
@@ -14,6 +14,6 @@ public class RulesController {
      * @throws IOException
      */
     public void Back() throws IOException {
-        StartScreenJFX.SetRoot("StartScreen");
+        Main.SetRoot("StartScreen");
     }
 }

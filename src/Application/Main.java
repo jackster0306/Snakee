@@ -12,7 +12,7 @@ import java.io.IOException;
  * Runs the program
  * Sets up the stage and is used to change screen
  */
-public class StartScreenJFX extends Application {
+public class Main extends Application {
     //Class Variables
     private static Scene m_scene;
     private static Stage m_tstage;
@@ -65,7 +65,7 @@ public class StartScreenJFX extends Application {
      * @throws IOException
      */
     private static Parent loadFXML(String fxml) throws IOException{
-        FXMLLoader fxmlloader = new FXMLLoader(StartScreenJFX.class.getResource("FXMLFiles/"+fxml + ".fxml"));
+        FXMLLoader fxmlloader = new FXMLLoader(Main.class.getResource("FXMLFiles/"+fxml + ".fxml"));
         return fxmlloader.load();
     }
 }

@@ -60,7 +60,6 @@ public class PlayScreenController {
     private Bomb m_bomb, m_bomb1, m_bomb2;
     private int m_bombspawn, m_difficulty, SPEED;
     private Wall m_wall;
-    private Timeline m_walltl;
     private static boolean m_hit = false;
     private boolean m_intersects;
     private double m_time = 0.3;
@@ -123,7 +122,7 @@ public class PlayScreenController {
         m_wall = new Wall(PlayPaneSky, m_wallimg);
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
-        StartScreenJFX.GetM_scene().addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
+        Main.GetM_scene().addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         SPEED = 5;
         m_food = new Food(PlayPaneSky, foodimg);
         m_snake = new Snake(PlayPaneSky, snakehead, m_xbound, m_ybound);
@@ -202,7 +201,7 @@ public class PlayScreenController {
 
     /**
      * The timelines for the bombs
-     * If bombs are activated, it will spawn bombs after x seconds and then they will despawn after 15 seconds then repeat the process again
+     * If bombs are activated, it will spawn bombs after x seconds, and then they will despawn after 15 seconds then repeat the process again
      */
     private void bombTimelines(){
         m_bombspawntl = new Timeline(new KeyFrame(Duration.seconds(m_bombspawn), e -> {
@@ -256,8 +255,8 @@ public class PlayScreenController {
      * If the current wall hasn't been hit, it moves it
      */
     private void wallTimeline(){
-        m_walltl = new Timeline(new KeyFrame(Duration.seconds(8), e -> {
-            if(m_hit){
+        Timeline m_walltl = new Timeline(new KeyFrame(Duration.seconds(8), e -> {
+            if (m_hit) {
                 m_wall = new Wall(PlayPaneSky, m_wallimg);
             } else
                 m_wall.moveWall(snakehead);
@@ -327,7 +326,7 @@ public class PlayScreenController {
     public static void toEndScreen() throws IOException {
         new MusicPlayer("src/Resources/Music/Gameoveraudio.mp3", false);
         m_timeline.stop();
-        StartScreenJFX.SetRoot("EndScreen");
+        Main.SetRoot("EndScreen");
     }
 
     /**

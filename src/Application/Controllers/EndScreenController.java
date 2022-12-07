@@ -1,6 +1,6 @@
 package Application.Controllers;
 
-import Application.StartScreenJFX;
+import Application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -45,7 +45,7 @@ public class EndScreenController {
      * @throws IOException
      */
     public void Restart() throws IOException {
-        StartScreenJFX.SetRoot("StartScreen");
+        Main.SetRoot("StartScreen");
     }
 
     /**
