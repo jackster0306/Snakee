@@ -18,17 +18,17 @@
       <Line endX="379.60003662109375" layoutX="60.0" layoutY="160.0" startX="-5.000012397766113" stroke="#c7c0c0" />
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../../../Downloads/comp2013_psyjg14_cw-master-src-Application/comp2013_psyjg14_cw-master-src-Application/src/Resources/Images/PikPng.com_medal-png_1701606.png" />
+            <Image url="@../Images/PikPng.com_medal-png_1701606.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../../../Downloads/comp2013_psyjg14_cw-master-src-Application/comp2013_psyjg14_cw-master-src-Application/src/Resources/Images/PikPng.com_3rd-place-png_4137139.png" />
+            <Image url="@../Images/PikPng.com_3rd-place-png_4137139.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="3.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../../../Downloads/comp2013_psyjg14_cw-master-src-Application/comp2013_psyjg14_cw-master-src-Application/src/Resources/Images/pngkey.com-1st-place-png-1249816.png" />
+            <Image url="@../Images/pngkey.com-1st-place-png-1249816.png" />
          </image>
       </ImageView>
       <ComboBox fx:id="selecttable" layoutX="247.0" layoutY="64.0" prefHeight="25.0" prefWidth="181.0" />

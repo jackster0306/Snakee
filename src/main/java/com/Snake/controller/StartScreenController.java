@@ -1,11 +1,14 @@
 package com.Snake.controller;
 
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+
 import java.io.IOException;
 
 /**
@@ -70,6 +73,8 @@ public class StartScreenController {
      * Sets up the combo boxes with the necessary values
      */
     public void initialize() {
+        //new MusicPlayer("src/Resources/Music/frogger.mp3", true);
+        //PlayScreenController.SetScore(0);
         m_diff = 1;
         setupComboBox(scorechoice, m_colours, "Score Colour");
         setupComboBox(diffchoice, m_difficulties, "Difficulty");
@@ -111,7 +116,17 @@ public class StartScreenController {
         }
         else{
             m_playername = name.getText();
+           // new Theme(thetheme);
+            //MusicPlayer.StopMusic();
             m_bombs = checkbomb.isSelected();
+            switch(m_diff){
+                case 1:
+                  //  Main.SetRoot("PlayScreen");
+                    break;
+                case 2:
+                   // Main.SetRoot("PlayScreenMedium");
+                    break;
+            }
         }
     }
 
@@ -120,7 +135,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowRules() throws IOException {
-
+        //Main.SetRoot("RulesScreen");
     }
 
     /**
@@ -128,7 +143,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowLeaderboard() throws IOException {
-
+        //Main.SetRoot("LeaderboardScreen");
     }
 
     /**
