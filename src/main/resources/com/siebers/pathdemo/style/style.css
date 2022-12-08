@@ -1,8 +1,0 @@
-.backDay{
-    -fx-background-image:url("../background/backDay.png");
-    -fx-background-size: 100% 100%;
-}
-.backNight{
-    -fx-background-image:url("../background/backNight.png");
-    -fx-background-size: 100% 100%;
-}
