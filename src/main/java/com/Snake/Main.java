@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/StartScreen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("fxml/LeaderboardScreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.getIcons().add(new Image(getClass().getResource("icon/x.png").toString()));
         stage.setTitle("Passing Data");
