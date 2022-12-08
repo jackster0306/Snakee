@@ -1,5 +1,6 @@
 package com.Snake.controller;
 
+import com.Snake.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -49,7 +50,7 @@ public class EndScreenController {
      * @throws IOException
      */
     public void Restart() throws IOException {
-        //Main.SetRoot("StartScreen");
+        Main.SetRoot("StartScreen");
     }
 
     /**

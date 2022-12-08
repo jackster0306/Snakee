@@ -1,5 +1,6 @@
 package com.Snake.controller;
 
+import com.Snake.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -114,6 +115,7 @@ public class LeaderboardController {
         }
     }
     public void ToStartScreen() throws IOException {
+        Main.SetRoot("StartScreen");
     }
 
     private String checkDiffBombs(int num){

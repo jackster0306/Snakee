@@ -1,6 +1,7 @@
 package com.Snake.controller;
 
 
+import com.Snake.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -121,10 +122,10 @@ public class StartScreenController {
             m_bombs = checkbomb.isSelected();
             switch(m_diff){
                 case 1:
-                  //  Main.SetRoot("PlayScreen");
+                    Main.SetRoot("PlayScreen");
                     break;
                 case 2:
-                   // Main.SetRoot("PlayScreenMedium");
+                    Main.SetRoot("PlayScreenMedium");
                     break;
             }
         }
@@ -135,7 +136,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowRules() throws IOException {
-        //Main.SetRoot("RulesScreen");
+        Main.SetRoot("RulesScreen");
     }
 
     /**
@@ -143,7 +144,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowLeaderboard() throws IOException {
-        //Main.SetRoot("LeaderboardScreen");
+        Main.SetRoot("LeaderboardScreen");
     }
 
     /**
