@@ -30,14 +30,11 @@ This project is based on a classic retro game called Snake. A new runnable imple
 ### How to Install and Run
  1. Download the src folder
  2. Unzip the folder
- 3. Download IntelliJ and open it
- 4. Create a new IntelliJ Project
-5. Name the project and choose a location to store it
-6. Open the unzipped src folder and drop and drag the content into you newly created IntelliJ project
-7. Download javafx-sdk-17.0.0.1 and save it somewhere easy to locate
-8. Select Libraries, press the '+' then select Java
-9. Locate the downloaded javafx-sdk-17.0.0.1 you downloaded and select it
-10. Open the class called Main and press run (located in the top right of your screen)
+ 3. Download Java19 SDK here [Java19 SDK](https://www.oracle.com/uk/java/technologies/downloads/#jdk19)
+ 4. Download IntelliJ Community Edition and open it, [IntelliJ](https://www.jetbrains.com/idea/download/#section=windows)
+ 5. Open the unzipped folder in IntelliJ
+ 6. Go to File, project structure, SDKs and check the Java19 SDK is there. If not click the '+', locate the Java19 SDK and add it to the project
+7. Press the Play button located top right, next to the Run Game text and the game will run
 
   
 
