@@ -43,11 +43,21 @@ public class LeaderboardController {
     }
 
 
+    /**
+     * Loads the Start Screen
+     * Called when the Play Again button is pressed
+     * @throws IOException
+     */
     public void ToStartScreen() throws IOException {
         MusicPlayer.StopMusic();
         Main.SetRoot("StartScreen");
     }
 
+    /**
+     * Returns the String that correlates to the Leaderboard to be displayed
+     * @param num the choice from the ComboBox
+     * @return a String that correlates to a TextFile
+     */
     private String checkDiffBombs(int num){
         if(num == 0){
             return "Easy";

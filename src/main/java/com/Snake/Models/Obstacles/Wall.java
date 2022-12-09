@@ -30,8 +30,8 @@ public class Wall {
     /**
      * Creates and spawns a Wall
      * Sets the x and y co-ordinates of the Wall, as well as the size and image
-     * Makes the wall visible and adds it to the Pane
-     * @param pane the pane to add the Wall to
+     * Makes the wall visible and adds it to the AnchorPane
+     * @param pane the AnchorPane to add the Wall to
      * @param img the image to set the Wall to
      */
     public Wall(AnchorPane pane, Image img) {

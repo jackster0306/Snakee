@@ -28,10 +28,10 @@ public class Bomb {
     public ImageView GetM_bomb(){return  m_bomb;}
 
     /**
-     * Creates and adds the 'bomb' to the Pane provided.
+     * Creates and adds the 'bomb' to the AnchorPane provided.
      * Sets an image to the ImageView m_bomb and sets the layout and its height and width
      * Makes the ImageView to not be visible.
-     * @param contpane the pane to add the 'bomb' to
+     * @param contpane the AnchorPane to add the 'bomb' to
      * @param img the image to set the 'bomb' to
      */
     public Bomb(AnchorPane contpane, Image img) {

@@ -30,7 +30,7 @@ public class Food {
     /**
      * Creates a food for the game
      * Sets the height width and layout as well as an Image for the food
-     * @param contpane the pane to add the food to
+     * @param contpane the AnchorPane to add the food to
      * @param img the image to set the food to
      */
     public Food(AnchorPane contpane, Image img) {

@@ -73,10 +73,7 @@ public class PlayScreenController {
     Image m_snakeheadimg;
     Snake m_snake;
 
-    private final Rectangle snakeHead2 = new Rectangle(250,250,25,25);
-
     //Getters
-
     /**
      * Gets the score
      * @return the current score
@@ -136,7 +133,6 @@ public class PlayScreenController {
      * Calls the Timelines that are used to make the game run
      */
     public void initialize(){
-        //snakehead.getScene().addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         Platform.runLater(() -> PlayPaneSky.getScene().setOnKeyPressed(this::KeyPressed));
         m_hit = false;
         m_snakebody = new HashMap<>();
@@ -166,14 +162,10 @@ public class PlayScreenController {
         m_wall = new Wall(PlayPaneSky, m_wallimg);
         sclab.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
         sclabnum.setStyle("-fx-text-fill: "+StartScreenController.GetScoreCol()+";");
-        //Main.GetM_scene().addEventHandler(KeyEvent.KEY_PRESSED, this::KeyPressed);
         SPEED = 5;
         m_food = new Food(PlayPaneSky, foodimg);
         m_food.GetM_food().setLayoutX(400);
         m_food.GetM_food().setLayoutY(325);
-
-        System.out.println(m_xbound);
-        System.out.println(m_ybound);
         m_snake = new Snake(PlayPaneSky, snakehead, m_xbound, m_ybound);
 
         mainTimeline();

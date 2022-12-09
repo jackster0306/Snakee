@@ -7,9 +7,16 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Displays a Leaderboard
+ * @author Jack Gribble
+ */
 public class Leaderboard {
     /**
      * Sets up the Leaderboard and displays it to the user
+     * @param diff a String correlating to part of a TextFile
+     * @param NamesArea the Text Area to display the names in
+     * @param ScoresArea the Text Area to display the scores in
      */
     public Leaderboard(String diff, TextArea NamesArea, TextArea ScoresArea) {
         NamesArea.setEditable(true);
@@ -55,6 +62,12 @@ public class Leaderboard {
         }
     }
 
+    /**
+     * Sorts the 2 Lists to display highest score first with the name of who got that score
+     * Ready for the Leaderboard to be displayed
+     * @param scores the ArrayList of scores
+     * @param names the ArrayList of names
+     */
     private void sortLists(ArrayList<Integer> scores, ArrayList<String> names){
         int i;
         int j;

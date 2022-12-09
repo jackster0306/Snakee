@@ -11,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -32,8 +31,6 @@ public class StartScreenController {
     private CheckBox checkbomb;
     @FXML
     private TextField name;
-    @FXML
-    private AnchorPane SSPane;
 
     //Class Variables
     private ObservableList<String> m_colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
