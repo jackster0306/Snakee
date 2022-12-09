@@ -1,12 +1,12 @@
-package com.Snake.controller;
+package com.Snake.Controllers;
 
 import com.Snake.Main;
-import com.Snake.model.MusicPlayer;
-import com.Snake.model.Obstacles.Bomb;
-import com.Snake.model.Obstacles.Food;
-import com.Snake.model.Obstacles.Wall;
-import com.Snake.model.Snake;
-import com.Snake.model.Theme;
+import com.Snake.Models.MusicPlayer;
+import com.Snake.Models.Obstacles.Bomb;
+import com.Snake.Models.Obstacles.Food;
+import com.Snake.Models.Obstacles.Wall;
+import com.Snake.Models.Snake;
+import com.Snake.Models.Theme;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;

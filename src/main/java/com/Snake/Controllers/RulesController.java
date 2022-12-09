@@ -1,7 +1,7 @@
-package com.Snake.controller;
+package com.Snake.Controllers;
 
 import com.Snake.Main;
-import com.Snake.model.MusicPlayer;
+import com.Snake.Models.MusicPlayer;
 
 import java.io.IOException;
 

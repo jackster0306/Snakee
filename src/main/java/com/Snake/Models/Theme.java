@@ -1,4 +1,4 @@
-package com.Snake.model;
+package com.Snake.Models;
 
 /**
  * Contains the information for each Theme

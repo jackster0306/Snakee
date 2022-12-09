@@ -1,4 +1,4 @@
-package com.Snake.controller;
+package com.Snake.Controllers;
 
 import com.Snake.Main;
 import javafx.fxml.FXML;

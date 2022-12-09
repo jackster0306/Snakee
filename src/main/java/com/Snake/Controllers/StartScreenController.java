@@ -1,9 +1,9 @@
-package com.Snake.controller;
+package com.Snake.Controllers;
 
 
 import com.Snake.Main;
-import com.Snake.model.MusicPlayer;
-import com.Snake.model.Theme;
+import com.Snake.Models.MusicPlayer;
+import com.Snake.Models.Theme;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

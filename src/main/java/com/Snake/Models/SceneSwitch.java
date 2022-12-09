@@ -1,4 +1,4 @@
-package com.Snake.model;
+package com.Snake.Models;
 
 import com.Snake.Main;
 import javafx.fxml.FXMLLoader;

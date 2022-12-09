@@ -1,6 +1,6 @@
-package com.Snake.model.Obstacles;
+package com.Snake.Models.Obstacles;
 
-import com.Snake.controller.PlayScreenController;
+import com.Snake.Controllers.PlayScreenController;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
