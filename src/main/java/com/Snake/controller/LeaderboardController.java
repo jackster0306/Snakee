@@ -1,6 +1,7 @@
 package com.Snake.controller;
 
 import com.Snake.Main;
+import com.Snake.model.MusicPlayer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -115,6 +116,7 @@ public class LeaderboardController {
         }
     }
     public void ToStartScreen() throws IOException {
+        MusicPlayer.StopMusic();
         Main.SetRoot("StartScreen");
     }
 

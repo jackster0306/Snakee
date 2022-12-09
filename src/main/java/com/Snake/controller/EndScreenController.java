@@ -31,7 +31,7 @@ public class EndScreenController {
      */
     public void initialize() throws IOException {
         endname.setText(StartScreenController.GetPlayerName());
-        //endsclabel.setText((PlayScreenController.GetScore()));
+        endsclabel.setText((PlayScreenController.GetScore()));
         String diffbomb = checkDiffBomb();
         File file = new File("src/main/resources/com/Snake/TextFiles/"+ diffbomb +".txt");
         Scanner scanner = new Scanner(file);
@@ -39,7 +39,7 @@ public class EndScreenController {
             scanner.next();
         }
         FileWriter writer = new FileWriter(file, true);
-        //writer.write(StartScreenController.GetPlayerName()+"\n"+PlayScreenController.GetScore()+"\n");
+        writer.write(StartScreenController.GetPlayerName()+"\n"+PlayScreenController.GetScore()+"\n");
         writer.close();
 
     }

@@ -3,7 +3,6 @@ package com.Snake.controller;
 
 import com.Snake.Main;
 import com.Snake.model.MusicPlayer;
-import com.Snake.model.SceneSwitch;
 import com.Snake.model.Theme;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,7 +127,7 @@ public class StartScreenController {
             m_bombs = checkbomb.isSelected();
             switch(m_diff){
                 case 1:
-                    new SceneSwitch(SSPane,"fxml/PlayScreen.fxml");
+                    Main.SetRoot("PlayScreen");
                     break;
                 case 2:
                     Main.SetRoot("PlayScreenMedium");
@@ -142,7 +141,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowRules() throws IOException {
-        new SceneSwitch(SSPane, "fxml/RulesScreen.fxml");
+        Main.SetRoot("RulesScreen");
     }
 
     /**

@@ -28,7 +28,7 @@
 }
 
 #PlayPaneFootball{
-    -fx-background-image: url("../Images/pitch.jfif");
+    -fx-background-image: url("../Images/footballpitch.png");
 }
 
 .ColBtns{

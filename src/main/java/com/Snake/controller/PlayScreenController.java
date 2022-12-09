@@ -1,10 +1,10 @@
 package com.Snake.controller;
 
+import com.Snake.Main;
 import com.Snake.model.MusicPlayer;
 import com.Snake.model.Obstacles.Bomb;
 import com.Snake.model.Obstacles.Food;
 import com.Snake.model.Obstacles.Wall;
-import com.Snake.model.SceneSwitch;
 import com.Snake.model.Snake;
 import com.Snake.model.Theme;
 import javafx.animation.KeyFrame;
@@ -377,7 +377,7 @@ public class PlayScreenController {
     public void toEndScreen() throws IOException {
         new MusicPlayer("src/main/resources/com/Snake/Music/Gameoveraudio.mp3", false);
         m_timeline.stop();
-        new SceneSwitch(PlayPaneSky, "fxml/EndScreen.fxml");
+        Main.SetRoot("EndScreen");
     }
 
     /**

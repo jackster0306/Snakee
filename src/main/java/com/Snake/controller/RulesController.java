@@ -1,6 +1,7 @@
 package com.Snake.controller;
 
 import com.Snake.Main;
+import com.Snake.model.MusicPlayer;
 
 import java.io.IOException;
 
@@ -15,7 +16,7 @@ public class RulesController {
      * @throws IOException
      */
     public void Back() throws IOException {
-        //MusicPlayer.StopMusic();
-       Main.SetRoot("StartScreen");
+        MusicPlayer.StopMusic();
+        Main.SetRoot("StartScreen");
     }
 }
