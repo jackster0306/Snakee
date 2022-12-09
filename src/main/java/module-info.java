@@ -1,4 +1,4 @@
-module com.siebers.pathdemo {
+module com.Snake {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;

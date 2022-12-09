@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,8 +20,8 @@ public class Main extends Application {
     private static Stage m_tstage;
 
     /**
-     * Gets the current scene
-     * @return the scene
+     * Starts the game
+     * @param args a string
      */
     public static void main(String[] args) {
         launch(args);
@@ -35,6 +36,8 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         m_tstage = stage;
         m_scene = new Scene(loadFXML("StartScreen"));
+        stage.getIcons().add(new Image(getClass().getResource("icons/snake-logo.png").toString()));
+        stage.setTitle("Snakee");
         m_tstage.setScene(m_scene);
         m_tstage.show();
     }
