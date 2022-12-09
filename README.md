@@ -28,13 +28,14 @@ This project is based on a classic retro game called Snake. A new runnable imple
   
 
 ### How to Install and Run
- 1. Download the src folder
- 2. Unzip the folder
- 3. Download Java19 SDK here [Java19 SDK](https://www.oracle.com/uk/java/technologies/downloads/#jdk19)
- 4. Download IntelliJ Community Edition and open it, [IntelliJ](https://www.jetbrains.com/idea/download/#section=windows)
- 5. Open the unzipped folder in IntelliJ
- 6. Go to File, project structure, SDKs and check the Java19 SDK is there. If not click the '+', locate the Java19 SDK and add it to the project
-7. Press the Play button located top right, next to the Run Game text and the game will run
+1. Download the src folder
+2. Unzip the folder
+3. Download Java19 SDK here [Java19 SDK](https://www.oracle.com/uk/java/technologies/downloads/#jdk19)
+4. Download IntelliJ Community Edition and open it, [IntelliJ](https://www.jetbrains.com/idea/download/#section=windows)
+5. Open CW-Snake folder located in GribbleJack_Java19 folder in IntelliJ
+6. Go to File, project structure, SDKs and check the Java19 SDK is there. If not click the '+', locate the Java19 SDK and add it to the project
+7. In Project Structure go to Project and check it is sdk 19, if not find sdk 19 directory and select it
+8. Press the Play button located top right, next to the Run Game text and the game will run
 
   
 
