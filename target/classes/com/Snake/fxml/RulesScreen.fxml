@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane fx:id="RulePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/17.0.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Snake.Controllers.RulesController">
+<AnchorPane fx:id="RulePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/17.0.0.1" xmlns:fx="http://javafx.com/fxml/19" fx:controller="com.Snake.Controllers.RulesController">
    <children>
       <Label layoutX="45.0" layoutY="69.0" styleClass="RuleLabels" stylesheets="@../style/style.css" text="Eat the food to grow and gain score" textFill="#f20909" />
       <Label layoutX="45.0" layoutY="119.0" styleClass="RuleLabels" stylesheets="@../style/style.css" text="If you hit a wall, you lose score and a body part" textFill="#e40909" />

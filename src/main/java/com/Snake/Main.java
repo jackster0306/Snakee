@@ -22,7 +22,6 @@ public class Main extends Application {
      * Gets the current scene
      * @return the scene
      */
-    public static Scene GetM_scene(){return m_scene;}
     public static void main(String[] args) {
         launch(args);
     }

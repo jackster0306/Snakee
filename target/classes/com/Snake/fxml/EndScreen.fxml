@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane fx:id="EndPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Snake.Controllers.EndScreenController">
+<AnchorPane fx:id="EndPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="870.0" styleClass="Pane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Snake.Controllers.EndScreenController">
    <children>
       <Button layoutX="26.0" layoutY="190.0" mnemonicParsing="false" onAction="#Restart" prefHeight="50.0" prefWidth="100.0" styleClass="EndBtn" stylesheets="@../style/style.css" text="Play Again" />
       <Button layoutX="171.0" layoutY="190.0" mnemonicParsing="false" onAction="#Exit" prefHeight="50.0" prefWidth="100.0" styleClass="EndBtn" stylesheets="@../style/style.css" text="Quit" />

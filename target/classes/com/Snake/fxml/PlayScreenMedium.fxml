@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-<AnchorPane fx:id="PlayPaneSky" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="552.0" styleClass="Pane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Snake.Controllers.PlayScreenController">
+<AnchorPane fx:id="PlayPaneSky" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="552.0" styleClass="Pane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Snake.Controllers.PlayScreenController">
    <children>
       <Label fx:id="sclab" layoutX="11.0" layoutY="7.0" styleClass="MedLabel" stylesheets="@../style/style.css" text="Score: " />
       <Label fx:id="sclabnum" layoutX="71.0" layoutY="8.0" styleClass="MedLabel" stylesheets="@../style/style.css" text="0" />
