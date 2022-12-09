@@ -20,8 +20,7 @@ public class MusicPlayer extends Thread
 	 * @param filename the file path where the music file is located
 	 * @param toloop the boolean that decides whether the music is to be looped or not
 	 */
-	public MusicPlayer(String filename, boolean toloop)
-	{
+	public MusicPlayer(String filename, boolean toloop) {
 		Media media = new Media(new File(filename).toURI().toString());
 		m_player = new MediaPlayer(media);
 		if(toloop){
@@ -37,6 +36,7 @@ public class MusicPlayer extends Thread
 			m_player.setOnEndOfMedia(loop);
 		}
 		m_player.play();
+
 	}
 
 	/**

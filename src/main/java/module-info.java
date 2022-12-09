@@ -2,6 +2,7 @@ module com.Snake {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires javafx.graphics;
 
     opens com.Snake to javafx.fxml;
     exports com.Snake;
