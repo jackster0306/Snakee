@@ -3,7 +3,7 @@
 
   
 
-## Table Of Contents
+## Contents Table
 
   
 
@@ -13,7 +13,7 @@
 
 - [How to install and run the project](#how-to-install-and-run)
 
-- [How to play the game](#how-to-play)
+- [How to play](#how-to-play)
 
 - [Credits](#credits)
 
@@ -28,30 +28,29 @@ This project is based on a classic retro game called Snake. A new runnable imple
   
 
 ### How to Install and Run
- 1. Download the src folder
- 2. Unzip the folder
- 3. Download IntelliJ and open it
- 4. Create a new IntelliJ Project
-5. Name the project and choose a location to store it
-6. Open the unzipped src folder and drop and drag the content into you newly created IntelliJ project
-7. Download javafx-sdk-17.0.0.1 and save it somewhere easy to locate
-8. Select Libraries, press the '+' then select Java
-9. Locate the downloaded javafx-sdk-17.0.0.1 you downloaded and select it
-10. Open the class called Main and press run (located in the top right of your screen)
+1. Download the src folder
+2. Unzip the folder
+3. Download Java19 SDK here [Java19 SDK](https://www.oracle.com/uk/java/technologies/downloads/#jdk19)
+4. Download IntelliJ Community Edition and open it, [IntelliJ](https://www.jetbrains.com/idea/download/#section=windows)
+5. Open CW-Snake folder located in GribbleJack_Java19 folder in IntelliJ
+6. Go to File, project structure, SDKs and check the Java19 SDK is there. If not click the '+', locate the Java19 SDK and add it to the project
+7. In Project Structure go to Project and check it is sdk 19, if not find sdk 19 directory and select it
+8. Open the Maven Tab, click CW-Snake, Plugins, javafx then double click javafx:run and the game will run
+9. After this, you can also press the play button top right to run the game
 
   
 
 ### How to Play
-When you run the game, a start screen will be loaded. Here you can change the settings using the provided drop-downs
+When you run the game, a start screen will be loaded. Here you change the settings using the drop-downs
 
-Enter you name in the text box provided in the start screen
+Enter your name in the text box at the top
 
-Click the Rules button if you are unsure on the rules at any time.
+Click the Rules button if you are unsure on the rules.
 Click the Leaderboard button, and it will take you to the high scores
 
 Press the Play button to start the game
 
-Use the arrow keys or WASD to move the snake. Avoid the bombs and walls, eat the food to gain score and a body part. Do not hit yourself, the game will end
+Use the arrow keys/WASD to move the snake. Avoid the bombs and walls, eat the food to gain score and body parts. If you hit yourself, the game ends
 
 When the game ends, your score and name will be displayed. There will be 2 buttons.
 The Play Again will restart the game.
@@ -60,3 +59,4 @@ The Exit button closes the program
 ### Credits
 * IntelliJ
 * JavaFx
+* Maven
