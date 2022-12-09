@@ -2,6 +2,9 @@ package com.Snake.controller;
 
 
 import com.Snake.Main;
+import com.Snake.model.MusicPlayer;
+import com.Snake.model.SceneSwitch;
+import com.Snake.model.Theme;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -29,6 +33,8 @@ public class StartScreenController {
     private CheckBox checkbomb;
     @FXML
     private TextField name;
+    @FXML
+    private AnchorPane SSPane;
 
     //Class Variables
     private ObservableList<String> m_colours = FXCollections.observableArrayList("Red", "Yellow", "Magenta","Green","Orange");
@@ -74,8 +80,8 @@ public class StartScreenController {
      * Sets up the combo boxes with the necessary values
      */
     public void initialize() {
-        //new MusicPlayer("src/Resources/Music/frogger.mp3", true);
-        //PlayScreenController.SetScore(0);
+        new MusicPlayer("src/main/resources/com/Snake/Music/frogger.mp3", true);
+        PlayScreenController.SetScore(0);
         m_diff = 1;
         setupComboBox(scorechoice, m_colours, "Score Colour");
         setupComboBox(diffchoice, m_difficulties, "Difficulty");
@@ -110,19 +116,19 @@ public class StartScreenController {
      */
     @FXML
     private void playGame() throws IOException {
-        if(name.getText() == ""){
+        if(name.getText().equals("")){
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("You must enter a name");
             a.show();
         }
         else{
             m_playername = name.getText();
-           // new Theme(thetheme);
-            //MusicPlayer.StopMusic();
+            new Theme(thetheme);
+            MusicPlayer.StopMusic();
             m_bombs = checkbomb.isSelected();
             switch(m_diff){
                 case 1:
-                    Main.SetRoot("PlayScreen");
+                    new SceneSwitch(SSPane,"fxml/PlayScreen.fxml");
                     break;
                 case 2:
                     Main.SetRoot("PlayScreenMedium");
@@ -136,7 +142,7 @@ public class StartScreenController {
      * @throws IOException
      */
     public void ShowRules() throws IOException {
-        Main.SetRoot("RulesScreen");
+        new SceneSwitch(SSPane, "fxml/RulesScreen.fxml");
     }
 
     /**

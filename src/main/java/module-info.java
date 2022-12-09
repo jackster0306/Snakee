@@ -1,6 +1,7 @@
 module com.siebers.pathdemo {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
 
     opens com.Snake to javafx.fxml;
     exports com.Snake;
